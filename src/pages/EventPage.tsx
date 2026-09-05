@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { DateTime } from 'luxon'
 import { supabase } from '../lib/supabase'
 import { sha256 } from '../lib/hash'
 import AvailabilityGrid from '../components/AvailabilityGrid'
+import NixieClock from '../components/NixieClock'
 
 type EventData = { id: string; slug: string; title: string; description: string | null; creator_timezone: string; is_closed: boolean; created_at: string }
 type EventWindow = { id: string; event_id: string; start_at: string; end_at: string }
@@ -13,6 +14,7 @@ const generateToken = () => crypto.randomUUID()
 export default function EventPage() {
   const { slug } = useParams()
   const timezone = useMemo(() => Intl.DateTimeFormat().resolvedOptions().timeZone, [])
+  const displayTimezone = timezone.replaceAll('_', ' ')
   const [eventData, setEventData] = useState<EventData | null>(null)
   const [windows, setWindows] = useState<EventWindow[]>([])
   const [participant, setParticipant] = useState<Participant | null>(null)
@@ -44,12 +46,20 @@ export default function EventPage() {
     void loadEvent()
   }, [slug])
 
+  const shareUrl = eventData && slug
+    ? `${window.location.origin}${import.meta.env.BASE_URL}#/e/${slug}`
+    : ''
+
   const handleCopyLink = async () => {
+    if (!shareUrl) return
+
     try {
-      await navigator.clipboard.writeText(window.location.href)
+      await navigator.clipboard.writeText(shareUrl)
       setCopied(true)
       window.setTimeout(() => setCopied(false), 1800)
-    } catch (copyError) { console.error(copyError) }
+    } catch (copyError) {
+      console.error(copyError)
+    }
   }
 
   const handleJoin = async () => {
@@ -70,14 +80,28 @@ export default function EventPage() {
   if (error || !eventData) return <main className="center-state"><h1>Poll not found</h1><p>{error}</p></main>
 
   return (
-    <main className="app-shell">
-      <header className="topbar"><a className="brand" href="/"><span className="brand-mark">A</span><span>AtTheSameTime</span></a><span className="topbar-note">Find the overlap, not the timezone.</span></header>
-      <div className="event-layout">
+    <main className="app-shell reference-machine-page final-machine-page event-machine-page">
+      <div className="single-machine-frame" aria-hidden="true">
+        <img src={`${import.meta.env.BASE_URL}machine-frame-clean.png`} alt="" />
+      </div>
+
+      <div className="machine-content-shell event-machine-content">
+        <header className="topbar machine-topbar reference-topbar final-topbar event-machine-topbar">
+          <Link className="brand" to="/" aria-label="AtTheSameTime home">
+            <NixieClock />
+            <span className="brand-copy">
+              <span className="brand-name">AtTheSameTime</span>
+              <small>Find the perfect time. Anywhere.</small>
+            </span>
+          </Link>
+        </header>
+
+        <div className={`event-layout event-machine-layout${participant ? ' event-machine-layout-active' : ''}`}>
         <section className="event-hero">
           <span className="eyebrow">Availability poll</span>
           <h1>{eventData.title}</h1>
           {eventData.description && <p className="lead">{eventData.description}</p>}
-          <div className="timezone-pill"><span>◷</span> Times shown in <strong>{timezone}</strong></div>
+          <div className="timezone-pill"><span>◷</span> Times shown in <strong>{displayTimezone}</strong></div>
         </section>
 
         <section className="summary-card">
@@ -91,7 +115,7 @@ export default function EventPage() {
               })}
             </div>
           </div>
-          <div className="share-box"><div><span className="eyebrow">Invite people</span><strong>Share this poll</strong></div><div className="share-row"><input value={window.location.href} readOnly aria-label="Poll link" /><button className="button secondary" type="button" onClick={handleCopyLink}>{copied ? 'Copied!' : 'Copy link'}</button></div></div>
+          <div className="share-box"><div><span className="eyebrow">Invite people</span><strong>Share this poll</strong><p className="share-hint">Anyone with the link can join and mark their availability.</p></div><div className="share-row"><input value={shareUrl} readOnly aria-label="Poll link" /><button className="button secondary" type="button" onClick={handleCopyLink}>{copied ? 'Copied!' : 'Copy link'}</button></div></div>
         </section>
 
         {!participant ? (
@@ -109,6 +133,12 @@ export default function EventPage() {
             <AvailabilityGrid windows={windows} timezone={timezone} eventId={eventData.id} participantId={participant.id} />
           </>
         )}
+        </div>
+
+        <nav className="machine-nav machine-nav-bottom event-machine-nav" aria-label="Poll navigation">
+          <Link to="/">Home</Link>
+          <Link to="/">New poll</Link>
+        </nav>
       </div>
     </main>
   )

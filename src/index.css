@@ -1,47 +1,5196 @@
-:root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:#e8edf7; background:#090b11; font-synthesis:none; text-rendering:optimizeLegibility; --bg:#090b11; --panel:#10131c; --panel-2:#151925; --line:#262c3b; --muted:#8e98ab; --text:#e8edf7; --accent:#7c8cff; --accent-2:#aab4ff; --success:#56d8a0; }
-* { box-sizing:border-box; }
-html { background:var(--bg); }
-body { margin:0; min-width:320px; min-height:100vh; background:radial-gradient(circle at 50% -20%, rgba(93,106,220,.18), transparent 35%), var(--bg); color:var(--text); }
-button,input,textarea,select { font:inherit; }
-button { cursor:pointer; }
-a { color:inherit; }
-#root { min-height:100vh; }
-.app-shell { min-height:100vh; }
-.topbar { height:70px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; padding:0 max(24px, calc((100vw - 1180px)/2)); background:rgba(9,11,17,.82); backdrop-filter:blur(14px); position:sticky; top:0; z-index:20; }
-.brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:760; letter-spacing:-.02em; }
-.brand-mark { width:30px; height:30px; border-radius:9px; display:grid; place-items:center; background:linear-gradient(145deg,#8f9cff,#596be8); color:white; box-shadow:0 0 24px rgba(124,140,255,.28); }
-.topbar-note { color:var(--muted); font-size:13px; }
-.event-layout { width:min(1180px, calc(100% - 40px)); margin:0 auto; padding:62px 0 80px; }
-.event-hero { margin-bottom:28px; max-width:760px; }
-.eyebrow { color:var(--accent-2); font-size:11px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
-h1,h2,p { margin-top:0; }
-h1 { font-size:clamp(38px,5vw,64px); line-height:1.02; letter-spacing:-.045em; margin:10px 0 14px; }
-h2 { font-size:22px; letter-spacing:-.025em; margin:6px 0 8px; }
-.lead { color:#aeb7c8; font-size:18px; line-height:1.65; }
-.timezone-pill { display:inline-flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid var(--line); background:#0d1018; border-radius:10px; color:var(--muted); font-size:12px; }
-.timezone-pill strong { color:#cbd3e4; }
-.summary-card,.join-card,.schedule-card { border:1px solid var(--line); background:linear-gradient(180deg,rgba(20,24,36,.94),rgba(14,17,25,.94)); border-radius:18px; box-shadow:0 20px 70px rgba(0,0,0,.22); }
-.summary-card { display:grid; grid-template-columns:1.15fr .85fr; overflow:hidden; margin-bottom:18px; }
-.summary-main,.share-box { padding:24px; }
-.share-box { border-left:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; gap:12px; }
-.share-box strong { display:block; margin-top:5px; }
-.window-chips { display:flex; flex-wrap:wrap; gap:9px; margin-top:16px; }
-.window-chip { padding:10px 12px; background:#0b0e15; border:1px solid var(--line); border-radius:11px; display:flex; flex-direction:column; gap:2px; min-width:145px; }
-.window-chip strong { font-size:13px; }.window-chip span { color:var(--muted); font-size:12px; }
-.share-row,.join-row { display:flex; gap:8px; }
-input,textarea,select { width:100%; border:1px solid #303748; background:#0b0e15; color:var(--text); border-radius:10px; padding:11px 12px; outline:none; transition:.18s border,.18s box-shadow; }
-input:focus,textarea:focus,select:focus { border-color:#6f7de4; box-shadow:0 0 0 3px rgba(124,140,255,.12); }
-.button { border:1px solid transparent; border-radius:10px; padding:10px 14px; color:white; font-weight:720; white-space:nowrap; transition:.16s transform,.16s background,.16s border; }
-.button:hover { transform:translateY(-1px); }.button:disabled { opacity:.55; cursor:not-allowed; transform:none; }
-.button.primary { background:#7180f4; }.button.primary:hover { background:#8290ff; }
-.button.secondary { background:#1b2030; border-color:#32394b; }.button.secondary:hover { background:#232a3d; }
-.button.ghost { background:transparent; border-color:#303748; color:#aeb7c8; }
-.join-card { padding:24px; display:flex; justify-content:space-between; align-items:center; gap:30px; margin-bottom:18px; }
-.join-card p { color:var(--muted); margin:0; }.join-form { flex:1; max-width:620px; }.join-form label { display:block; font-size:12px; color:#b5bed0; font-weight:700; margin-bottom:7px; }.field-error { color:#ff8e9c!important; margin-top:8px!important; font-size:12px; }
-.joined-banner { display:flex; align-items:center; gap:10px; margin:24px 0 14px; }.avatar { width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#29304a;color:#cbd3ff;font-weight:800; }.joined-banner div:nth-child(2) { display:flex;flex-direction:column; }.joined-banner div:nth-child(2) span { color:var(--muted);font-size:11px; }.live-dot { margin-left:auto;color:var(--success);font-size:12px;font-weight:800; }.live-dot::before { content:"";display:inline-block;width:7px;height:7px;background:var(--success);border-radius:50%;margin-right:6px;box-shadow:0 0 12px var(--success); }
-.availability-workspace { margin-top:10px; }.workspace-heading { display:flex;justify-content:space-between;align-items:end;margin-bottom:14px; }.workspace-heading p { color:var(--muted);margin:0;font-size:13px; }.save-status { font-size:11px;color:var(--success);background:rgba(86,216,160,.08);border:1px solid rgba(86,216,160,.18);padding:6px 9px;border-radius:999px; }.save-status.is-saving { color:#f1c76b;border-color:rgba(241,199,107,.2);background:rgba(241,199,107,.08); }
-.grid-pair { display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start; }.schedule-card { overflow:hidden; }.schedule-title { padding:16px 18px;border-bottom:1px solid var(--line); }.schedule-title div { display:flex;align-items:baseline;justify-content:space-between;gap:12px; }.schedule-title span { color:var(--muted);font-size:11px; }.schedule-scroll { overflow:auto; }.time-grid { display:grid;min-width:max-content;user-select:none; }.grid-corner,.day-head,.time-label,.slot { border-right:1px solid #222838;border-bottom:1px solid #222838; }.grid-corner { height:54px;background:#0c0f16;position:sticky;left:0;z-index:4; }.day-head { height:54px;background:#0c0f16;display:flex;flex-direction:column;align-items:center;justify-content:center;position:sticky;top:0;z-index:3; }.day-head strong { font-size:12px; }.day-head span { color:var(--muted);font-size:10px; }.time-label { height:34px;display:flex;align-items:center;justify-content:center;background:#0c0f16;color:#7f899c;font-size:10px;position:sticky;left:0;z-index:2; }.slot { height:34px;min-width:88px;background:#121620;padding:0;border-top:0;border-left:0;position:relative; }.personal-slot:hover { background:#1c2232; }.personal-slot.selected { background:linear-gradient(135deg,#6978e8,#8290ff);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08); }.slot.unavailable { background:#0b0e14;opacity:.45; }.group-slot { display:grid;place-items:center;background:rgba(86,216,160,calc(var(--intensity) * .72));color:#eafff5;font-size:10px;font-weight:800; }.group-slot.best { box-shadow:inset 0 0 0 1px rgba(133,255,201,.72),0 0 16px rgba(86,216,160,.08); }.legend { padding:12px 16px;display:flex;align-items:center;justify-content:flex-end;gap:8px;color:var(--muted);font-size:9px;border-top:1px solid var(--line); }.legend-scale { display:flex;gap:2px; }.legend-scale i { width:14px;height:8px;border-radius:2px;background:rgba(86,216,160,.18); }.legend-scale i:nth-child(2){background:rgba(86,216,160,.35)}.legend-scale i:nth-child(3){background:rgba(86,216,160,.52)}.legend-scale i:nth-child(4){background:rgba(86,216,160,.72)}
-.notice { padding:10px 12px;border-radius:10px;margin-bottom:12px;font-size:12px; }.error-notice { background:rgba(255,92,115,.08);border:1px solid rgba(255,92,115,.2);color:#ff9aaa; }.center-state { min-height:100vh;display:grid;place-content:center;text-align:center;color:var(--muted); }.center-state h1 { color:var(--text); }.spinner { width:28px;height:28px;border:3px solid #262c3b;border-top-color:#7c8cff;border-radius:50%;animation:spin .8s linear infinite;margin:auto auto 12px; } @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:900px){.summary-card,.grid-pair{grid-template-columns:1fr}.share-box{border-left:0;border-top:1px solid var(--line)}.join-card{align-items:flex-start;flex-direction:column}.join-form{width:100%}.topbar-note{display:none}}
-@media(max-width:600px){.event-layout{width:min(100% - 24px,1180px);padding-top:34px}.topbar{height:60px;padding:0 14px}.summary-main,.share-box,.join-card{padding:18px}.share-row,.join-row{flex-wrap:wrap}.share-row input,.join-row input{flex-basis:100%}.workspace-heading{align-items:flex-start;gap:10px;flex-direction:column}h1{font-size:38px}.grid-pair{gap:12px}}
-.home-layout{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:72px 0;display:grid;grid-template-columns:1fr 480px;gap:70px;align-items:start}.home-copy{padding-top:48px}.home-copy h1{max-width:720px}.feature-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.feature-row span{font-size:11px;color:#aab4c8;border:1px solid var(--line);background:#0d1018;border-radius:999px;padding:7px 10px}.create-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(20,24,36,.96),rgba(14,17,25,.96));border-radius:20px;padding:24px;box-shadow:0 24px 80px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:18px}.form-heading{padding-bottom:4px}.form-heading h2{margin-top:6px}.form-heading p,.form-hint{color:var(--muted);font-size:12px}.field{display:flex;flex-direction:column;gap:7px}.field>label{font-size:12px;color:#c2cada;font-weight:700}.field textarea{min-height:84px;resize:vertical}.field>div{display:flex;gap:7px;margin-bottom:7px}.field>div button,.text-button{border:1px solid var(--line);background:#171b27;color:#aeb7c8;border-radius:9px;padding:8px 10px}.text-button{align-self:flex-start;background:transparent;color:#aab4ff}.time-fields{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:center}.time-fields label{font-size:11px}.create-submit{width:100%;padding:12px 14px}.form-hint{margin:0}.create-card>p:last-child{color:#ff9aaa;font-size:12px;margin:0}@media(max-width:900px){.home-layout{grid-template-columns:1fr;gap:28px;padding-top:42px}.home-copy{padding-top:0}.create-card{max-width:620px;width:100%}}@media(max-width:600px){.home-layout{width:min(100% - 24px,1180px)}.time-fields{grid-template-columns:1fr 1fr}.time-fields label{grid-column:span 1}.create-card{padding:18px}}
+
+:root {
+  font-family: "Montserrat", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f5ead7;
+  background: #120e0a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --bg: #120e0a;
+  --bg-deep: #090704;
+  --panel: #1b1510;
+  --panel-soft: #241b13;
+  --panel-raised: #2b2118;
+
+  --iron: #3c342d;
+  --iron-soft: #52473c;
+
+  --brass: #b88746;
+  --brass-bright: #d2a968;
+  --brass-dim: #7f6034;
+  --copper: #b9683f;
+  --copper-hot: #df8a55;
+
+  --paper: #f5ead7;
+  --paper-soft: #d9c8ad;
+  --muted: #998a74;
+
+  --nixie: #ff8b32;
+  --nixie-hot: #ffc070;
+  --success: #9bc48a;
+  --danger: #d87868;
+  --warning: #d9b15f;
+
+  --line: rgba(184, 135, 70, .24);
+  --line-strong: rgba(210, 169, 104, .42);
+
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+
+  --shadow-lg: 0 28px 70px rgba(0,0,0,.48);
+  --shadow-md: 0 16px 42px rgba(0,0,0,.34);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  min-width: 320px;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(167, 104, 49, .10), transparent 34%),
+    radial-gradient(circle at 95% 88%, rgba(107, 64, 36, .12), transparent 32%),
+    linear-gradient(180deg, #15100b 0%, #0f0b08 46%, #0a0705 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .18;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(184,135,70,.018) 0 1px, transparent 1px 7px);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(184,135,70,.06) 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 72%, rgba(184,135,70,.045) 0 1px, transparent 2px);
+  background-size: 29px 29px, 37px 37px;
+}
+
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+
+#root,
+.app-shell { min-height: 100vh; }
+
+/* Header */
+.topbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 max(24px, calc((100vw - 1200px) / 2));
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid rgba(184, 135, 70, .28);
+  background:
+    linear-gradient(180deg, rgba(29,21,15,.97), rgba(13,10,7,.97));
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.28),
+    inset 0 -1px 0 rgba(255,255,255,.02);
+}
+
+.topbar::before,
+.topbar::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3b2c20;
+  border: 1px solid #795b36;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.08);
+}
+
+.topbar::before { left: 18px; }
+.topbar::after { right: 18px; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+}
+
+.brand-name {
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  text-shadow: 0 1px 0 #000;
+}
+
+.topbar-note {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Nixie clock */
+.nixie-clock {
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px 5px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #6e573c;
+  border-radius: 9px;
+  background:
+    linear-gradient(180deg, #2e241a 0%, #16100c 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    inset 0 -8px 18px rgba(0,0,0,.35),
+    0 5px 16px rgba(0,0,0,.35);
+}
+
+.nixie-clock::before,
+.nixie-clock::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3e3022;
+  border: 1px solid #8c6c43;
+  top: 4px;
+}
+
+.nixie-clock::before { left: 4px; }
+.nixie-clock::after { right: 4px; }
+
+.nixie-tube {
+  width: 31px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(201, 155, 93, .38);
+  border-radius: 10px 10px 5px 5px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,132,42,.08), transparent 44%),
+    linear-gradient(180deg, #15100d 0%, #080604 100%);
+  box-shadow:
+    inset 0 0 9px rgba(212, 141, 79, .08),
+    inset 0 -5px 8px rgba(0,0,0,.55);
+}
+
+.nixie-glass {
+  position: absolute;
+  inset: 2px 3px 7px;
+  border-radius: 8px 8px 4px 4px;
+  background: linear-gradient(115deg, rgba(255,255,255,.08), transparent 25%);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.nixie-number {
+  position: relative;
+  z-index: 2;
+  color: var(--nixie-hot);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -.07em;
+  text-shadow:
+    0 0 3px #ff7f22,
+    0 0 8px rgba(255,113,24,.95),
+    0 0 16px rgba(255,91,0,.45);
+}
+
+.nixie-base {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 2px;
+  height: 4px;
+  border-radius: 1px 1px 3px 3px;
+  background: linear-gradient(180deg, #9b7444, #43301e);
+}
+
+.nixie-separator {
+  width: 5px;
+  display: grid;
+  gap: 5px;
+}
+
+.nixie-separator i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--nixie);
+  box-shadow: 0 0 7px rgba(255,129,35,.9);
+}
+
+/* General layout */
+.event-layout,
+.home-layout {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.event-layout { padding: 32px 0 80px; }
+
+.home-layout {
+  min-height: calc(100vh - 72px);
+  padding: 30px 0 58px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 520px;
+  align-items: start;
+  gap: 68px;
+}
+
+.home-copy {
+  padding-top: 36px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brass-bright);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "✦";
+  color: var(--copper-hot);
+  font-size: 9px;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  margin: 12px 0 15px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -.05em;
+}
+
+h2 {
+  margin: 5px 0 8px;
+  font-size: 23px;
+  letter-spacing: -.03em;
+}
+
+.home-copy h1 {
+  max-width: 690px;
+  font-size: clamp(52px, 6vw, 76px);
+  font-weight: 800;
+}
+
+.headline-accent {
+  color: var(--brass-bright);
+  text-shadow: 0 0 16px rgba(184,135,70,.10);
+}
+
+.lead {
+  max-width: 700px;
+  color: var(--paper-soft);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.home-copy .lead {
+  max-width: 610px;
+  font-size: 17px;
+}
+
+.event-hero {
+  max-width: 820px;
+  margin-bottom: 24px;
+}
+
+.feature-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.feature-row span {
+  padding: 8px 10px;
+  border: 1px solid rgba(184,135,70,.24);
+  border-radius: 6px;
+  color: var(--paper-soft);
+  background: linear-gradient(180deg, #21180f, #17110d);
+  font-size: 9px;
+  font-weight: 700;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 4px 10px rgba(0,0,0,.18);
+}
+
+/* Panels */
+.summary-card,
+.join-card,
+.schedule-card,
+.create-card,
+.best-panel,
+.people-panel {
+  position: relative;
+  border: 1px solid rgba(184,135,70,.30);
+  background:
+    linear-gradient(180deg, rgba(34,25,18,.98), rgba(20,15,11,.99));
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    var(--shadow-md);
+}
+
+.summary-card::before,
+.join-card::before,
+.schedule-card::before,
+.create-card::before,
+.best-panel::before,
+.people-panel::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  pointer-events: none;
+  border: 1px solid rgba(184,135,70,.08);
+  border-radius: calc(var(--radius-lg) - 5px);
+}
+
+.summary-card::after,
+.create-card::after,
+.best-panel::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(210,169,104,.58), transparent);
+  opacity: .7;
+  pointer-events: none;
+}
+
+.summary-card {
+  display: grid;
+  grid-template-columns: 1.16fr .84fr;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.summary-main,
+.share-box { padding: 25px; }
+
+.share-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  border-left: 1px solid rgba(184,135,70,.22);
+  background: rgba(10,7,5,.18);
+}
+
+.share-box strong { display: block; margin-top: 5px; font-size: 14px; }
+
+.share-hint,
+.form-hint {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.share-row,
+.join-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid rgba(184,135,70,.26);
+  border-radius: 7px;
+  outline: none;
+  color: var(--paper);
+  background:
+    linear-gradient(180deg, #15100d, #0d0a07);
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.32),
+    inset 0 1px 0 rgba(255,255,255,.02);
+  transition: border-color .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+input::placeholder,
+textarea::placeholder { color: #6e6253; }
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(210,169,104,.38);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--brass-bright);
+  box-shadow:
+    0 0 0 3px rgba(184,135,70,.08),
+    inset 0 2px 5px rgba(0,0,0,.32);
+}
+
+/* Buttons */
+.button {
+  min-height: 42px;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: var(--paper);
+  font-weight: 800;
+  white-space: nowrap;
+  letter-spacing: .01em;
+  transition: transform .14s ease, background .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+
+.button:hover { transform: translateY(-1px); }
+.button:active { transform: translateY(0); }
+
+.button.primary {
+  color: #21150c;
+  background:
+    linear-gradient(180deg, #d6aa6a 0%, #b77f3d 58%, #8f5c2a 100%);
+  border-color: #e5c58e;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -2px 0 rgba(84,48,20,.40),
+    0 7px 18px rgba(0,0,0,.28);
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+}
+
+.button.primary:hover {
+  background:
+    linear-gradient(180deg, #e1b87b 0%, #c68b48 58%, #9c642d 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34),
+    0 9px 22px rgba(0,0,0,.34);
+}
+
+.button.secondary {
+  background: linear-gradient(180deg, #2b2118, #1c1510);
+  border-color: rgba(184,135,70,.34);
+}
+
+.button.secondary:hover {
+  border-color: rgba(210,169,104,.55);
+  background: linear-gradient(180deg, #35281d, #21180f);
+}
+
+.button.ghost {
+  background: transparent;
+  border-color: rgba(184,135,70,.24);
+  color: var(--paper-soft);
+}
+
+/* Create card */
+.create-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.form-heading,
+.field,
+.date-picker-section,
+.time-window-card,
+.form-hint,
+.create-submit {
+  position: relative;
+  z-index: 1;
+}
+
+.form-heading h2 {
+  margin-top: 6px;
+  font-size: 24px;
+}
+
+.form-heading p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field > label,
+.field-label {
+  color: var(--paper-soft);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.field textarea {
+  min-height: 74px;
+  resize: vertical;
+}
+
+.field > div {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.field > div button,
+.text-button {
+  padding: 8px 10px;
+  border: 1px solid rgba(184,135,70,.26);
+  border-radius: 6px;
+  color: var(--paper-soft);
+  background: linear-gradient(180deg, #2a2017, #1c1510);
+}
+
+.text-button {
+  align-self: flex-start;
+  color: var(--brass-bright);
+  background: transparent;
+}
+
+.date-picker-section { display: grid; gap: 11px; }
+
+.date-picker-copy p,
+.time-window-card > div:first-child p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.calendar-card,
+.time-window-card {
+  padding: 14px;
+  border: 1px solid rgba(184,135,70,.25);
+  border-radius: 9px;
+  background:
+    linear-gradient(180deg, #18110d, #0e0b08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.02),
+    inset 0 -8px 18px rgba(0,0,0,.18);
+}
+
+.calendar-toolbar {
+  display: grid;
+  grid-template-columns: 35px 1fr 35px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.calendar-toolbar strong {
+  text-align: center;
+  color: var(--paper);
+  font-size: 12px;
+}
+
+.calendar-nav {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(184,135,70,.32);
+  border-radius: 6px;
+  color: var(--brass-bright);
+  background: linear-gradient(180deg, #2d2117, #1a130e);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.calendar-nav:hover {
+  border-color: rgba(210,169,104,.58);
+  background: linear-gradient(180deg, #38291c, #21170f);
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.calendar-weekdays { margin-bottom: 5px; }
+
+.calendar-weekdays span {
+  color: #80715f;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.calendar-day,
+.calendar-empty {
+  aspect-ratio: 1;
+  min-height: 37px;
+}
+
+.calendar-day {
+  padding: 0;
+  border: 1px solid rgba(184,135,70,.10);
+  border-radius: 5px;
+  color: var(--paper-soft);
+  background: linear-gradient(180deg, #1b1510, #120e0a);
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.015);
+  transition: transform .11s ease, background .11s ease, border-color .11s ease, box-shadow .11s ease;
+}
+
+.calendar-day:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(210,169,104,.40);
+  background: linear-gradient(180deg, #2a2017, #1a130f);
+}
+
+.calendar-day.today:not(.selected) {
+  border-color: rgba(210,169,104,.65);
+  color: var(--paper);
+}
+
+.calendar-day.selected {
+  color: #24160b;
+  border-color: #efc98d;
+  background:
+    linear-gradient(180deg, #d8ad6d, #af7737);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 6px 16px rgba(0,0,0,.28);
+}
+
+.calendar-day:disabled {
+  cursor: not-allowed;
+  opacity: .20;
+}
+
+.calendar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 11px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.calendar-today { padding: 6px 9px; }
+
+.selected-date-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.selected-date-chip {
+  padding: 7px 9px;
+  border: 1px solid rgba(184,135,70,.28);
+  border-radius: 6px;
+  color: var(--paper-soft);
+  background: linear-gradient(180deg, #2a2017, #1a130e);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.selected-date-chip span {
+  margin-left: 6px;
+  color: var(--copper-hot);
+}
+
+.time-window-card { display: grid; gap: 13px; }
+
+.time-fields {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-fields label {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.create-submit {
+  width: 100%;
+  padding: 12px 15px;
+}
+
+/* Poll page */
+.timezone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid rgba(184,135,70,.24);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #21180f, #15100c);
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.timezone-pill::before {
+  content: "◷";
+  color: var(--brass-bright);
+}
+
+.timezone-pill strong {
+  color: var(--paper-soft);
+}
+
+.window-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.window-chip {
+  min-width: 150px;
+  padding: 11px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border: 1px solid rgba(184,135,70,.18);
+  border-radius: 7px;
+  background: linear-gradient(180deg, #1a130e, #100c09);
+}
+
+.window-chip:hover {
+  border-color: rgba(210,169,104,.36);
+}
+
+.window-chip strong { font-size: 11px; }
+.window-chip span { color: var(--muted); font-size: 10px; }
+
+.join-card {
+  padding: 23px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+.join-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.join-form {
+  width: 100%;
+  max-width: 650px;
+}
+
+.join-form label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--paper-soft);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.field-error {
+  margin-top: 8px !important;
+  color: var(--danger) !important;
+  font-size: 10px;
+}
+
+.joined-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 14px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(184,135,70,.26);
+  border-radius: 50%;
+  color: #f2dec0;
+  background:
+    radial-gradient(circle at 35% 30%, #6b5036, #2a1f16 68%);
+  font-weight: 800;
+}
+
+.joined-banner div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.joined-banner div:nth-child(2) span {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.live-dot {
+  margin-left: auto;
+  color: var(--success);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.live-dot::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(155,196,138,.45);
+}
+
+.workspace-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.workspace-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.save-status {
+  padding: 6px 9px;
+  border: 1px solid rgba(155,196,138,.18);
+  border-radius: 5px;
+  color: var(--success);
+  background: rgba(155,196,138,.06);
+  font-size: 9px;
+}
+
+.insight-strip {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.best-panel,
+.people-panel {
+  padding: 18px;
+}
+
+.panel-heading {
+  margin-bottom: 12px;
+}
+
+.panel-heading h3 {
+  margin: 4px 0 0;
+  font-size: 16px;
+}
+
+.match-list { display: grid; gap: 8px; }
+
+.match-item {
+  display: grid;
+  grid-template-columns: 29px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 11px;
+  border: 1px solid rgba(184,135,70,.18);
+  border-radius: 7px;
+  background: linear-gradient(180deg, #19120e, #100c09);
+}
+
+.match-item.top-match {
+  border-color: rgba(223,138,85,.44);
+  background:
+    linear-gradient(90deg, rgba(181,97,52,.16), rgba(16,12,9,.98) 68%);
+  box-shadow: inset 2px 0 0 var(--copper-hot);
+}
+
+.match-rank {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  color: var(--paper-soft);
+  background: #2b2017;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.top-match .match-rank {
+  color: #ffe0c5;
+  background: rgba(185,104,63,.18);
+}
+
+.match-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.match-item div strong { font-size: 11px; }
+.match-item div span { color: var(--muted); font-size: 9px; }
+
+.match-item > b {
+  padding: 5px 8px;
+  border: 1px solid rgba(184,135,70,.22);
+  border-radius: 5px;
+  color: var(--brass-bright);
+  background: rgba(184,135,70,.08);
+  font-size: 10px;
+}
+
+.people-list { display: grid; gap: 7px; }
+
+.people-list > span {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.people-list i {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--paper-soft);
+  background: #2a2017;
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.people-list b {
+  color: #756653;
+  font-size: 8px;
+}
+
+.people-list .has-response {
+  color: var(--paper);
+}
+
+.people-list .has-response i {
+  color: #dfe8d0;
+  background: rgba(155,196,138,.10);
+}
+
+.people-list .has-response b {
+  color: var(--success);
+}
+
+.grid-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.schedule-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.schedule-title {
+  padding: 14px 15px;
+  border-bottom: 1px solid rgba(184,135,70,.20);
+  background:
+    linear-gradient(180deg, rgba(56,40,28,.34), transparent);
+}
+
+.schedule-title > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.schedule-title strong { font-size: 11px; }
+.schedule-title span { color: var(--muted); font-size: 8px; }
+
+.schedule-scroll {
+  overflow: auto;
+  scrollbar-color: #5d452e transparent;
+  scrollbar-width: thin;
+}
+
+.time-grid {
+  display: grid;
+  min-width: max-content;
+  user-select: none;
+}
+
+.grid-corner,
+.day-head,
+.time-label,
+.slot {
+  border-right: 1px solid rgba(184,135,70,.15);
+  border-bottom: 1px solid rgba(184,135,70,.15);
+}
+
+.grid-corner {
+  height: 56px;
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  background: #100c09;
+}
+
+.day-head {
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #100c09;
+}
+
+.day-head strong { font-size: 10px; }
+.day-head span { margin-top: 2px; color: var(--muted); font-size: 8px; }
+
+.time-label {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  color: #81715d;
+  background: #100c09;
+  font-size: 8px;
+}
+
+.slot {
+  height: 36px;
+  min-width: 90px;
+  padding: 0;
+  position: relative;
+  border-top: 0;
+  border-left: 0;
+  background: #17110d;
+  transition: background .11s ease, box-shadow .11s ease;
+}
+
+.personal-slot:hover {
+  background: #2a2017;
+}
+
+.personal-slot.selected {
+  background:
+    linear-gradient(180deg, #d3a461, #9c6731);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,231,190,.18),
+    inset 0 -5px 10px rgba(64,35,15,.22);
+}
+
+.slot.unavailable {
+  opacity: .34;
+  background: #0a0705;
+}
+
+.group-slot {
+  display: grid;
+  place-items: center;
+  color: #fff4e6;
+  background: rgba(192, 111, 57, calc(var(--intensity) * .74));
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.group-slot.best {
+  box-shadow:
+    inset 0 0 0 1px rgba(255,196,120,.72),
+    0 0 12px rgba(255,132,43,.10);
+}
+
+.legend {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  border-top: 1px solid rgba(184,135,70,.18);
+  color: var(--muted);
+  font-size: 8px;
+}
+
+.legend-scale {
+  display: flex;
+  gap: 2px;
+}
+
+.legend-scale i {
+  width: 13px;
+  height: 7px;
+  border-radius: 2px;
+  background: rgba(192,111,57,.18);
+}
+.legend-scale i:nth-child(2) { background: rgba(192,111,57,.34); }
+.legend-scale i:nth-child(3) { background: rgba(192,111,57,.52); }
+.legend-scale i:nth-child(4) { background: rgba(192,111,57,.74); }
+
+.notice {
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 7px;
+  font-size: 10px;
+}
+
+.error-notice {
+  color: #e9998d;
+  background: rgba(216,120,104,.08);
+  border: 1px solid rgba(216,120,104,.18);
+}
+
+.center-state {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: var(--muted);
+}
+
+.center-state h1 { color: var(--paper); }
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  margin: auto auto 12px;
+  border: 3px solid #3a2b1f;
+  border-top-color: var(--brass-bright);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 980px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 26px;
+  }
+
+  .home-copy { padding-top: 10px; }
+
+  .create-card {
+    width: 100%;
+    max-width: 720px;
+  }
+
+  .summary-card,
+  .grid-pair,
+  .insight-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .share-box {
+    border-left: 0;
+    border-top: 1px solid rgba(184,135,70,.20);
+  }
+
+  .join-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .join-form { max-width: none; }
+}
+
+@media (max-width: 620px) {
+  .event-layout,
+  .home-layout {
+    width: min(100% - 24px, 1200px);
+  }
+
+  .topbar {
+    height: 64px;
+    padding: 0 12px;
+  }
+
+  .topbar-note { display: none; }
+
+  .brand { gap: 9px; }
+
+  .brand-name { font-size: 13px; }
+
+  .nixie-clock {
+    height: 40px;
+    padding: 3px 5px 4px;
+  }
+
+  .nixie-tube {
+    width: 26px;
+    height: 31px;
+  }
+
+  .nixie-number { font-size: 10px; }
+
+  .event-layout { padding-top: 24px; }
+
+  .home-layout {
+    min-height: calc(100vh - 64px);
+    padding: 22px 0 52px;
+  }
+
+  .home-copy { padding-top: 4px; }
+
+  .home-copy h1 { font-size: 44px; }
+  h1 { font-size: 38px; }
+
+  .summary-main,
+  .share-box,
+  .join-card,
+  .create-card {
+    padding: 18px;
+  }
+
+  .share-row,
+  .join-row {
+    flex-wrap: wrap;
+  }
+
+  .share-row input,
+  .join-row input {
+    flex-basis: 100%;
+  }
+
+  .workspace-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .calendar-card,
+  .time-window-card {
+    padding: 12px;
+  }
+
+  .calendar-weekdays,
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .calendar-day,
+  .calendar-empty {
+    min-height: 34px;
+  }
+
+  .time-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* =========================================================
+   CLOCKWORK MACHINE ART DIRECTION
+   The interface is a physical time-coordination apparatus.
+   ========================================================= */
+
+:root {
+  --machine-black: #090704;
+  --machine-coal: #100c08;
+  --machine-iron: #19140f;
+  --machine-brass: #a97839;
+  --machine-brass-hi: #e1b86e;
+  --machine-copper: #b65f32;
+  --machine-amber: #ffad3d;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 50% -15%, rgba(116,75,31,.18), transparent 43%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.008) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, #100b07, #080604 72%);
+}
+
+.machine-topbar {
+  border-top: 1px solid rgba(218,170,95,.30);
+  border-bottom: 2px solid #5b4023;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.018), transparent 15% 85%, rgba(255,255,255,.018)),
+    linear-gradient(180deg, #241a11, #100b07 78%);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.025),
+    inset 0 -4px 0 rgba(0,0,0,.30),
+    0 9px 28px rgba(0,0,0,.38);
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-copy small {
+  color: #a68c68;
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.machine-hero {
+  width: min(1200px, calc(100% - 40px));
+  min-height: 360px;
+  margin: 20px auto 18px;
+  padding: 36px 42px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr);
+  align-items: center;
+  gap: 28px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #684922;
+  border-radius: 9px;
+  background:
+    radial-gradient(circle at 72% 45%, rgba(173,102,39,.10), transparent 31%),
+    linear-gradient(105deg, rgba(12,9,6,.96), rgba(24,17,11,.94));
+  box-shadow:
+    inset 0 0 0 5px #100b07,
+    inset 0 0 0 6px rgba(185,132,62,.20),
+    inset 0 0 55px rgba(0,0,0,.72),
+    0 18px 48px rgba(0,0,0,.35);
+}
+
+.machine-hero::before,
+.machine-hero::after,
+.creation-console::before,
+.creation-console::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  z-index: 4;
+  border: 1px solid #8d693d;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #9a7950, #322318 58%, #100b08);
+  box-shadow: 0 1px 2px #000;
+}
+
+.machine-hero::before { left: 10px; top: 10px; }
+.machine-hero::after { right: 10px; bottom: 10px; }
+
+.hero-copy {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-copy h1 {
+  max-width: 660px;
+  margin: 13px 0 17px;
+  font-size: clamp(45px, 5vw, 69px);
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.hero-copy .lead {
+  max-width: 620px;
+  color: #d6c7b2;
+  font-size: 15px;
+}
+
+.clockwork-scene {
+  height: 290px;
+  position: relative;
+  isolation: isolate;
+}
+
+.armillary {
+  width: 270px;
+  height: 270px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-48%, -50%);
+  border: 5px solid #765025;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 2px #c18b48,
+    inset 0 0 0 8px #1a110a,
+    0 0 0 2px #2d1d10,
+    0 13px 28px rgba(0,0,0,.65);
+}
+
+.clockwork-globe {
+  width: 206px;
+  height: 206px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  border: 2px solid #9c6e35;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 31%, rgba(118,166,164,.18), transparent 18%),
+    radial-gradient(circle at 57% 54%, rgba(255,163,55,.16), transparent 5%),
+    radial-gradient(circle at 62% 61%, rgba(255,163,55,.12), transparent 4%),
+    radial-gradient(circle at 50% 50%, #152023 0%, #0b1113 54%, #040607 100%);
+  box-shadow:
+    inset -28px -15px 42px rgba(0,0,0,.75),
+    inset 10px 7px 24px rgba(118,173,175,.09),
+    0 0 28px rgba(214,126,41,.12);
+}
+
+.clockwork-globe::before {
+  content: "";
+  position: absolute;
+  inset: 22px 35px 25px 44px;
+  opacity: .74;
+  transform: rotate(-12deg);
+  clip-path: polygon(8% 4%,35% 0,48% 13%,66% 8%,78% 23%,72% 36%,88% 48%,72% 57%,67% 75%,48% 72%,37% 92%,20% 80%,25% 61%,6% 51%,17% 36%,0 25%);
+  background:
+    radial-gradient(circle at 45% 35%, #e3a452 0 1px, transparent 2px),
+    radial-gradient(circle at 70% 53%, #e3a452 0 1px, transparent 2px),
+    radial-gradient(circle at 32% 72%, #e3a452 0 1px, transparent 2px),
+    #47311c;
+  box-shadow: 0 0 12px rgba(255,155,50,.22);
+}
+
+.globe-meridian,
+.globe-latitude {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(187,134,67,.20);
+  border-radius: 50%;
+}
+
+.m1 { transform: scaleX(.48); }
+.m2 { transform: scaleX(.18); }
+.l1 { transform: scaleY(.48); }
+.l2 { transform: scaleY(.18); }
+
+.world-light {
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  z-index: 3;
+  border-radius: 50%;
+  background: #ffbd58;
+  box-shadow: 0 0 6px #ff7b1d, 0 0 12px rgba(255,113,24,.65);
+}
+.w1 { left: 37%; top: 35%; }
+.w2 { left: 53%; top: 42%; }
+.w3 { left: 62%; top: 58%; }
+.w4 { left: 44%; top: 68%; }
+.w5 { left: 70%; top: 38%; }
+
+.armillary-ring {
+  position: absolute;
+  inset: -14px;
+  border: 2px solid rgba(164,112,52,.72);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ring-one { transform: rotate(64deg) scaleX(.43); }
+.ring-two { transform: rotate(-62deg) scaleX(.43); }
+.ring-three { transform: rotate(8deg) scaleY(.38); }
+
+.gear {
+  position: absolute;
+  border: 6px dotted #765027;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 28%, #342317 29% 48%, transparent 49%);
+  opacity: .65;
+}
+.gear-a { width: 76px; height: 76px; right: 12px; bottom: 8px; transform: rotate(14deg); }
+.gear-b { width: 48px; height: 48px; right: 72px; bottom: -8px; transform: rotate(-18deg); }
+.gear-c { width: 38px; height: 38px; left: 30px; top: 30px; opacity: .35; }
+
+.machine-plaque {
+  min-width: 145px;
+  padding: 10px 12px;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  z-index: 5;
+  text-align: center;
+  border: 1px solid #76532d;
+  background: linear-gradient(180deg, #241910, #100b07);
+  box-shadow: inset 0 0 0 3px #120d09, 0 7px 15px rgba(0,0,0,.4);
+}
+.machine-plaque span,
+.machine-plaque small {
+  display: block;
+  color: #a98a5e;
+  font-size: 6px;
+  letter-spacing: .18em;
+}
+.machine-plaque strong {
+  display: block;
+  margin: 4px 0;
+  color: #ddb170;
+  font-size: 8px;
+  letter-spacing: .09em;
+}
+
+.creation-console {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto 18px;
+  padding: 17px;
+  position: relative;
+  border: 1px solid #674722;
+  border-radius: 9px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.012), transparent 20% 80%, rgba(255,255,255,.012)),
+    #100b08;
+  box-shadow:
+    inset 0 0 0 5px #090604,
+    inset 0 0 0 6px rgba(184,135,70,.16),
+    0 18px 42px rgba(0,0,0,.34);
+}
+
+.creation-console::before { left: 9px; bottom: 9px; }
+.creation-console::after { right: 9px; top: 9px; }
+
+.console-heading {
+  min-height: 50px;
+  padding: 0 11px 12px;
+  display: grid;
+  grid-template-columns: 42px auto 1fr;
+  align-items: center;
+  gap: 11px;
+  position: relative;
+  z-index: 3;
+}
+
+.console-heading > span {
+  width: 38px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #8d6330;
+  border-radius: 4px;
+  color: #25170b;
+  background: linear-gradient(180deg, #d1a15d, #95612d);
+  font-size: 11px;
+  font-weight: 900;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+}
+
+.console-heading small {
+  color: #9c7f58;
+  font-size: 6px;
+  letter-spacing: .17em;
+}
+
+.console-heading h2 {
+  margin: 1px 0 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.console-heading i {
+  height: 1px;
+  margin-left: 12px;
+  background: linear-gradient(90deg, rgba(184,135,70,.48), transparent);
+}
+
+.creation-console .create-card {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.015);
+  border-radius: 6px;
+}
+
+/* Make the calendar/control deck feel like machinery rather than SaaS */
+.calendar-card,
+.time-window-card,
+.schedule-card,
+.best-panel,
+.people-panel,
+.summary-card,
+.join-card {
+  border-width: 1px;
+  border-color: #604321;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 3px rgba(8,6,4,.48),
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 8px 18px rgba(0,0,0,.24);
+}
+
+.calendar-day {
+  border-radius: 3px;
+}
+
+.calendar-day.selected,
+.personal-slot.selected {
+  color: #231408;
+  background:
+    radial-gradient(circle at 50% 50%, #f2c273 0%, #c88838 60%, #8a5425 100%);
+  border-color: #f0c681;
+  box-shadow:
+    0 0 8px rgba(255,162,48,.38),
+    0 0 16px rgba(255,124,27,.12),
+    inset 0 1px 0 rgba(255,255,255,.30);
+}
+
+.match-item.top-match,
+.group-slot.best {
+  box-shadow:
+    inset 0 0 0 1px rgba(255,190,103,.66),
+    0 0 9px rgba(255,135,36,.23);
+}
+
+.machine-footer {
+  width: min(1200px, calc(100% - 40px));
+  min-height: 50px;
+  margin: 0 auto 22px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-top: 1px solid #5e4020;
+  border-bottom: 1px solid #382617;
+  color: #8f7656;
+  font-size: 8px;
+}
+.machine-footer strong { color: #b39164; }
+.machine-footer span { letter-spacing: .22em; }
+.machine-footer small { justify-self: end; color: #685744; }
+
+@media (max-width: 900px) {
+  .machine-hero {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .clockwork-scene {
+    height: 260px;
+  }
+
+  .machine-plaque { right: 7%; }
+}
+
+@media (max-width: 620px) {
+  .machine-hero,
+  .creation-console,
+  .machine-footer {
+    width: min(100% - 24px, 1200px);
+  }
+
+  .machine-hero {
+    margin-top: 12px;
+    padding: 23px 19px;
+  }
+
+  .hero-copy h1 {
+    font-size: 43px;
+  }
+
+  .clockwork-scene {
+    height: 220px;
+  }
+
+  .armillary {
+    width: 210px;
+    height: 210px;
+  }
+
+  .clockwork-globe {
+    width: 158px;
+    height: 158px;
+  }
+
+  .machine-plaque {
+    display: none;
+  }
+
+  .console-heading {
+    grid-template-columns: 38px auto;
+  }
+
+  .console-heading i {
+    display: none;
+  }
+
+  .machine-footer {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding: 12px 0;
+    text-align: center;
+  }
+
+  .machine-footer small {
+    justify-self: center;
+  }
+}
+
+
+/* =========================================================
+   LARGE PHYSICAL NIXIE HEADER
+   Realistic tube asset + live HTML digits + glass overlays.
+   ========================================================= */
+
+.machine-topbar {
+  height: 126px;
+  align-items: center;
+}
+
+.brand {
+  gap: 18px;
+}
+
+.brand-copy {
+  min-width: 260px;
+}
+
+.brand-name {
+  font-size: 26px;
+  letter-spacing: -.035em;
+}
+
+.brand-copy small {
+  margin-top: 2px;
+  font-size: 7px;
+  letter-spacing: .2em;
+}
+
+.nixie-clock-large {
+  width: auto;
+  height: 112px;
+  padding: 0 7px 17px;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  position: relative;
+}
+
+.nixie-clock-large::before,
+.nixie-clock-large::after {
+  display: none;
+}
+
+.nixie-tube-real {
+  width: 58px;
+  height: 102px;
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,.55));
+}
+
+.nixie-tube-real img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.nixie-digit-real {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  font-family: "Montserrat", sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffd28a;
+  letter-spacing: -.07em;
+  opacity: .97;
+  text-shadow:
+    0 0 2px #fff0cf,
+    0 0 5px #ffad3d,
+    0 0 10px #ff7a1c,
+    0 0 18px rgba(255, 89, 0, .82),
+    0 0 30px rgba(255, 72, 0, .44);
+  mix-blend-mode: screen;
+}
+
+.nixie-digit-real::before {
+  content: "";
+  position: absolute;
+  inset: -15px -13px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,119,25,.24), rgba(255,83,0,.08) 44%, transparent 72%);
+  filter: blur(6px);
+}
+
+.nixie-front-glass {
+  position: absolute;
+  z-index: 5;
+  inset: 10px 10px 23px;
+  pointer-events: none;
+  border-radius: 42% 42% 18% 18%;
+  background:
+    linear-gradient(110deg, rgba(255,255,255,.16) 0 5%, transparent 12% 68%, rgba(255,200,130,.05) 78%, transparent),
+    repeating-linear-gradient(0deg, transparent 0 5px, rgba(114,74,38,.10) 5px 6px);
+  mix-blend-mode: screen;
+  opacity: .48;
+}
+
+.nixie-separator-real {
+  width: 15px;
+  height: 80px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  gap: 13px;
+  margin: 0 1px 9px;
+}
+
+.nixie-separator-real i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffad3d;
+  box-shadow:
+    0 0 4px #ffcf76,
+    0 0 10px #ff7f1d,
+    0 0 18px rgba(255,98,0,.54);
+}
+
+.nixie-label {
+  min-width: 132px;
+  height: 19px;
+  padding: 3px 12px 0;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+  color: #2b1a0b;
+  border: 1px solid #d2a15d;
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg, #d6ae6c, #9b682f);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    0 3px 7px rgba(0,0,0,.4);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .13em;
+}
+
+.machine-hero {
+  margin-top: 22px;
+}
+
+@media (max-width: 900px) {
+  .machine-topbar {
+    height: 116px;
+  }
+
+  .nixie-tube-real {
+    width: 50px;
+    height: 90px;
+  }
+
+  .nixie-digit-real {
+    font-size: 41px;
+  }
+
+  .brand-copy {
+    min-width: auto;
+  }
+
+  .brand-name {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  .machine-topbar {
+    height: 98px;
+  }
+
+  .nixie-clock-large {
+    height: 86px;
+    padding-bottom: 14px;
+  }
+
+  .nixie-tube-real {
+    width: 38px;
+    height: 74px;
+  }
+
+  .nixie-digit-real {
+    top: 41%;
+    font-size: 30px;
+  }
+
+  .nixie-separator-real {
+    width: 10px;
+    height: 60px;
+    gap: 9px;
+    margin-bottom: 7px;
+  }
+
+  .nixie-separator-real i {
+    width: 4px;
+    height: 4px;
+  }
+
+  .nixie-label {
+    min-width: 102px;
+    height: 16px;
+    padding-top: 2px;
+    font-size: 5px;
+  }
+
+  .brand-copy {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   NIXIE OPTICAL CENTERING + LARGE BRASS TITLE PLATE
+   ========================================================= */
+
+/* Center digits by their full tube area instead of glyph origin. */
+.nixie-digit-real {
+  left: 0;
+  right: 0;
+  top: 42%;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Optical correction for round glyphs in Montserrat. */
+
+.nixie-digit-real[data-digit="0"] {
+  transform: translate(-2px, -50%);
+}
+
+.nixie-digit-real[data-digit="6"],
+.nixie-digit-real[data-digit="8"],
+.nixie-digit-real[data-digit="9"] {
+  padding-left: 2px;
+}
+
+/* "1" looks naturally too far right in many sans faces. */
+.nixie-digit-real[data-digit="1"] {
+  padding-right: 1px;
+}
+
+/* Give the brand title its own physical engraved plate. */
+.brand-copy {
+  min-width: 330px;
+  min-height: 72px;
+  padding: 12px 26px 10px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #8b6230;
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, transparent 0 8px, #21170f 8px) top left,
+    linear-gradient(225deg, transparent 0 8px, #21170f 8px) top right,
+    linear-gradient(315deg, transparent 0 8px, #120d09 8px) bottom right,
+    linear-gradient(45deg, transparent 0 8px, #120d09 8px) bottom left;
+  background-size: 51% 51%;
+  background-repeat: no-repeat;
+  box-shadow:
+    inset 0 0 0 3px #090604,
+    inset 0 0 0 4px rgba(189,135,64,.22),
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 7px 18px rgba(0,0,0,.42);
+}
+
+.brand-copy::before,
+.brand-copy::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-50%);
+  border: 1px solid #8f693c;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #b18a59, #4b3522 52%, #17100b 72%);
+  box-shadow:
+    0 1px 2px #000,
+    inset 0 1px 1px rgba(255,255,255,.12);
+}
+
+.brand-copy::before { left: 10px; }
+.brand-copy::after { right: 10px; }
+
+.brand-name {
+  color: #f2dfbf;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  text-shadow:
+    0 1px 0 #000,
+    0 0 1px rgba(255,255,255,.28);
+}
+
+.brand-copy small {
+  margin-top: 4px;
+  color: #c79b5e;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: .21em;
+  text-transform: uppercase;
+}
+
+/* Hide the temporary CSS gears. They were useful for layout prototyping,
+   but the final visual direction will use proper reusable art assets. */
+.clockwork-scene > .gear {
+  display: none;
+}
+
+/* Keep header from squeezing the logo/title on common laptop widths. */
+.machine-topbar {
+  gap: 22px;
+}
+
+.machine-topbar .topbar-note {
+  flex: 0 1 210px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+@media (max-width: 1120px) {
+  .brand-copy {
+    min-width: 270px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .brand-name {
+    font-size: 22px;
+  }
+
+  .machine-topbar .topbar-note {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .brand-copy {
+    min-width: 220px;
+    min-height: 62px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .brand-copy small {
+    font-size: 5px;
+  }
+}
+
+@media (max-width: 680px) {
+  .brand-copy {
+    display: none;
+  }
+}
+
+/* =========================================================
+   ORNATE CLOCKWORK CHASSIS — plates, lamps and mechanisms
+   ========================================================= */
+
+.machine-page {
+  position: relative;
+}
+
+.machine-topbar {
+  height: 126px;
+  padding-left: max(24px, calc((100vw - 1380px) / 2));
+  padding-right: max(24px, calc((100vw - 1380px) / 2));
+  overflow: visible;
+}
+
+.machine-topbar::before,
+.machine-topbar::after {
+  bottom: 9px;
+}
+
+.machine-status-plate {
+  min-width: 248px;
+  min-height: 42px;
+  padding: 10px 15px 10px 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #805b31;
+  border-radius: 4px;
+  color: #cfb384;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 38%),
+    linear-gradient(180deg, #24190f, #0d0906);
+  box-shadow:
+    inset 0 0 0 3px #090604,
+    inset 0 0 0 4px rgba(206,151,72,.18),
+    0 6px 14px rgba(0,0,0,.42);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.status-lamp {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 16px;
+  border: 1px solid #d49a4a;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, #fff2a8 0 8%, #ffae32 20%, #cc601e 52%, #471d09 72%);
+  box-shadow: 0 0 7px #ff9b2e, 0 0 15px rgba(255,119,25,.42), inset 0 0 2px #fff0a4;
+}
+
+.machine-hero {
+  width: min(1380px, calc(100% - 32px));
+  min-height: 430px;
+  margin-top: 14px;
+  padding: 54px 202px 52px 62px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(430px, .95fr);
+  gap: 34px;
+  border-width: 2px;
+  border-color: #7e582a;
+  border-radius: 4px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 73% 46%, rgba(183,105,35,.12), transparent 31%),
+    radial-gradient(circle at 12% 30%, rgba(255,178,70,.035), transparent 24%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 5px),
+    linear-gradient(105deg, rgba(9,7,5,.99), rgba(22,15,9,.98));
+  box-shadow:
+    inset 0 0 0 5px #090604,
+    inset 0 0 0 7px #6b4824,
+    inset 0 0 0 9px #160f09,
+    inset 0 0 68px rgba(0,0,0,.8),
+    0 18px 48px rgba(0,0,0,.45);
+}
+
+.machine-hero::before,
+.machine-hero::after {
+  width: 12px;
+  height: 12px;
+  border-color: #b07b3b;
+}
+
+.hero-pipe {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  height: 9px;
+  z-index: 5;
+  border: 1px solid #6e4925;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #a87942 0%, #4e321b 36%, #1d120b 56%, #7a512b 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,227,177,.16);
+}
+.hero-pipe::before,
+.hero-pipe::after {
+  content: "";
+  width: 15px;
+  height: 17px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid #7f592f;
+  background: linear-gradient(90deg, #3a2515, #aa7840 48%, #3c2616);
+  box-shadow: 0 1px 3px #000;
+}
+.hero-pipe::before { left: 9%; }
+.hero-pipe::after { right: 12%; }
+.hero-pipe-top { top: 17px; }
+.hero-pipe-bottom { bottom: 17px; }
+
+.hero-lamp-bank {
+  width: 34px;
+  padding: 11px 7px;
+  display: grid;
+  gap: 16px;
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  z-index: 6;
+  transform: translateY(-50%);
+  border: 1px solid #744d27;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #2b1c11, #100a06);
+  box-shadow: inset 0 0 0 3px #090604, 3px 0 11px rgba(0,0,0,.48);
+}
+.hero-lamp-bank i {
+  width: 18px;
+  height: 28px;
+  position: relative;
+  border: 1px solid #9f6e34;
+  border-radius: 10px 10px 5px 5px;
+  background:
+    radial-gradient(circle at 50% 48%, #fff0a6 0 5%, #ffaf33 12%, #e0661c 28%, rgba(122,47,9,.45) 45%, #120905 70%);
+  box-shadow: 0 0 8px rgba(255,123,28,.48), inset 0 0 7px rgba(255,173,60,.35);
+}
+.hero-lamp-bank i::before,
+.hero-lamp-bank i::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  height: 3px;
+  border: 1px solid #5e3c20;
+  background: #9b6a36;
+}
+.hero-lamp-bank i::before { top: -4px; }
+.hero-lamp-bank i::after { bottom: -4px; }
+
+.hero-copy {
+  padding-left: 12px;
+}
+
+.hero-copy h1 {
+  max-width: 720px;
+  font-size: clamp(48px, 5vw, 74px);
+}
+
+.machine-feature-row {
+  margin-top: 22px;
+}
+
+.machine-feature-row span {
+  position: relative;
+  padding-left: 20px;
+  border-color: #6d4a27;
+  background: linear-gradient(180deg, #24180f, #120c08);
+  box-shadow: inset 0 0 0 2px rgba(4,3,2,.45);
+}
+.machine-feature-row span::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f0a13b;
+  box-shadow: 0 0 7px rgba(255,135,31,.52);
+}
+
+.clockwork-scene {
+  height: 340px;
+  z-index: 2;
+}
+
+.machine-gear-img {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  object-fit: contain;
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,.65));
+}
+.gear-img-large {
+  width: 360px;
+  height: 360px;
+  right: -135px;
+  top: -95px;
+  opacity: .78;
+  animation: machine-gear-cw 42s linear infinite;
+}
+.gear-img-medium {
+  width: 178px;
+  height: 178px;
+  left: -50px;
+  bottom: -52px;
+  opacity: .62;
+  animation: machine-gear-ccw 29s linear infinite;
+}
+.gear-img-small {
+  width: 104px;
+  height: 104px;
+  right: 10px;
+  bottom: -16px;
+  opacity: .9;
+  animation: machine-gear-cw 19s linear infinite;
+}
+
+@keyframes machine-gear-cw { to { transform: rotate(360deg); } }
+@keyframes machine-gear-ccw { to { transform: rotate(-360deg); } }
+
+.armillary {
+  width: 300px;
+  height: 300px;
+  transform: translate(-54%, -50%);
+  border-width: 7px;
+  box-shadow:
+    inset 0 0 0 2px #d09a52,
+    inset 0 0 0 8px #160e08,
+    0 0 0 3px #312012,
+    0 18px 34px rgba(0,0,0,.72),
+    0 0 34px rgba(219,134,45,.10);
+}
+
+.clockwork-globe {
+  width: 224px;
+  height: 224px;
+}
+
+.machine-plaque {
+  min-width: 176px;
+  right: -8px;
+  top: 38px;
+  padding: 13px 15px 18px;
+  border: 2px solid #875d2e;
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 35%),
+    linear-gradient(180deg, #281b10, #0c0805);
+  box-shadow:
+    inset 0 0 0 3px #090604,
+    inset 0 0 0 5px rgba(199,140,64,.19),
+    0 8px 20px rgba(0,0,0,.52);
+}
+.machine-plaque::before,
+.machine-plaque::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d0a160, #4f341d 62%, #100a06 74%);
+  border: 1px solid #75502c;
+}
+.machine-plaque::before { left: 8px; }
+.machine-plaque::after { right: 8px; }
+.machine-plaque span,
+.machine-plaque small { font-size: 7px; }
+.machine-plaque strong { font-size: 10px; }
+
+.plaque-pilot {
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #ff9e29;
+  box-shadow: 0 0 7px #ff8721, 0 0 13px rgba(255,116,22,.45);
+}
+
+.hero-status-stack {
+  width: 154px;
+  display: grid;
+  gap: 12px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  z-index: 6;
+  transform: translateY(-50%);
+}
+
+.hero-status-plate {
+  padding: 16px 12px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  border: 2px solid #8f6230;
+  border-radius: 4px;
+  color: #d9b36f;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.055), transparent 30%),
+    linear-gradient(180deg, #342112, #140c07);
+  box-shadow:
+    inset 0 0 0 3px #0b0704,
+    inset 0 0 0 5px rgba(220,163,78,.20),
+    0 8px 16px rgba(0,0,0,.42);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.hero-status-plate::before,
+.hero-status-plate::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6d4b2a;
+  border: 1px solid #aa7b43;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.18);
+}
+.hero-status-plate::before { left: 7px; top: 7px; }
+.hero-status-plate::after { right: 7px; bottom: 7px; }
+.motto-plate b {
+  color: #f0c77b;
+  font-size: 12px;
+}
+.connected-plate {
+  padding-bottom: 34px;
+  color: #b99a68;
+}
+
+.amber-pilot {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  border: 1px solid #d69a45;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 36%, #fff4b2 0 6%, #ffb13d 18%, #ee741f 47%, #6d2509 70%);
+  box-shadow: 0 0 8px #ff962a, 0 0 18px rgba(255,105,18,.48), inset 0 0 2px #fff0a2;
+}
+
+.creation-console {
+  width: min(1380px, calc(100% - 32px));
+  padding: 20px 24px 26px;
+  border-width: 2px;
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.008) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, #130d08, #090604);
+  box-shadow:
+    inset 0 0 0 5px #070503,
+    inset 0 0 0 7px #674521,
+    inset 0 0 0 9px #130d08,
+    0 18px 42px rgba(0,0,0,.44);
+}
+
+.brass-header-plate {
+  width: max-content;
+  min-width: 355px;
+  margin: -5px 0 14px 8px;
+  padding: 8px 18px 8px 9px;
+  grid-template-columns: 46px auto 90px;
+  border: 2px solid #875c2d;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #a97437, #5f3c1e);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,223,166,.18),
+    inset 0 -8px 16px rgba(63,31,10,.22),
+    0 6px 12px rgba(0,0,0,.36);
+}
+.brass-header-plate::before,
+.brass-header-plate::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 8px;
+  border-radius: 50%;
+  background: #3e2816;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.18);
+}
+.brass-header-plate::before { left: 7px; }
+.brass-header-plate::after { right: 7px; }
+.brass-header-plate small { color: #2b190b; }
+.brass-header-plate h2 { color: #130b06; text-shadow: 0 1px rgba(255,220,161,.24); }
+.brass-header-plate > span {
+  border-color: #4f3118;
+  background: linear-gradient(180deg, #e1b66e, #a26930);
+}
+.brass-header-plate i {
+  background: linear-gradient(90deg, rgba(54,31,13,.58), transparent);
+}
+
+.console-indicators {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -54px 14px 15px 390px;
+  position: relative;
+  z-index: 4;
+}
+.console-indicators span {
+  min-height: 26px;
+  padding: 7px 10px 6px 25px;
+  position: relative;
+  border: 1px solid #5f4223;
+  border-radius: 3px;
+  color: #8f7a5c;
+  background: linear-gradient(180deg, #1d140d, #0c0805);
+  box-shadow: inset 0 0 0 2px rgba(6,4,3,.65);
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.console-indicators i {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #ff9f2c;
+  box-shadow: 0 0 6px rgba(255,137,31,.58);
+}
+
+.creation-console .create-card {
+  border: 1px solid #6e4a25;
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.012), transparent 34%),
+    #110c08;
+  box-shadow:
+    inset 0 0 0 4px #080503,
+    inset 0 0 0 5px rgba(177,124,57,.16),
+    0 10px 22px rgba(0,0,0,.28);
+}
+
+.calendar-card,
+.time-window-card {
+  border-color: #765127;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent 28%),
+    linear-gradient(180deg, #19110b, #0c0805);
+}
+
+.calendar-nav,
+.calendar-day,
+input,
+textarea,
+select {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.create-submit {
+  border: 2px solid #9e6d32;
+  border-radius: 3px;
+  color: #1a0e05;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.22), transparent 32%),
+    linear-gradient(180deg, #dfa955, #8d5425);
+  box-shadow:
+    inset 0 0 0 2px rgba(60,31,10,.36),
+    0 0 0 1px #2e1a0c,
+    0 7px 15px rgba(0,0,0,.35),
+    0 0 12px rgba(255,146,37,.11);
+  font-weight: 900;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+.create-submit:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 0 0 2px rgba(60,31,10,.32),
+    0 0 0 1px #2e1a0c,
+    0 8px 17px rgba(0,0,0,.4),
+    0 0 17px rgba(255,146,37,.23);
+}
+
+.machine-footer {
+  width: min(1380px, calc(100% - 32px));
+  min-height: 66px;
+  padding: 0 24px;
+  border: 1px solid #5b3d20;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #120c08, #080503);
+  box-shadow: inset 0 0 0 3px #070503, inset 0 0 0 4px rgba(184,135,70,.12);
+}
+.footer-brass-plate {
+  padding: 7px 30px;
+  border: 1px solid #855c30;
+  border-radius: 3px;
+  color: #d8b474;
+  background: linear-gradient(180deg, #2b1c10, #100a06);
+  box-shadow: inset 0 0 0 2px rgba(5,3,2,.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .machine-gear-img { animation: none !important; }
+}
+
+@media (max-width: 1180px) {
+  .machine-hero {
+    padding-right: 52px;
+    grid-template-columns: minmax(0, 1fr) 390px;
+  }
+  .hero-status-stack { display: none; }
+  .machine-status-plate { display: none; }
+  .console-indicators { margin-left: 370px; }
+}
+
+@media (max-width: 900px) {
+  .machine-topbar { height: 116px; }
+  .machine-hero {
+    padding: 42px 38px 46px;
+    grid-template-columns: 1fr;
+  }
+  .hero-lamp-bank { display: none; }
+  .clockwork-scene { height: 300px; }
+  .console-indicators {
+    margin: 0 8px 14px;
+    justify-content: flex-start;
+  }
+  .brass-header-plate { margin-left: 8px; }
+}
+
+@media (max-width: 680px) {
+  .machine-topbar { height: 98px; }
+  .machine-hero,
+  .creation-console,
+  .machine-footer { width: min(100% - 20px, 1380px); }
+  .machine-hero { padding: 34px 18px 38px; }
+  .hero-pipe { left: 14px; right: 14px; }
+  .clockwork-scene { height: 245px; }
+  .armillary { width: 220px; height: 220px; }
+  .clockwork-globe { width: 164px; height: 164px; }
+  .gear-img-large { width: 245px; height: 245px; right: -85px; top: -55px; }
+  .gear-img-medium { width: 128px; height: 128px; }
+  .gear-img-small { width: 76px; height: 76px; }
+  .brass-header-plate {
+    width: calc(100% - 16px);
+    min-width: 0;
+    grid-template-columns: 42px auto;
+  }
+  .brass-header-plate i { display: none; }
+  .console-indicators span:nth-child(3) { display: none; }
+  .footer-brass-plate { padding-inline: 12px; }
+}
+
+/* =========================================================
+   REFERENCE MACHINE BUILD — asset-first composition
+   ========================================================= */
+.reference-machine-page { position: relative; min-height: 100vh; padding: 16px 42px 26px; isolation: isolate; }
+.reference-machine-page::before { content:""; position: fixed; inset:0; z-index:-2; background: radial-gradient(circle at 70% 20%, rgba(159,89,25,.14), transparent 28%), #080604; }
+.reference-machine-page::after { content:""; position:fixed; inset:0; z-index:-1; opacity:.28; pointer-events:none; background: repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 4px); }
+
+.reference-topbar { width:min(1420px, calc(100% - 100px)); height:142px; margin:0 auto; padding:10px 18px; border:0; background:transparent; box-shadow:none; position:relative; z-index:5; }
+.reference-topbar .brand { flex:1; justify-content:flex-start; }
+.reference-topbar .brand-copy { min-width:430px; min-height:94px; padding:15px 42px; }
+.reference-topbar .brand-name { font-family: Georgia, 'Times New Roman', serif; font-size:36px; font-weight:700; letter-spacing:-.035em; }
+.reference-topbar .brand-copy small { font-size:8px; letter-spacing:.24em; }
+.machine-nav { display:flex; gap:4px; padding:7px; border:1px solid #765029; background:linear-gradient(#21170f,#0c0906); box-shadow:inset 0 0 0 3px #070503, 0 5px 14px #0008; }
+.machine-nav a { padding:11px 14px; color:#dfd0ba; font-size:10px; border:1px solid transparent; }
+.machine-nav a:first-child,.machine-nav a:hover { color:#f1c66f; border-color:#5d4124; background:#17110c; }
+
+.reference-hero { width:min(1380px, calc(100% - 80px)); min-height:315px; margin:0 auto 8px; padding:20px 120px 18px 72px; grid-template-columns:minmax(420px,.9fr) minmax(500px,1.1fr); gap:10px; border:0; border-radius:0; background:radial-gradient(circle at 68% 45%, rgba(123,70,28,.15), transparent 36%), linear-gradient(90deg,#090705 0 39%,#0d0906 70%,#070503); box-shadow:inset 0 1px #76502c, inset 0 -1px #76502c; overflow:visible; }
+.reference-hero::before,.reference-hero::after { display:none; }
+.reference-hero .hero-copy { padding-left:18px; }
+.reference-hero .hero-copy h1 { margin:0 0 14px; max-width:610px; font-family:Georgia,'Times New Roman',serif; font-size:clamp(36px,3.6vw,58px); line-height:1.03; letter-spacing:-.035em; }
+.reference-hero .headline-accent { display:block; color:#e6a33d; }
+.reference-hero .lead { max-width:560px; font-size:14px; line-height:1.45; color:#e0d7cb; }
+
+.globe-asset-scene { height:300px; overflow:visible; }
+.globe-machine-asset { width:440px; max-width:none; position:absolute; left:50%; top:50%; z-index:4; transform:translate(-50%,-49%); filter:drop-shadow(0 18px 22px #000a) drop-shadow(0 0 18px rgba(204,118,35,.16)); }
+.globe-asset-scene .gear-img-large { width:255px; height:255px; right:-65px; top:-32px; z-index:1; opacity:.8; }
+.globe-asset-scene .gear-img-medium { width:118px; height:118px; left:4px; bottom:-10px; z-index:2; }
+.globe-asset-scene .gear-img-small { width:74px; height:74px; right:15px; bottom:4px; z-index:5; }
+.reference-side-plates { position:absolute; right:12px; top:28px; width:112px; display:grid; gap:10px; z-index:8; }
+.reference-side-plates>div { min-height:112px; padding:15px 9px; display:grid; place-items:center; align-content:center; gap:3px; border:2px solid #8a5c2b; color:#d8aa5d; background:linear-gradient(#332113,#130c07); box-shadow:inset 0 0 0 3px #090604,inset 0 0 0 5px #65431f,0 8px 15px #0008; text-align:center; font-size:9px; font-weight:900; letter-spacing:.06em; }
+.reference-side-plates b { color:#f0c56f; font-size:12px; }
+.reference-side-plates i { width:15px;height:15px;margin-top:8px;border-radius:50%;background:#ff9a23;box-shadow:0 0 6px #ff9a23,0 0 15px #ff6b17; }
+
+.reference-console { width:min(1380px, calc(100% - 80px)); margin:0 auto; padding:0; border:1px solid #6c4825; background:#0b0805; box-shadow:inset 0 0 0 4px #050403,inset 0 0 0 6px rgba(139,91,42,.45),0 14px 30px #0009; }
+.reference-console::before,.reference-console::after { display:none; }
+.reference-console .create-card { padding:8px; border:0; background:transparent; box-shadow:none; overflow:visible; }
+.machine-create-grid { display:grid !important; grid-template-columns:.86fr 1fr 1.08fr; gap:8px !important; }
+.machine-form-panel { min-width:0; padding:42px 14px 14px; position:relative; border:1px solid #61411f; background:linear-gradient(180deg,#17110c,#0c0906); box-shadow:inset 0 0 0 3px #070503,inset 0 0 0 4px rgba(180,125,57,.15); }
+.asset-section-title { width:calc(100% - 18px); height:42px; position:absolute; left:9px; top:-4px; display:grid; place-items:center; z-index:3; background:url('/section-plaque.png') center/100% 100% no-repeat; }
+.asset-section-title span { color:#f1d39b; font-family:Georgia,'Times New Roman',serif; font-size:15px; font-weight:800; letter-spacing:.035em; text-shadow:0 2px 2px #000; }
+.machine-form-panel .field { gap:5px; margin-bottom:11px; }
+.machine-form-panel .field>label,.machine-form-panel .field-label { font-size:10px; }
+.machine-form-panel input,.machine-form-panel textarea { min-height:34px; padding:8px 10px; border-radius:3px; border-color:#76522c; background:#0b0a07; font-size:10px; }
+.machine-form-panel textarea { min-height:68px; }
+.timezone-machine-field { margin-top:8px; }
+.timezone-display { margin-top:6px; min-height:38px; padding:7px 10px; display:flex; align-items:center; gap:10px; border:1px solid #76522c; background:#0b0a07; color:#ddd0bd; font-size:10px; }
+.timezone-display i { color:#e9b44f; font-size:20px; font-style:normal; }
+
+.compact-calendar { padding:7px !important; border-radius:2px; }
+.compact-calendar .calendar-toolbar { grid-template-columns:28px 1fr 28px; gap:5px; margin-bottom:6px; }
+.compact-calendar .calendar-toolbar strong { font-size:11px; }
+.compact-calendar .calendar-nav { width:28px;height:28px;border-radius:3px;font-size:17px; }
+.compact-calendar .calendar-weekdays,.compact-calendar .calendar-grid { gap:3px; }
+.compact-calendar .calendar-weekdays { margin-bottom:3px; }
+.compact-calendar .calendar-weekdays span { font-size:7px; }
+.compact-calendar .calendar-day,.compact-calendar .calendar-empty { min-height:27px; aspect-ratio:auto; }
+.compact-calendar .calendar-day { height:27px; border-radius:2px; font-size:9px; }
+.compact-calendar .calendar-day.selected { color:#fff2c5; border-color:#ffb33f; background:#6e3d12; box-shadow:inset 0 0 0 1px #ffc15b,0 0 7px rgba(255,139,29,.55); }
+.compact-calendar .calendar-footer { margin-top:6px;font-size:8px; }
+.compact-calendar .calendar-today { padding:4px 7px;font-size:8px; }
+.dates-panel .selected-date-list { margin-top:7px; max-height:48px; overflow:auto; gap:4px; }
+.dates-panel .selected-date-chip { padding:4px 6px;font-size:7px;border-radius:2px; }
+
+.compact-time-window { padding:11px !important; border-radius:2px; }
+.compact-time-window p { margin:5px 0 12px !important; font-size:9px !important; line-height:1.4; }
+.compact-time-window .time-fields { grid-template-columns:auto 1fr auto 1fr; gap:6px; }
+.compact-time-window .time-fields input { min-width:0; }
+.machine-readout { margin:10px 0; padding:10px; display:grid; gap:7px; border:1px solid #53391f; background:#090704; color:#8f7b5c; font-size:8px; letter-spacing:.08em; }
+.machine-readout span { display:flex;align-items:center;gap:7px; }
+.machine-readout i { width:6px;height:6px;border-radius:50%;background:#ff9a24;box-shadow:0 0 6px #ff7c1b; }
+.machine-readout strong { margin-top:2px;color:#e7bd72;font-size:10px; }
+.asset-action-button { min-height:58px; padding:0 !important; border:0 !important; background:url('/action-plaque.png') center/100% 100% no-repeat !important; box-shadow:none !important; color:#1b1007 !important; text-shadow:0 1px rgba(255,235,180,.35); font-size:14px; }
+.asset-action-button:hover:not(:disabled) { filter:brightness(1.12); transform:translateY(-1px); }
+.matches-panel .form-hint { margin:5px 0 0; font-size:7px; text-align:center; }
+
+.reference-footer { width:min(1380px, calc(100% - 80px)); min-height:48px; margin:7px auto 0; padding:0 28px; border:1px solid #5d3e20; background:#0b0805; }
+.reference-footer span { padding:5px 28px; color:#d8ad66; border:1px solid #74502a; background:#17100a; letter-spacing:.15em; font-size:8px; }
+
+@media (max-width:1100px){
+  .reference-machine-page{padding-inline:20px}.machine-frame-shell{display:none}.reference-topbar,.reference-hero,.reference-console,.reference-footer{width:100%}.reference-topbar .brand-copy{min-width:300px}.machine-nav{display:none}.reference-hero{padding-right:30px;grid-template-columns:1fr 420px}.reference-side-plates{display:none}.globe-machine-asset{width:390px}.machine-create-grid{grid-template-columns:1fr 1fr}.matches-panel{grid-column:1/-1}.reference-footer{width:100%}
+}
+@media (max-width:760px){
+  .reference-machine-page{padding:8px}.reference-topbar{height:105px;padding:4px}.reference-topbar .brand-copy{display:none}.reference-hero{min-height:auto;padding:24px 15px;grid-template-columns:1fr}.reference-hero .hero-copy{padding:0}.reference-hero .hero-copy h1{font-size:38px}.globe-asset-scene{height:260px}.globe-machine-asset{width:330px}.machine-create-grid{grid-template-columns:1fr}.matches-panel{grid-column:auto}.reference-footer{padding:0 10px}.reference-footer span{display:none}
+}
+
+
+/* =========================================================
+   PROPORTION FIX — normal web composition, mechanical edges
+   ========================================================= */
+.reference-machine-page {
+  min-height: 100vh;
+  padding: 18px 32px 28px;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 72% 26%, rgba(122, 66, 24, .14), transparent 27%),
+    linear-gradient(180deg, #090705, #050403 72%);
+}
+
+/* The generated full frame is intentionally NOT stretched over the viewport.
+   Decorative machine framing now comes from rails/edge fragments instead. */
+.machine-frame-shell { display: none !important; }
+.reference-machine-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(132,84,37,.16) 0 2px, transparent 2px calc(100% - 2px), rgba(132,84,37,.16) calc(100% - 2px)),
+    radial-gradient(circle at 50% 0, rgba(172,102,35,.08), transparent 42%),
+    #070503;
+}
+.reference-machine-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .24;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 4px);
+}
+
+.reference-topbar {
+  width: min(1480px, 100%);
+  height: 136px;
+  margin: 0 auto 8px;
+  padding: 8px 16px;
+  position: relative;
+  border-top: 3px solid #6e4924;
+  border-bottom: 3px solid #4c321a;
+  background: linear-gradient(180deg, rgba(30,19,11,.72), rgba(8,5,3,.72));
+  box-shadow: inset 0 1px rgba(226,169,89,.18), 0 8px 22px #0007;
+}
+.reference-topbar::before,
+.reference-topbar::after {
+  content:"";
+  position:absolute;
+  top:-8px;
+  bottom:-8px;
+  width:12px;
+  border:1px solid #704923;
+  background:linear-gradient(90deg,#2b190d,#a16a31 48%,#321d0e);
+  box-shadow:inset 0 0 0 2px #160d08;
+}
+.reference-topbar::before{left:-7px}.reference-topbar::after{right:-7px}
+.reference-topbar .brand { flex: 1 1 auto; gap: 24px; min-width: 0; }
+.reference-topbar .nixie-clock-large { flex: 0 0 auto; }
+.reference-topbar .brand-copy {
+  min-width: 390px;
+  min-height: 84px;
+  padding: 13px 38px;
+}
+.reference-topbar .brand-name { font-size: 34px; }
+.reference-topbar .brand-copy small { font-size: 8px; }
+.machine-nav { flex: 0 0 auto; }
+
+.reference-hero {
+  width: min(1320px, calc(100% - 80px));
+  min-height: 350px;
+  margin: 0 auto 14px;
+  padding: 32px 125px 28px 50px;
+  grid-template-columns: minmax(360px, .9fr) minmax(430px, 1.1fr);
+  gap: 28px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 70% 48%, rgba(130,75,29,.18), transparent 34%),
+    linear-gradient(90deg,#090705 0 42%,#0d0906 74%,#070503);
+}
+.reference-hero .hero-copy { padding-left: 0; }
+.reference-hero .hero-copy h1 {
+  max-width: 560px;
+  font-size: clamp(42px, 4vw, 64px);
+  line-height: 1.02;
+}
+.reference-hero .lead { max-width: 560px; font-size: 15px; }
+.globe-asset-scene { height: 330px; }
+.globe-machine-asset { width: 470px; }
+.globe-asset-scene .gear-img-large { width: 245px; height:245px; right:-55px; top:-20px; }
+.globe-asset-scene .gear-img-medium { width:112px; height:112px; left:2px; bottom:0; }
+.globe-asset-scene .gear-img-small { width:70px; height:70px; right:18px; bottom:10px; }
+
+.reference-console {
+  width: min(1240px, calc(100% - 120px));
+  margin: 0 auto;
+}
+.reference-console .create-card { padding: 8px; }
+.machine-create-grid {
+  grid-template-columns: .9fr 1fr 1.05fr;
+  gap: 8px !important;
+}
+.machine-form-panel {
+  padding: 45px 13px 12px;
+  min-height: 356px;
+}
+.asset-section-title { height: 40px; }
+.asset-section-title span { font-size: 14px; }
+.machine-form-panel .field { margin-bottom: 9px; }
+.machine-form-panel textarea { min-height: 62px; }
+.compact-calendar { padding: 6px !important; }
+.compact-calendar .calendar-toolbar { margin-bottom: 5px; }
+.compact-calendar .calendar-weekdays,.compact-calendar .calendar-grid { gap: 2px; }
+.compact-calendar .calendar-day,.compact-calendar .calendar-empty { min-height: 24px; }
+.compact-calendar .calendar-day { height: 24px; font-size: 8px; }
+.compact-calendar .calendar-footer { margin-top: 5px; }
+.dates-panel .selected-date-list { max-height: 42px; }
+.compact-time-window { padding: 10px !important; }
+.machine-readout { margin: 8px 0; padding: 8px 10px; gap: 5px; }
+.asset-action-button { min-height: 52px; }
+
+.reference-footer {
+  width: min(1240px, calc(100% - 120px));
+  margin-top: 9px;
+}
+
+/* preserve the optical correction found during Nixie tuning */
+.nixie-digit-real[data-digit="0"] { transform: translate(-2px, -50%); }
+.nixie-label { font-size: 8px; font-weight: 900; letter-spacing: .15em; }
+
+@media (max-width: 1180px) {
+  .reference-machine-page { padding-inline: 20px; }
+  .reference-topbar { width: 100%; }
+  .reference-topbar .brand-copy { min-width: 300px; }
+  .reference-hero { width: calc(100% - 30px); padding-right: 40px; grid-template-columns: 1fr 420px; }
+  .reference-console,.reference-footer { width: calc(100% - 30px); }
+}
+@media (max-width: 900px) {
+  .reference-topbar { height: 118px; }
+  .reference-topbar .brand-copy { display: none; }
+  .machine-nav { display: none; }
+  .reference-hero { width: 100%; padding: 28px 24px; grid-template-columns: 1fr; }
+  .reference-side-plates { display:none; }
+  .globe-asset-scene { height: 285px; }
+  .globe-machine-asset { width: 380px; }
+  .reference-console,.reference-footer { width:100%; }
+  .machine-create-grid { grid-template-columns: 1fr 1fr; }
+  .matches-panel { grid-column: 1 / -1; min-height: 290px; }
+}
+@media (max-width: 680px) {
+  .reference-machine-page { padding: 8px; }
+  .reference-topbar { height: 104px; padding-inline: 4px; }
+  .reference-topbar::before,.reference-topbar::after { display:none; }
+  .reference-hero .hero-copy h1 { font-size: 38px; }
+  .globe-asset-scene { height: 245px; }
+  .globe-machine-asset { width: 320px; }
+  .machine-create-grid { grid-template-columns: 1fr; }
+  .matches-panel { grid-column:auto; }
+  .machine-form-panel { min-height: 0; }
+}
+
+
+/* =========================================================
+   ATTHESAMETIME — DEFINITIVE FRAME LAYOUT
+   One transparent 1536x1024 frame, no sliced frame assets.
+   Coordinates below intentionally follow the artwork itself.
+   ========================================================= */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(106, 57, 19, .10), transparent 38%),
+    #050403;
+}
+
+.final-machine-page {
+  position: relative !important;
+  width: min(96vw, 1536px) !important;
+  aspect-ratio: 3 / 2 !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+.single-machine-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.single-machine-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.modular-machine-frame,
+.frame-part,
+.frame-corner,
+.machine-frame-shell {
+  display: none !important;
+}
+
+.machine-content-shell {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 3 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+/* =========================
+   TOP / HEADER
+   ========================= */
+
+.final-topbar {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 20% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  z-index: 8 !important;
+}
+
+.final-topbar::before,
+.final-topbar::after {
+  display: none !important;
+}
+
+.final-topbar .brand {
+  display: contents !important;
+}
+
+/* Real HH:MM:SS sits in the deliberately empty top-left rail. */
+.nixie-clock-six {
+  position: absolute !important;
+  top: 5.4% !important;
+  left: 10.7% !important;
+  margin: 0 !important;
+  transform: scale(.78) !important;
+  transform-origin: left top !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+}
+
+.nixie-clock-six .nixie-label {
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .15em !important;
+}
+
+/* The PNG already contains the plaque. Only engraved text is overlaid. */
+.final-topbar .brand-copy {
+  position: absolute !important;
+  top: 4.35% !important;
+  left: 50% !important;
+  width: 34.5% !important;
+  height: 9.8% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  transform: translateX(-50%) !important;
+  padding: 0 1.5% !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  z-index: 10 !important;
+}
+
+.final-topbar .brand-copy::before,
+.final-topbar .brand-copy::after {
+  display: none !important;
+}
+
+.final-topbar .brand-name {
+  white-space: nowrap !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(27px, 2.55vw, 41px) !important;
+  font-weight: 800 !important;
+  line-height: .98 !important;
+  letter-spacing: .015em !important;
+  color: #d2a864 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff1c9 0%,
+      #e4c083 26%,
+      #9a642e 54%,
+      #efd39c 75%,
+      #805020 100%
+    ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow:
+    0 1px 0 rgba(255, 239, 192, .65),
+    0 2px 0 rgba(88, 48, 17, .95),
+    0 3px 3px rgba(0, 0, 0, .9) !important;
+}
+
+.final-topbar .brand-copy small {
+  margin-top: 6px !important;
+  color: #d8aa5d !important;
+  font-size: clamp(7px, .60vw, 10px) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: .22em !important;
+  text-shadow:
+    0 1px 0 rgba(255, 210, 124, .20),
+    0 2px 2px rgba(0, 0, 0, .95) !important;
+}
+
+/* Nav sits below the top rail, right of centre, clear of frame machinery. */
+.machine-nav {
+  position: absolute !important;
+  top: 16.5% !important;
+  right: 12.8% !important;
+  margin: 0 !important;
+  padding: 6px 7px !important;
+  display: flex !important;
+  gap: 3px !important;
+  white-space: nowrap !important;
+  background: rgba(8, 5, 3, .88) !important;
+  border: 1px solid rgba(178, 110, 39, .58) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 188, 82, .06),
+    0 5px 14px rgba(0, 0, 0, .42) !important;
+  z-index: 10 !important;
+}
+
+.machine-nav a {
+  padding: 8px 12px !important;
+  font-size: clamp(11px, .76vw, 13px) !important;
+}
+
+/* =========================
+   HERO
+   ========================= */
+
+.final-hero {
+  position: absolute !important;
+  top: 20.5% !important;
+  left: 11.7% !important;
+  width: 76.2% !important;
+  height: 34.2% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 1.7% 2.3% 1.1% !important;
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: .94fr 1.06fr !important;
+  align-items: center !important;
+  gap: 2.4% !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  z-index: 5 !important;
+}
+
+.final-hero .hero-copy {
+  align-self: center !important;
+  max-width: 100% !important;
+  transform: translateY(-1.5%) !important;
+}
+
+.final-hero .hero-copy h1 {
+  max-width: 100% !important;
+  margin: 0 0 3.2% !important;
+  font-size: clamp(42px, 3.45vw, 58px) !important;
+  line-height: .99 !important;
+  letter-spacing: -.025em !important;
+}
+
+.final-hero .lead {
+  max-width: 92% !important;
+  margin: 0 !important;
+  font-size: clamp(14px, 1.00vw, 17px) !important;
+  line-height: 1.46 !important;
+}
+
+/* Raise the globe and let it own the right half, like the approved mockup. */
+.globe-asset-scene {
+  position: relative !important;
+  height: 110% !important;
+  min-height: 0 !important;
+  transform: translateY(-8%) !important;
+  overflow: visible !important;
+}
+
+.globe-machine-asset {
+  width: min(108%, 515px) !important;
+  max-width: none !important;
+  max-height: 108% !important;
+  object-fit: contain !important;
+}
+
+.reference-side-plates {
+  right: -1.5% !important;
+  top: 15% !important;
+  transform: scale(1.04) !important;
+  transform-origin: top right !important;
+}
+
+.reference-side-plate,
+.reference-side-plates > div {
+  font-size: clamp(9px, .62vw, 11px) !important;
+  line-height: 1.35 !important;
+}
+
+/* =========================
+   CREATE / CALENDAR / WINDOW
+   ========================= */
+
+.final-console {
+  position: absolute !important;
+  top: 55.6% !important;
+  left: 11.7% !important;
+  width: 76.2% !important;
+  height: 30.7% !important;
+  margin: 0 !important;
+  z-index: 7 !important;
+}
+
+.final-console .create-card {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 7px !important;
+  box-sizing: border-box !important;
+}
+
+.machine-create-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 9px !important;
+}
+
+.machine-form-panel {
+  position: relative !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 39px 14px 12px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.asset-section-title {
+  height: 35px !important;
+  top: -2px !important;
+}
+
+.asset-section-title span {
+  font-size: clamp(12px, .82vw, 14px) !important;
+  font-weight: 800 !important;
+  letter-spacing: .025em !important;
+}
+
+.machine-form-panel label,
+.machine-form-panel .field-label,
+.machine-form-panel .timezone-label {
+  font-size: clamp(11px, .76vw, 13px) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+.machine-form-panel input,
+.machine-form-panel textarea,
+.machine-form-panel select,
+.machine-form-panel button {
+  font-size: clamp(11px, .76vw, 13px) !important;
+}
+
+.machine-form-panel input,
+.machine-form-panel select {
+  min-height: 37px !important;
+}
+
+.machine-form-panel textarea {
+  min-height: 68px !important;
+  line-height: 1.4 !important;
+}
+
+.machine-form-panel p,
+.machine-form-panel small,
+.machine-readout,
+.timezone-note,
+.form-hint {
+  font-size: clamp(9px, .64vw, 10.5px) !important;
+  line-height: 1.38 !important;
+}
+
+/* Calendar gets vertical room instead of being flattened. */
+.compact-calendar {
+  padding: 0 3px !important;
+}
+
+.compact-calendar .calendar-toolbar {
+  min-height: 34px !important;
+  font-size: clamp(11px, .78vw, 13px) !important;
+}
+
+.compact-calendar .calendar-weekdays {
+  margin: 4px 0 !important;
+  font-size: clamp(7px, .50vw, 8.5px) !important;
+}
+
+.compact-calendar .calendar-grid {
+  row-gap: 4px !important;
+  column-gap: 4px !important;
+}
+
+.compact-calendar .calendar-day,
+.compact-calendar .calendar-empty {
+  min-height: 29px !important;
+}
+
+.compact-calendar .calendar-day {
+  height: 29px !important;
+  font-size: clamp(9px, .65vw, 11px) !important;
+}
+
+.compact-calendar .calendar-footer {
+  margin-top: 5px !important;
+  font-size: clamp(8px, .55vw, 9px) !important;
+}
+
+/* Time window: larger copy and controls without overflowing. */
+.compact-time-window {
+  padding-top: 1px !important;
+}
+
+.time-fields {
+  gap: 7px !important;
+}
+
+.machine-readout {
+  margin-top: 7px !important;
+  padding: 8px 9px !important;
+}
+
+.asset-action-button {
+  min-height: 42px !important;
+  margin-top: 7px !important;
+  font-size: clamp(12px, .86vw, 14px) !important;
+  font-weight: 900 !important;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.final-footer {
+  position: absolute !important;
+  top: 86.9% !important;
+  left: 12.2% !important;
+  width: 75.2% !important;
+  height: 3.4% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 1.2% !important;
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  font-size: clamp(8px, .55vw, 9.5px) !important;
+  z-index: 8 !important;
+}
+
+.final-footer strong {
+  justify-self: start;
+}
+
+.final-footer span {
+  justify-self: center;
+  letter-spacing: .16em;
+}
+
+.final-footer small {
+  justify-self: end;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1180px) and (min-width: 981px) {
+  .nixie-clock-six {
+    transform: scale(.68) !important;
+  }
+
+  .final-topbar .brand-name {
+    font-size: 30px !important;
+  }
+
+  .machine-nav {
+    right: 11.7% !important;
+  }
+
+  .final-hero .hero-copy h1 {
+    font-size: 43px !important;
+  }
+
+  .globe-machine-asset {
+    width: min(105%, 450px) !important;
+  }
+
+  .machine-form-panel {
+    padding-inline: 11px !important;
+  }
+}
+
+/* Below tablet width, prioritize functionality over the decorative cabinet. */
+@media (max-width: 980px) {
+  .final-machine-page {
+    width: 100% !important;
+    aspect-ratio: auto !important;
+    min-height: 100vh !important;
+    padding: 18px !important;
+    background: #070503 !important;
+  }
+
+  .single-machine-frame {
+    display: none !important;
+  }
+
+  .machine-content-shell {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+  }
+
+  .final-topbar,
+  .final-hero,
+  .final-console,
+  .final-footer {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .final-topbar {
+    min-height: 220px !important;
+    display: block !important;
+  }
+
+  .final-topbar .brand-copy {
+    top: 8px !important;
+    width: min(92vw, 460px) !important;
+    height: 70px !important;
+  }
+
+  .nixie-clock-six {
+    top: 92px !important;
+    left: 50% !important;
+    transform: translateX(-50%) scale(.70) !important;
+    transform-origin: center top !important;
+  }
+
+  .machine-nav {
+    display: none !important;
+  }
+
+  .final-hero {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    padding: 34px 10px !important;
+  }
+
+  .reference-side-plates {
+    display: none !important;
+  }
+
+  .final-console {
+    margin-top: 14px !important;
+  }
+
+  .machine-create-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .machine-form-panel {
+    height: auto !important;
+    min-height: 310px !important;
+    overflow: visible !important;
+  }
+
+  .final-footer {
+    margin-top: 14px !important;
+    min-height: 46px !important;
+  }
+}
+
+
+/* =========================================================
+   CLEAN GEOMETRY + REAL CREATE BUTTON
+   Single authoritative desktop adjustment.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Remove every stray rule/line around the hero. */
+  .final-hero,
+  .reference-hero,
+  .machine-hero {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .final-hero::before,
+  .final-hero::after,
+  .reference-hero::before,
+  .reference-hero::after,
+  .machine-hero::before,
+  .machine-hero::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* Top plaque geometry comes from the actual frame artwork:
+     plaque optical center ≈ 56.7% of the 1536px frame width. */
+  .final-topbar .brand-copy {
+    left: 56.7% !important;
+    top: 64px !important;
+    width: 405px !important;
+    height: 68px !important;
+    transform: translateX(-50%) !important;
+    padding: 0 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .final-topbar .brand-name {
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 35px !important;
+    line-height: .98 !important;
+    transform: none !important;
+  }
+
+  .final-topbar .brand-copy small {
+    width: 100% !important;
+    margin-top: 7px !important;
+    text-align: center !important;
+    font-size: 9px !important;
+    line-height: 1 !important;
+  }
+
+  /* Lift hero text and globe into the free upper interior. */
+  .final-hero {
+    top: 16.1% !important;
+    height: 32.7% !important;
+    padding-top: .8% !important;
+    padding-bottom: .4% !important;
+  }
+
+  .final-hero .hero-copy {
+    transform: translateY(-2%) !important;
+  }
+
+  .final-hero .hero-copy h1 {
+    margin-top: 0 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .globe-asset-scene {
+    transform: translateY(-14%) !important;
+  }
+
+  /* Lift form as requested and give it enough height for the REAL submit button. */
+  .final-console {
+    top: 48.0% !important;
+    height: 38.2% !important;
+  }
+
+  .machine-form-panel {
+    padding-top: 32px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .asset-section-title {
+    height: 33px !important;
+  }
+
+  /* Keep labels/fields readable. */
+  .machine-form-panel label,
+  .machine-form-panel .field-label,
+  .machine-form-panel .timezone-label {
+    font-size: 14px !important;
+  }
+
+  .machine-form-panel input,
+  .machine-form-panel textarea,
+  .machine-form-panel select,
+  .machine-form-panel button {
+    font-size: 14px !important;
+  }
+
+  .machine-form-panel textarea {
+    min-height: 60px !important;
+  }
+
+  .compact-calendar .calendar-toolbar {
+    min-height: 33px !important;
+    font-size: 14px !important;
+  }
+
+  .compact-calendar .calendar-weekdays {
+    margin: 3px 0 !important;
+    font-size: 10px !important;
+  }
+
+  .compact-calendar .calendar-grid {
+    row-gap: 4px !important;
+  }
+
+  .compact-calendar .calendar-day,
+  .compact-calendar .calendar-empty {
+    min-height: 29px !important;
+  }
+
+  .compact-calendar .calendar-day {
+    height: 29px !important;
+    font-size: 13px !important;
+  }
+
+  /* Right panel is a proper vertical stack so CREATE POLL can never disappear. */
+  .matches-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  .matches-panel .time-window-card {
+    flex: 0 0 auto !important;
+  }
+
+  .matches-panel .machine-readout {
+    flex: 0 0 auto !important;
+    margin-top: 6px !important;
+    padding: 7px 9px !important;
+  }
+
+  .matches-panel .asset-action-button {
+    display: flex !important;
+    flex: 0 0 43px !important;
+    width: 100% !important;
+    min-height: 43px !important;
+    margin-top: 7px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    z-index: 5 !important;
+  }
+
+  .matches-panel .asset-action-button span {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+  }
+
+  .matches-panel .form-hint {
+    flex: 0 0 auto !important;
+    margin: 5px 0 0 !important;
+    font-size: 10.5px !important;
+  }
+
+  /* Bottom plaque optical center ≈ 50.6% of frame width.
+     Previous version was too high; lower it into the plate. */
+  .machine-nav-bottom {
+    position: absolute !important;
+    left: 50.6% !important;
+    bottom: 4.35% !important;
+    width: 420px !important;
+    min-width: 420px !important;
+    height: 38px !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    z-index: 20 !important;
+  }
+
+  .machine-nav-bottom a {
+    position: relative !important;
+    padding: 7px 17px !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: #d5a45d !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    letter-spacing: .045em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    text-shadow:
+      0 1px 0 rgba(255,225,170,.20),
+      0 2px 2px rgba(0,0,0,.95) !important;
+  }
+
+  .machine-nav-bottom a + a::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 18% !important;
+    width: 1px !important;
+    height: 64% !important;
+    background: rgba(153, 91, 32, .62) !important;
+  }
+
+  .machine-nav-bottom a:hover,
+  .machine-nav-bottom a:focus-visible {
+    color: #f1c66f !important;
+  }
+
+  /* Old informational footer conflicts with the built-in lower plate. */
+  .final-footer {
+    display: none !important;
+  }
+
+  /* Time input icon must never cover AM/PM. */
+  .compact-time-window input[type="time"] {
+    padding-right: 40px !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-topbar .brand-copy {
+    left: 56.7% !important;
+    top: 56px !important;
+    width: 360px !important;
+    height: 62px !important;
+  }
+
+  .final-topbar .brand-name {
+    font-size: 31px !important;
+  }
+
+  .final-hero {
+    top: 16.4% !important;
+  }
+
+  .final-console {
+    top: 48.4% !important;
+    height: 37.8% !important;
+  }
+
+  .machine-nav-bottom {
+    left: 50.6% !important;
+    bottom: 4.4% !important;
+    width: 390px !important;
+    min-width: 390px !important;
+  }
+
+  .machine-nav-bottom a {
+    font-size: 13px !important;
+    padding-inline: 14px !important;
+  }
+}
+
+
+/* =========================================================
+   HEADER / BOTTOM NAV REGRESSION FIX
+   Fix only the elements that jumped after the last clean pass.
+   ========================================================= */
+
+@media (min-width: 1401px) {
+  /* Nixies were using % relative to the short header and jumped upward.
+     Pin them in pixels inside the empty top-left cavity. */
+  .nixie-clock-six {
+    top: 58px !important;
+    left: 165px !important;
+    transform: scale(.82) !important;
+    transform-origin: left top !important;
+  }
+
+  /* Optical alignment inside the actual upper metal plaque. */
+  .final-topbar .brand-copy {
+    left: 57.05% !important;
+    top: 74px !important;
+    width: 400px !important;
+    height: 62px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .final-topbar .brand-name {
+    font-size: 34px !important;
+    line-height: .98 !important;
+  }
+
+  .final-topbar .brand-copy small {
+    margin-top: 6px !important;
+    font-size: 9px !important;
+  }
+
+  /* Critical: .machine-nav has a TOP rule.
+     Unset it so the bottom plaque positioning can actually win. */
+  .machine-nav-bottom {
+    top: auto !important;
+    right: auto !important;
+    left: 50.6% !important;
+    bottom: 4.55% !important;
+    width: 420px !important;
+    min-width: 420px !important;
+    height: 38px !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .nixie-clock-six {
+    top: 52px !important;
+    left: 145px !important;
+    transform: scale(.74) !important;
+    transform-origin: left top !important;
+  }
+
+  .final-topbar .brand-copy {
+    left: 57.0% !important;
+    top: 66px !important;
+    width: 360px !important;
+    height: 58px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .machine-nav-bottom {
+    top: auto !important;
+    right: auto !important;
+    left: 50.6% !important;
+    bottom: 4.6% !important;
+    width: 390px !important;
+    min-width: 390px !important;
+  }
+}
+
+
+/* =========================================================
+   SAFE TITLE + GLOBE DEPTH FIX
+   IMPORTANT: preserve absolute layout. Do not put hero/console
+   back into normal document flow.
+   ========================================================= */
+
+@media (min-width: 1401px) {
+  /* Slight optical correction inside the real upper plaque. */
+  .final-topbar .brand-copy {
+    left: 55.55% !important;
+  }
+
+  /* Lower ONLY the globe artwork; do not move the hero container. */
+  .globe-asset-scene {
+    transform: translateY(-5%) !important;
+  }
+
+  /* Keep the form in front of the globe base without changing layout mode. */
+  .final-hero {
+    position: absolute !important;
+    z-index: 4 !important;
+  }
+
+  .final-console {
+    position: absolute !important;
+    z-index: 12 !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-topbar .brand-copy {
+    left: 55.6% !important;
+  }
+
+  .globe-asset-scene {
+    transform: translateY(-6%) !important;
+  }
+
+  .final-hero {
+    position: absolute !important;
+    z-index: 4 !important;
+  }
+
+  .final-console {
+    position: absolute !important;
+    z-index: 12 !important;
+  }
+}
+
+
+/* Final micro-adjustment: upper plaque title 5px higher. */
+@media (min-width: 1401px) {
+  .final-topbar .brand-copy {
+    top: 69px !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-topbar .brand-copy {
+    top: 61px !important;
+  }
+}
+
+
+/* =========================================================
+   HOME INFO PANELS + EVENT MACHINE PAGE
+   Uses the existing clean full-frame asset only.
+   ========================================================= */
+
+/* Bottom machine navigation accepts links and buttons identically. */
+.machine-nav-bottom button {
+  position: relative;
+  appearance: none;
+  padding: 7px 17px;
+  border: 0;
+  background: transparent;
+  color: #d5a45d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-shadow:
+    0 1px 0 rgba(255,225,170,.20),
+    0 2px 2px rgba(0,0,0,.95);
+}
+
+.machine-nav-bottom button + button::before,
+.machine-nav-bottom a + button::before,
+.machine-nav-bottom button + a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18%;
+  width: 1px;
+  height: 64%;
+  background: rgba(153, 91, 32, .62);
+}
+
+.machine-nav-bottom button:hover,
+.machine-nav-bottom button:focus-visible {
+  color: #f1c66f;
+}
+
+/* Real content for How it works / About. */
+.machine-info-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 1, 1, .78);
+  backdrop-filter: blur(5px);
+}
+
+.machine-info-panel {
+  position: relative;
+  width: min(760px, 92vw);
+  padding: 34px 36px;
+  border: 1px solid rgba(192, 125, 49, .65);
+  background:
+    linear-gradient(180deg, rgba(35,24,16,.99), rgba(12,8,5,.99));
+  box-shadow:
+    inset 0 0 0 5px rgba(111,65,26,.18),
+    inset 0 0 0 6px rgba(222,153,72,.10),
+    0 24px 60px rgba(0,0,0,.65);
+}
+
+.machine-info-panel h2 {
+  margin: 7px 0 22px;
+  color: #f4ead8;
+  font-size: 30px;
+}
+
+.machine-info-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.machine-info-steps > div {
+  padding: 18px;
+  border: 1px solid rgba(181,112,39,.38);
+  background: rgba(8,6,4,.68);
+}
+
+.machine-info-steps b {
+  display: block;
+  margin-bottom: 13px;
+  color: #e3a13e;
+  font-size: 13px;
+  letter-spacing: .12em;
+}
+
+.machine-info-steps strong {
+  display: block;
+  color: #f3e7d3;
+  font-size: 16px;
+}
+
+.machine-info-steps p,
+.machine-info-copy {
+  margin: 9px 0 0;
+  color: #c9bda9;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.machine-info-close {
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(190,120,45,.45);
+  background: #120c08;
+  color: #e7bd75;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* -------------------------
+   EVENT PAGE INSIDE MACHINE
+   ------------------------- */
+
+.event-machine-page {
+  width: min(98vw, 1600px) !important;
+}
+
+.event-machine-content {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 3 !important;
+}
+
+.event-machine-layout {
+  position: absolute !important;
+  top: 17.2% !important;
+  left: 11.4% !important;
+  width: 77.2% !important;
+  height: 69.0% !important;
+  padding: 0 !important;
+  overflow: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: #8f5a26 #0b0704;
+}
+
+.event-machine-layout .event-hero {
+  margin: 0 0 14px;
+  padding: 0 6px 14px;
+  border-bottom: 1px solid rgba(170,105,38,.36);
+}
+
+.event-machine-layout .event-hero h1 {
+  margin: 6px 0 8px;
+  color: #f4ead8;
+  font-size: clamp(34px, 3vw, 50px);
+  line-height: 1.02;
+  overflow-wrap: anywhere;
+}
+
+.event-machine-layout .event-hero .lead {
+  margin: 0 0 12px;
+  max-width: 760px;
+  color: #cfbea8;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.event-machine-layout .eyebrow {
+  color: #dda050;
+  font-size: 11px;
+  letter-spacing: .16em;
+}
+
+.event-machine-layout .timezone-pill {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 7px;
+  padding: 8px 12px;
+  border: 1px solid rgba(181,112,39,.40);
+  background: rgba(15,10,6,.82);
+  color: #cbbba5;
+  font-size: 12px;
+}
+
+.event-machine-layout .summary-card,
+.event-machine-layout .join-card,
+.event-machine-layout .schedule-card,
+.event-machine-layout .best-panel,
+.event-machine-layout .people-panel {
+  border-color: rgba(181,112,39,.48);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(30,20,13,.97), rgba(12,8,5,.98));
+  box-shadow:
+    inset 0 0 0 4px rgba(114,67,26,.10),
+    0 10px 24px rgba(0,0,0,.24);
+}
+
+.event-machine-layout .summary-card {
+  grid-template-columns: 1.22fr .78fr;
+  margin-bottom: 12px;
+}
+
+.event-machine-layout .summary-main,
+.event-machine-layout .share-box {
+  padding: 18px 20px;
+}
+
+.event-machine-layout .summary-main h2,
+.event-machine-layout .join-card h2 {
+  margin: 5px 0 8px;
+  color: #f3e8d6;
+  font-size: 22px;
+}
+
+.event-machine-layout .share-box strong {
+  font-size: 15px;
+}
+
+.event-machine-layout .share-hint,
+.event-machine-layout .join-card p,
+.event-machine-layout .form-hint {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.event-machine-layout .window-chips {
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.event-machine-layout .window-chip {
+  min-width: 138px;
+  padding: 10px 12px;
+  border-radius: 3px;
+}
+
+.event-machine-layout .window-chip strong {
+  font-size: 12px;
+}
+
+.event-machine-layout .window-chip span {
+  font-size: 11px;
+}
+
+.event-machine-layout .share-row input {
+  min-height: 42px;
+  font-size: 13px;
+}
+
+.event-machine-layout .button {
+  min-height: 42px;
+  font-size: 13px;
+}
+
+.event-machine-layout .join-card {
+  padding: 18px 20px;
+  margin-bottom: 12px;
+}
+
+.event-machine-layout .join-form label {
+  font-size: 12px;
+}
+
+.event-machine-layout-active {
+  top: 15.8% !important;
+  height: 71.5% !important;
+}
+
+/* Event page uses the same built-in lower plate. */
+.event-machine-nav {
+  top: auto !important;
+  right: auto !important;
+  left: 50.6% !important;
+  bottom: 4.55% !important;
+  width: 300px !important;
+  min-width: 300px !important;
+  height: 38px !important;
+  transform: translateX(-50%) !important;
+}
+
+@media (max-width: 980px) {
+  .machine-info-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .event-machine-page {
+    width: 100% !important;
+    aspect-ratio: auto !important;
+    min-height: 100vh !important;
+    padding: 18px !important;
+  }
+
+  .event-machine-content {
+    position: relative !important;
+  }
+
+  .event-machine-layout,
+  .event-machine-layout-active {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-top: 20px !important;
+  }
+
+  .event-machine-layout .summary-card {
+    grid-template-columns: 1fr;
+  }
+
+  .event-machine-layout .share-box {
+    border-left: 0;
+    border-top: 1px solid rgba(184,135,70,.22);
+  }
+
+  .event-machine-nav {
+    display: none !important;
+  }
+}
+
+/* === Readability micro-tune: local time, event eyebrow, form copy === */
+
+/* LOCAL TIME plate: slightly easier to read on both Home and Event pages */
+.nixie-label {
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .16em !important;
+  line-height: 1.15 !important;
+}
+
+/* Event page eyebrow: give it breathing room below the upper machinery */
+.event-page .eyebrow,
+.event-page .event-eyebrow,
+.event-shell .eyebrow,
+.event-shell .event-eyebrow,
+.poll-page .eyebrow,
+.poll-page .event-eyebrow {
+  position: relative !important;
+  top: 11px !important;
+  margin-bottom: 11px !important;
+}
+
+/* Creation console readability without changing panel dimensions/layout */
+.creation-console label,
+.creation-console .field-label,
+.creation-console .form-label,
+.creation-console .time-window-label {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
+.creation-console input,
+.creation-console textarea,
+.creation-console select {
+  font-size: 13px !important;
+}
+
+.creation-console p,
+.creation-console small,
+.creation-console .helper-text,
+.creation-console .timezone-display,
+.creation-console .timezone-row,
+.creation-console .status-row,
+.creation-console .status-line,
+.creation-console .calendar-meta {
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+.creation-console .calendar-day,
+.creation-console .calendar-day button,
+.creation-console .day-button {
+  font-size: 12px !important;
+}
+
+.creation-console .console-heading h2,
+.creation-console .section-title,
+.creation-console .panel-title {
+  font-size: 14px !important;
+}
+
+/* === Readability micro-tune v2 ===
+   Deliberately stronger than v1: typography only, no geometry changes. */
+
+/* LOCAL TIME brass plate */
+.nixie-clock .nixie-label,
+.nixie-clock-large .nixie-label,
+.nixie-label {
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: .13em !important;
+  line-height: 1.15 !important;
+}
+
+/* Main form copy */
+.creation-console label,
+.creation-console .field-label,
+.creation-console .form-label,
+.creation-console .time-window-label,
+.creation-console strong {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+}
+
+.creation-console input,
+.creation-console textarea,
+.creation-console select {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+.creation-console p,
+.creation-console .helper-text,
+.creation-console .time-window-copy,
+.creation-console .time-window-description {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+/* Tiny utility/status text needs to remain secondary, but readable */
+.creation-console small,
+.creation-console .timezone-display,
+.creation-console .timezone-row,
+.creation-console .status-row,
+.creation-console .status-line,
+.creation-console .calendar-meta {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+/* Calendar */
+.creation-console .calendar-day,
+.creation-console .calendar-day button,
+.creation-console .day-button,
+.creation-console .calendar-grid button {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+.creation-console .calendar-weekdays,
+.creation-console .weekday,
+.creation-console .calendar-weekday {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+
+.creation-console .calendar-header,
+.creation-console .calendar-month {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+/* Status labels on the right */
+.creation-console .status-row strong,
+.creation-console .status-line strong {
+  font-size: 12px !important;
+}
+
+
+
+/* === Readability v3: balanced sizes + nav separators + friendly timezone display === */
+
+/* LOCAL TIME needed a stronger bump because the whole Nixie cluster is scaled. */
+.nixie-clock .nixie-label,
+.nixie-clock-large .nixie-label,
+.nixie-label {
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: .12em !important;
+  line-height: 1.1 !important;
+}
+
+/* Pull form typography back slightly from v2, while keeping it clearly readable. */
+.creation-console label,
+.creation-console .field-label,
+.creation-console .form-label,
+.creation-console .time-window-label,
+.creation-console strong {
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+}
+
+.creation-console input,
+.creation-console textarea,
+.creation-console select {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+.creation-console p,
+.creation-console .helper-text,
+.creation-console .time-window-copy,
+.creation-console .time-window-description {
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+.creation-console small,
+.creation-console .timezone-display,
+.creation-console .timezone-row,
+.creation-console .status-row,
+.creation-console .status-line,
+.creation-console .calendar-meta {
+  font-size: 11.5px !important;
+  line-height: 1.4 !important;
+}
+
+.creation-console .calendar-day,
+.creation-console .calendar-day button,
+.creation-console .day-button,
+.creation-console .calendar-grid button {
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+}
+
+.creation-console .calendar-weekdays,
+.creation-console .weekday,
+.creation-console .calendar-weekday {
+  font-size: 9.5px !important;
+  font-weight: 800 !important;
+}
+
+.creation-console .calendar-header,
+.creation-console .calendar-month {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+/* Guaranteed separators between HOME | HOW IT WORKS | ABOUT. */
+.machine-nav-bottom > * + * {
+  border-left: 1px solid rgba(153, 91, 32, .62) !important;
+}
+
+.machine-nav-bottom > *::before {
+  display: none !important;
+}
+
+/* =========================================================
+   READABILITY V4
+   Fix oversized secondary text + keep EventPage scroll inside frame.
+   ========================================================= */
+
+/* The generic v2/v3 strong rule was making secondary status text too large. */
+.creation-console .form-hint,
+.creation-console .form-hint strong {
+  font-size: 10.5px !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+}
+
+.creation-console .machine-readout {
+  font-size: 10.5px !important;
+  line-height: 1.35 !important;
+}
+
+.creation-console .machine-readout span,
+.creation-console .machine-readout strong {
+  font-size: 10.5px !important;
+  line-height: 1.35 !important;
+}
+
+.creation-console .machine-readout strong {
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+}
+
+/* Friendly timezone display remains readable without dominating the panel. */
+.creation-console .timezone-display,
+.creation-console .timezone-display span {
+  font-size: 11.5px !important;
+}
+
+/* Keep the event cabinet inside the viewport so body scrolling does not
+   visually pull the content outside the mechanical frame. */
+@media (min-width: 981px) {
+  .event-machine-page {
+    width: min(96vw, 144vh, 1600px) !important;
+    max-height: 96vh !important;
+    overflow: hidden !important;
+  }
+
+  .event-machine-content {
+    overflow: hidden !important;
+  }
+
+  .event-machine-layout,
+  .event-machine-layout-active {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-gutter: stable;
+    padding-right: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Subtle in-frame scrollbar that matches the machine instead of the browser. */
+  .event-machine-layout::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .event-machine-layout::-webkit-scrollbar-track {
+    background: #0b0704;
+    border-left: 1px solid rgba(132, 79, 29, .32);
+  }
+
+  .event-machine-layout::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #9b642c, #5f3517);
+    border: 2px solid #0b0704;
+    border-radius: 6px;
+  }
+}
+
+/* =========================================================
+   EVENT PAGE — HEADER SPACING + TRUE IN-FRAME SCROLL
+   Fixes the two remaining issues without touching Home layout.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Move the event content block down so AVAILABILITY POLL
+     no longer crowds the LOCAL TIME machinery. */
+  .event-machine-layout,
+  .event-machine-layout-active {
+    top: 19.6% !important;
+    bottom: 13.4% !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 0 14px 26px 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Explicit breathing room for the event eyebrow/title area. */
+  .event-machine-layout .event-hero {
+    padding-top: 12px !important;
+    margin-top: 0 !important;
+  }
+
+  .event-machine-layout .event-hero .eyebrow {
+    display: inline-block !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    transform: none !important;
+  }
+
+  .event-machine-layout .event-hero h1 {
+    margin-top: 0 !important;
+  }
+
+  /* Keep the availability section comfortably above the lower frame. */
+  .event-machine-layout .availability-section,
+  .event-machine-layout .availability-workspace,
+  .event-machine-layout .availability-grid-shell,
+  .event-machine-layout .schedule-card {
+    margin-bottom: 18px !important;
+  }
+
+  /* Scrollbar remains inside the transparent opening and stops before the frame. */
+  .event-machine-layout {
+    scrollbar-gutter: stable inside-optional;
+  }
+
+  .event-machine-layout::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
+  .event-machine-layout::-webkit-scrollbar-track {
+    background: rgba(7, 4, 2, .86) !important;
+  }
+
+  .event-machine-layout::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8d5928, #4e2c14) !important;
+    border: 2px solid rgba(7, 4, 2, .95) !important;
+    border-radius: 8px !important;
+  }
+
+  /* The bottom nav/frame always stays above scrolling content. */
+  .event-machine-nav {
+    z-index: 30 !important;
+  }
+
+  .single-machine-frame {
+    z-index: 20 !important;
+  }
+
+  .event-machine-content {
+    z-index: 21 !important;
+  }
+
+  .event-machine-layout {
+    z-index: 22 !important;
+  }
+
+  /* Prevent content from visually leaking under the bottom frame. */
+  .event-machine-layout::after {
+    content: "" !important;
+    display: block !important;
+    height: 18px !important;
+  }
+}
+
+/* =========================================================
+   EVENT SCROLL V2
+   Keep the browser page fixed; only the content window scrolls.
+   The brass frame paints ABOVE scrolling content.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Prevent the browser/body itself from scrolling on EventPage. */
+  html:has(.event-machine-page),
+  body:has(.event-machine-page),
+  body:has(.event-machine-page) #root {
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  body:has(.event-machine-page) .app-shell {
+    min-height: 0 !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  .event-machine-page {
+    width: min(96vw, 144vh, 1600px) !important;
+    max-height: 96vh !important;
+    aspect-ratio: 3 / 2 !important;
+    overflow: hidden !important;
+  }
+
+  /* Move the title only 5px upward. */
+  .event-machine-topbar .brand-copy {
+    top: 64px !important;
+  }
+
+  /* Scrolling content stays beneath the artwork. */
+  .event-machine-content {
+    z-index: 10 !important;
+    overflow: hidden !important;
+  }
+
+  .event-machine-layout,
+  .event-machine-layout-active {
+    position: absolute !important;
+    top: 19.6% !important;
+    right: 11.9% !important;
+    bottom: 14.2% !important;
+    left: 11.4% !important;
+    width: auto !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 0 10px 30px 0 !important;
+    box-sizing: border-box !important;
+    z-index: 12 !important;
+    overscroll-behavior: contain !important;
+  }
+
+  /* The whole frame must mask anything approaching its pipes/base. */
+  .single-machine-frame {
+    z-index: 40 !important;
+  }
+
+  /* Interactive lower navigation remains on top of the decorative frame. */
+  .event-machine-nav {
+    z-index: 50 !important;
+  }
+
+  /* Internal scrollbar: inside the right edge of the opening, never at viewport edge. */
+  .event-machine-layout {
+    scrollbar-width: thin;
+    scrollbar-color: #74451f #0a0603;
+  }
+
+  .event-machine-layout::-webkit-scrollbar {
+    width: 7px !important;
+  }
+
+  .event-machine-layout::-webkit-scrollbar-track {
+    background: rgba(8, 5, 3, .90) !important;
+  }
+
+  .event-machine-layout::-webkit-scrollbar-thumb {
+    background: #74451f !important;
+    border: 2px solid rgba(8, 5, 3, .96) !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* =========================================================
+   FRAME LAYER SCOPE FIX
+   The Event scroll mask must not hide Home title/nav.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Home: restore normal layering so title + bottom nav render above the frame. */
+  .final-machine-page:not(.event-machine-page) .single-machine-frame {
+    z-index: 1 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-content-shell {
+    z-index: 3 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-topbar,
+  .final-machine-page:not(.event-machine-page) .machine-nav-bottom {
+    z-index: 20 !important;
+  }
+
+  /* Event page: frame still masks scrolling content, but header/nav must sit above it. */
+  .event-machine-page .single-machine-frame {
+    z-index: 40 !important;
+  }
+
+  .event-machine-page .event-machine-content {
+    z-index: 10 !important;
+  }
+
+  .event-machine-page .event-machine-layout,
+  .event-machine-page .event-machine-layout-active {
+    z-index: 12 !important;
+  }
+
+  .event-machine-page .event-machine-topbar {
+    z-index: 50 !important;
+  }
+
+  .event-machine-page .event-machine-nav {
+    z-index: 50 !important;
+  }
+}
+
+/* =========================================================
+   EVENT HEADER/NAV VISIBILITY FIX
+   The frame was in a higher sibling stacking context than the
+   whole event content, so title/nav could never paint above it.
+   Keep the frame behind; keep the scroll clipped INSIDE the opening.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  .event-machine-page .single-machine-frame {
+    z-index: 1 !important;
+  }
+
+  .event-machine-page .event-machine-content {
+    z-index: 3 !important;
+    overflow: hidden !important;
+  }
+
+  .event-machine-page .event-machine-topbar,
+  .event-machine-page .event-machine-nav {
+    z-index: 30 !important;
+  }
+
+  /* The scroll itself is clipped to the transparent inner window,
+     so it does not need the frame to mask it. */
+  .event-machine-page .event-machine-layout,
+  .event-machine-page .event-machine-layout-active {
+    z-index: 5 !important;
+    top: 19.6% !important;
+    right: 11.9% !important;
+    bottom: 14.8% !important;
+    left: 11.4% !important;
+    width: auto !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 0 12px 34px 0 !important;
+    box-sizing: border-box !important;
+    clip-path: inset(0 round 0) !important;
+  }
+
+  /* Make sure the actual plaque text is visible. */
+  .event-machine-topbar .brand-copy {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .event-machine-topbar .brand-name,
+  .event-machine-topbar .brand-copy small {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Bottom plate navigation visible/clickable again. */
+  .event-machine-nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    top: auto !important;
+    right: auto !important;
+  }
+}
+
+/* =========================================================
+   EVENT PAGE FINAL STACKING FIX
+   Scroll stays BEHIND the brass frame.
+   Header and bottom nav stay ABOVE the brass frame.
+   The key is removing the parent stacking context.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Do NOT let this parent trap all its children in one z-index layer. */
+  .event-machine-page .event-machine-content {
+    z-index: auto !important;
+    overflow: hidden !important;
+  }
+
+  /* Scrollable event content stays behind the decorative frame. */
+  .event-machine-page .event-machine-layout,
+  .event-machine-page .event-machine-layout-active {
+    z-index: 10 !important;
+    top: 19.6% !important;
+    right: 11.9% !important;
+    bottom: 15.2% !important;
+    left: 11.4% !important;
+    width: auto !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 0 12px 36px 0 !important;
+    box-sizing: border-box !important;
+    overscroll-behavior: contain !important;
+  }
+
+  /* Full frame masks any scrolling content that approaches pipes/base. */
+  .event-machine-page .single-machine-frame {
+    z-index: 40 !important;
+    pointer-events: none !important;
+  }
+
+  /* Header plaque + Nixies and lower navigation remain visible/clickable. */
+  .event-machine-page .event-machine-topbar {
+    z-index: 50 !important;
+  }
+
+  .event-machine-page .event-machine-nav {
+    z-index: 50 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Prevent the document itself from scrolling on desktop EventPage. */
+  html:has(.event-machine-page),
+  body:has(.event-machine-page),
+  body:has(.event-machine-page) #root {
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  body:has(.event-machine-page) .app-shell {
+    height: 100vh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+/* =========================================================
+   HOME VIEWPORT FIT
+   Keep the full 3:2 machine visible inside the browser viewport
+   so the page itself doesn't scroll past the bottom frame.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) {
+    width: min(96vw, 144vh, 1600px) !important;
+    max-height: 96vh !important;
+    aspect-ratio: 3 / 2 !important;
+    overflow: hidden !important;
+  }
+
+  body:has(.final-machine-page:not(.event-machine-page)) {
+    overflow-y: hidden !important;
+  }
+
+  body:has(.final-machine-page:not(.event-machine-page)) #root,
+  body:has(.final-machine-page:not(.event-machine-page)) .app-shell {
+    min-height: 0 !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  /* Home frame stays behind interactive content. */
+  .final-machine-page:not(.event-machine-page) .single-machine-frame {
+    z-index: 1 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-content-shell {
+    z-index: 3 !important;
+  }
+}
+
+/* =========================================================
+   HOME PANEL + TITLE POSITION FIX
+   Home only. No asset changes.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Raise the title inside the top plaque. */
+  .final-machine-page:not(.event-machine-page) .final-topbar .brand-copy {
+    top: 59px !important;
+  }
+
+  /* Give the hero text a little more room and keep the form
+     fully inside the inner opening instead of creeping upward. */
+  .final-machine-page:not(.event-machine-page) .final-hero {
+    top: 16.6% !important;
+    height: 31.2% !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 49.2% !important;
+    height: 36.0% !important;
+  }
+
+  /* Keep the console framed cleanly inside the cabinet. */
+  .final-machine-page:not(.event-machine-page) .creation-console {
+    overflow: hidden !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-form-panel {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) .final-topbar .brand-copy {
+    top: 53px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero {
+    top: 16.8% !important;
+    height: 31.0% !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 49.4% !important;
+    height: 35.7% !important;
+  }
+}
+
+/* =========================================================
+   HOME FORM FIT V2
+   Fix top/bottom clipping shown in the latest screenshots.
+   Home only; no asset changes.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Move the whole form block down just enough to clear the hero copy. */
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 50.1% !important;
+    height: 34.8% !important;
+  }
+
+  /* Tighten only vertical internals so the bottom hint stays inside the panel. */
+  .final-machine-page:not(.event-machine-page) .machine-form-panel {
+    padding-top: 30px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .asset-section-title {
+    height: 31px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-form-panel textarea {
+    min-height: 54px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-readout {
+    margin-top: 5px !important;
+    padding: 6px 8px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .asset-action-button {
+    min-height: 38px !important;
+    margin-top: 5px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .form-hint {
+    margin-top: 4px !important;
+    font-size: 9.5px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Calendar loses a touch of vertical padding, not font size. */
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-toolbar {
+    min-height: 31px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-weekdays {
+    margin: 2px 0 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-grid {
+    row-gap: 3px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-day,
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-empty {
+    min-height: 27px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-day {
+    height: 27px !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 50.3% !important;
+    height: 34.4% !important;
+  }
+}
+
+/* =========================================================
+   HOME BOTTOM-EDGE FIX ONLY
+   Do NOT move hero/title/globe. Only keep the form inside
+   the lower inner edge of the machine frame.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Undo any later hero-copy nudges if present. */
+  .final-machine-page:not(.event-machine-page) .final-hero .hero-copy {
+    transform: none !important;
+  }
+
+  /* Anchor the console by TOP + BOTTOM instead of forcing a height.
+     This guarantees its lower edge stops before the bottom frame. */
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 50.1% !important;
+    bottom: 15.7% !important;
+    height: auto !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-console .create-card,
+  .final-machine-page:not(.event-machine-page) .machine-create-grid,
+  .final-machine-page:not(.event-machine-page) .machine-form-panel {
+    height: 100% !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Keep all panel content inside the console bounds. */
+  .final-machine-page:not(.event-machine-page) .creation-console {
+    overflow: hidden !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-form-panel {
+    overflow: hidden !important;
+    padding-bottom: 8px !important;
+  }
+
+  /* Slightly compact only vertical spacing at the bottom of the right panel. */
+  .final-machine-page:not(.event-machine-page) .matches-panel .machine-readout {
+    margin-top: 5px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .matches-panel .asset-action-button {
+    margin-top: 5px !important;
+    min-height: 38px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .matches-panel .form-hint {
+    margin-top: 4px !important;
+    font-size: 9.5px !important;
+    line-height: 1.15 !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 50.3% !important;
+    bottom: 15.9% !important;
+    height: auto !important;
+  }
+}
+
+/* =========================================================
+   HOME: LOWER EDGE BEHIND BOTTOM PIPE
+   One change only: extend the console downward.
+   No horizontal movement, no hero/title/globe changes.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) .final-console {
+    bottom: 13.9% !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) .final-console {
+    bottom: 14.0% !important;
+  }
+}
+
+/* =========================================================
+   HOME FRAME MASK FIX
+   Actual fix: the brass frame must paint ABOVE the form edges,
+   while header/nav remain above the frame.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Remove the parent stacking context so children can sit
+     on either side of the frame layer. */
+  .final-machine-page:not(.event-machine-page) .machine-content-shell {
+    z-index: auto !important;
+  }
+
+  /* The frame masks the form border where it meets the pipes. */
+  .final-machine-page:not(.event-machine-page) .single-machine-frame {
+    z-index: 20 !important;
+    pointer-events: none !important;
+  }
+
+  /* Hero + form stay behind the frame. */
+  .final-machine-page:not(.event-machine-page) .final-hero,
+  .final-machine-page:not(.event-machine-page) .final-console {
+    z-index: 10 !important;
+  }
+
+  /* Header/Nixies/title and bottom nav must remain visible/clickable. */
+  .final-machine-page:not(.event-machine-page) .final-topbar,
+  .final-machine-page:not(.event-machine-page) .machine-nav-bottom {
+    z-index: 30 !important;
+  }
+
+  /* Give the hero copy a clean gap before the form. */
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 51.0% !important;
+    bottom: 13.2% !important;
+    height: auto !important;
+  }
+
+  /* Let the form extend under the lower pipe so the pipe visually
+     becomes its lower edge. */
+  .final-machine-page:not(.event-machine-page) .creation-console {
+    overflow: visible !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) .final-console {
+    top: 51.2% !important;
+    bottom: 13.3% !important;
+    height: auto !important;
+  }
+}
+
+.final-machine-page:not(.event-machine-page) .matches-panel .form-hint {
+  transform: translateY(-6px) !important;
+}
