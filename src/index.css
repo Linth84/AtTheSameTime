@@ -5440,3 +5440,107 @@ body {
   }
 }
 
+/* =========================================================
+   POLL PAGE INNER-EDGE CLIP FIX
+   Prevent availability/results panels from peeking into the
+   decorative pipe area. Event page only.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  .event-machine-page .event-machine-layout,
+  .event-machine-page .event-machine-layout-active {
+    left: 12.15% !important;
+    right: 12.15% !important;
+    bottom: 15.7% !important;
+    padding-right: 8px !important;
+    padding-bottom: 28px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hard inner-window mask so card borders can never render over the pipes. */
+  .event-machine-page .event-machine-layout {
+    clip-path: inset(0 0 0 0) !important;
+  }
+
+  .event-machine-page .event-machine-layout > * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .event-machine-page .availability-section,
+  .event-machine-page .availability-workspace,
+  .event-machine-page .schedule-card,
+  .event-machine-page .best-panel,
+  .event-machine-page .people-panel {
+    overflow: hidden !important;
+  }
+}
+
+
+
+/* Event page: the Nixie clock is display-only.
+   Only the title plaque links back Home. */
+.event-machine-page .event-brand {
+  display: contents !important;
+}
+
+.event-machine-page .event-brand .nixie-clock {
+  cursor: default !important;
+}
+
+.event-machine-page .event-brand .brand-copy {
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+/* =========================================================
+   EVENT PAGE — FRAME MUST MASK SCROLLING CARDS
+   Final stacking fix for cards overlapping the brass pipes.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  /* Remove the parent stacking context so children can sit on both
+     sides of the frame layer independently. */
+  .event-machine-page .event-machine-content {
+    z-index: auto !important;
+    overflow: visible !important;
+  }
+
+  /* All scrollable poll content stays behind the decorative frame. */
+  .event-machine-page .event-machine-layout,
+  .event-machine-page .event-machine-layout-active {
+    z-index: 10 !important;
+    left: 12.3% !important;
+    right: 12.3% !important;
+    bottom: 15.8% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Brass frame masks card borders at left/right/bottom edges. */
+  .event-machine-page .single-machine-frame {
+    z-index: 20 !important;
+    pointer-events: none !important;
+  }
+
+  /* Header/Nixies/title and bottom navigation remain above the frame. */
+  .event-machine-page .event-machine-topbar,
+  .event-machine-page .event-machine-nav {
+    z-index: 30 !important;
+  }
+
+  /* No card may visually exceed the inner workspace width. */
+  .event-machine-page .event-machine-layout > *,
+  .event-machine-page .availability-workspace,
+  .event-machine-page .availability-section,
+  .event-machine-page .best-panel,
+  .event-machine-page .people-panel,
+  .event-machine-page .schedule-card {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+

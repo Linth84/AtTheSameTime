@@ -87,13 +87,13 @@ export default function EventPage() {
 
       <div className="machine-content-shell event-machine-content">
         <header className="topbar machine-topbar reference-topbar final-topbar event-machine-topbar">
-          <Link className="brand" to="/" aria-label="AtTheSameTime home">
+          <div className="brand event-brand">
             <NixieClock />
-            <span className="brand-copy">
+            <Link className="brand-copy" to="/" aria-label="AtTheSameTime home">
               <span className="brand-name">AtTheSameTime</span>
               <small>Find the perfect time. Anywhere.</small>
-            </span>
-          </Link>
+            </Link>
+          </div>
         </header>
 
         <div className={`event-layout event-machine-layout${participant ? ' event-machine-layout-active' : ''}`}>
