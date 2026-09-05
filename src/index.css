@@ -5194,3 +5194,36 @@ body {
 .final-machine-page:not(.event-machine-page) .matches-panel .form-hint {
   transform: translateY(-6px) !important;
 }
+
+/* =========================================================
+   PRODUCTION VIEWPORT CONSISTENCY FIX
+   Home must scale from viewport WIDTH, not browser viewport HEIGHT.
+   Browser chrome changes vh between local/dev and deployed pages.
+   This block intentionally overrides the earlier 144vh / 96vh rules.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  .final-machine-page:not(.event-machine-page) {
+    width: min(96vw, 1536px) !important;
+    max-height: none !important;
+    aspect-ratio: 3 / 2 !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+  }
+
+  html:has(.final-machine-page:not(.event-machine-page)),
+  body:has(.final-machine-page:not(.event-machine-page)),
+  body:has(.final-machine-page:not(.event-machine-page)) #root {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  body:has(.final-machine-page:not(.event-machine-page)) .app-shell {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+}
+
