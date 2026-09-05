@@ -1,82 +1,151 @@
 # AtTheSameTime
 
-**Find the time that works for everyone.**
+**Find the perfect time. Anywhere.**
 
-AtTheSameTime is a modern availability polling app designed to make scheduling across people and time zones simple.
+AtTheSameTime is a timezone-aware availability coordination app for groups that need to find a shared time without manually converting schedules.
 
-Create a poll, choose the possible dates and time ranges, share the link, and let participants mark when they are available.
+Create a poll, choose possible dates and a broad time window, share one link, and let each participant mark their availability in their own local timezone. AtTheSameTime stores the schedule in UTC, converts it for every participant, and highlights the strongest overlaps automatically.
 
-The app automatically displays times in each participant's local timezone and highlights the periods where the group overlaps the most.
+## Why I built it
 
----
+Scheduling across time zones is still unnecessarily awkward. People end up comparing screenshots, converting hours manually, or sending long lists of possible times through chat.
 
-## Features
+AtTheSameTime turns that process into one shared availability poll.
 
-- Create availability polls without requiring an account
-- Select multiple possible dates
-- Define availability time ranges
-- Share polls through a unique link
-- Join polls with a participant name
-- Automatic timezone detection
-- UTC-based time storage
-- 30-minute availability slots
-- Click and drag to mark availability
-- Automatic availability saving
-- Group availability visualization
-- Availability intensity based on participant overlap
-- Responsive interface
-- Dark modern UI
-
----
+The project also gave me a practical way to work with timezone normalization, collaborative state, real-time updates, database security, responsive UI, and a strongly themed product interface.
 
 ## How it works
 
-1. Create an availability poll.
-2. Select the possible dates and general time range.
-3. Share the generated link with the group.
-4. Each participant joins using their name.
-5. Participants mark the times when they are available.
-6. AtTheSameTime compares everyone's availability.
-7. The group can quickly identify the best overlapping times.
+1. **Create a poll**  
+   Add a title, an optional description, possible dates, and a broad daily time window.
 
-All dates are stored internally in UTC and converted to the local timezone of each participant.
+2. **Share one link**  
+   Every poll receives a unique URL. Participants do not need to create an account.
 
----
+3. **Mark availability**  
+   Participants join with their name and paint the 30-minute intervals that work for them.
 
-## Tech Stack
+4. **Find the overlap**  
+   AtTheSameTime combines all responses and surfaces the strongest shared times.
 
-- React
-- TypeScript
-- Vite
-- Supabase
-- PostgreSQL
-- Luxon
-- React Router
-- CSS
+## Features
 
-Supabase provides the database, Row Level Security and realtime infrastructure.
+- Multi-date availability polls
+- 30-minute availability intervals
+- Automatic browser timezone detection
+- UTC-based time storage
+- Local-time rendering for each participant
+- Shareable poll URLs
+- Account-free participation
+- Click-and-drag availability painting
+- Automatic saving
+- Personal availability view
+- Group availability view
+- Best Matches calculation
+- Participant response tracking
+- Supabase Realtime updates
+- Persistent participant sessions in local storage
+- Responsive desktop/mobile behavior
+- Custom steampunk / clockwork interface
 
----
+## Timezone handling
 
-## Timezone Support
+Timezone support is part of the core architecture rather than a cosmetic feature.
 
-Timezone handling is one of the core features of AtTheSameTime.
-
-Instead of assuming that everyone participating in a poll is in the same location, AtTheSameTime stores time ranges in UTC and converts them when they are displayed.
+The browser timezone is detected using the IANA timezone identifier. Local selections are converted to UTC before being stored in PostgreSQL. When another participant opens the poll, those same UTC timestamps are rendered in that participant's local timezone.
 
 For example:
 
 ```text
-Buenos Aires     21:00
-Berlin           02:00
-New York         20:00
+America/Argentina/Buenos_Aires
+21:00
+
+Europe/Berlin
+02:00 (+1 day)
 ```
 
-Each participant sees the same moment represented in their own local timezone.
+Those values represent the same instant.
 
----
+This means every participant can work entirely in their own local time while the application keeps one canonical timeline underneath.
 
-## Local Development
+## Real-time collaboration
+
+Availability is stored per participant and synchronized through Supabase.
+
+The group view can update as responses change, allowing the poll to show:
+
+- who has responded
+- each participant's availability
+- overall group availability
+- the strongest overlapping time slots
+
+## Design
+
+AtTheSameTime is presented as a **world-time synchronization machine** rather than a generic SaaS dashboard.
+
+The visual system combines:
+
+- Nixie-style local time tubes
+- brass and iron machinery
+- mechanical clocks
+- pipes and gears
+- an illuminated world globe
+- engraved control plates
+- instrument-style scheduling panels
+
+The interface is deliberately tied to the product concept: a machine built to synchronize people in different places.
+
+## Tech stack
+
+### Frontend
+
+- React
+- TypeScript
+- Vite
+- React Router
+- Luxon
+- CSS
+
+### Backend
+
+- Supabase
+- PostgreSQL
+- Supabase Realtime
+- Row Level Security
+
+### Deployment
+
+- GitHub Pages
+- GitHub Actions
+
+## Data model
+
+The core database structure is:
+
+```text
+events
+├── event_windows
+├── participants
+└── availability
+```
+
+### `events`
+
+Stores poll metadata such as title, description, creator timezone, unique slug, and ownership data.
+
+### `event_windows`
+
+Stores the UTC time ranges made available by the poll creator.
+
+### `participants`
+
+Stores people participating in a poll and their detected timezone.
+
+### `availability`
+
+Stores the UTC availability intervals submitted by each participant.
+
+## Local development
 
 Clone the repository:
 
@@ -91,87 +160,65 @@ Install dependencies:
 npm install
 ```
 
-Create a `.env.local` file in the project root:
+Create `.env.local`:
 
 ```env
 VITE_SUPABASE_URL=your_supabase_project_url
 VITE_SUPABASE_ANON_KEY=your_supabase_publishable_key
 ```
 
-Start the development server:
+Run the development server:
 
 ```bash
 npm run dev
 ```
 
----
+Build for production:
 
-## Environment Variables
-
-The following environment variables are required:
-
-| Variable | Description |
-| --- | --- |
-| `VITE_SUPABASE_URL` | Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | Supabase browser publishable key |
-
-Do not commit `.env.local` or private credentials to the repository.
-
----
-
-## Project Structure
-
-```text
-src/
-├── components/
-│   ├── AvailabilityGrid.tsx
-│   └── CreateEventForm.tsx
-├── lib/
-│   ├── hash.ts
-│   └── supabase.ts
-├── pages/
-│   ├── EventPage.tsx
-│   └── HomePage.tsx
-├── App.tsx
-└── main.tsx
+```bash
+npm run build
 ```
 
----
+## Environment files
+
+Do not commit local environment files:
+
+```text
+.env
+.env.local
+.env.*.local
+```
+
+The browser may use the Supabase public/publishable key. Administrative secrets such as a Supabase service-role key must never be exposed in frontend code.
+
+## Current status
+
+The main scheduling flow is functional:
+
+**Create poll → Share → Join → Mark availability → Compare overlap**
+
+The project currently includes timezone-aware scheduling, real-time collaboration, participant persistence, and automatic overlap analysis.
 
 ## Roadmap
 
-AtTheSameTime is currently under active development.
+Possible next steps include:
 
-Planned features include:
-
-- Best matching time suggestions
-- Preferred and "maybe" availability states
+- Preferred / Maybe availability states
 - Poll deadlines
-- Participant response tracking
-- Finalize a selected meeting time
-- Shareable final result
-- Improved group availability heatmap
-- Realtime collaborative updates
+- Finalizing a selected meeting time
+- Organizer controls
+- Suggested meeting windows
 - Timezone comparison tools
-- Mobile-focused availability selection
-- Additional poll management controls
+- Participant comments
+- Stronger server-side authorization
+- Transactional poll creation
 
----
+## Author
 
-## Why AtTheSameTime?
+**Edgardo Villalba**
 
-Most availability tools solve the basic scheduling problem but often provide dated interfaces or awkward experiences when participants live in different time zones.
+Portfolio project focused on frontend product design, collaborative UX, timezone handling, real-time state, and Supabase-backed application architecture.
 
-AtTheSameTime focuses on three things:
+## Visual assets
 
-**Simple scheduling. Better timezone handling. Modern user experience.**
-
-The goal is not just to collect availability, but to make it immediately clear when everyone can actually meet.
-
----
-
-## Status
-
-Work in progress.
-
-The core availability polling flow is currently being developed and tested.
+The visual artwork and project-specific assets included in this repository are part of AtTheSameTime and should not be assumed to be independently reusable or redistributable unless explicitly stated otherwise.

@@ -5250,3 +5250,117 @@ body {
   }
 }
 
+/* =========================================================
+   UNIFIED MACHINE GEOMETRY — HOME + EVENT
+   Same cabinet, Nixies, title plaque and lower plate geometry.
+   ========================================================= */
+@media (min-width: 981px) {
+  .final-machine-page,
+  .final-machine-page.event-machine-page {
+    width: min(96vw, 1536px) !important;
+    max-width: 1536px !important;
+    max-height: none !important;
+    aspect-ratio: 3 / 2 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .event-machine-page .single-machine-frame {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+
+  .event-machine-page .single-machine-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .event-machine-page .event-machine-content {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible !important;
+    z-index: 3 !important;
+  }
+
+  .event-machine-page .event-machine-topbar {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 20% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    z-index: 30 !important;
+  }
+
+  .event-machine-page .event-machine-topbar .nixie-clock-six {
+    top: 5.4% !important;
+    left: 10.7% !important;
+    transform: scale(.78) !important;
+    transform-origin: left top !important;
+  }
+
+  .event-machine-page .event-machine-topbar .brand-copy {
+    top: 4.35% !important;
+    left: 50% !important;
+    width: 34.5% !important;
+    height: 9.8% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .event-machine-page .event-machine-layout,
+  .event-machine-page .event-machine-layout-active {
+    position: absolute !important;
+    top: 19.6% !important;
+    left: 11.4% !important;
+    right: 11.9% !important;
+    bottom: 15.2% !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 12px 36px 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    z-index: 10 !important;
+    overscroll-behavior: contain !important;
+  }
+
+  .event-machine-page .event-machine-nav {
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 4.55% !important;
+    width: 34.5% !important;
+    min-width: 0 !important;
+    height: 38px !important;
+    transform: translateX(-50%) !important;
+    z-index: 30 !important;
+  }
+
+  html:has(.event-machine-page),
+  body:has(.event-machine-page),
+  body:has(.event-machine-page) #root {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  body:has(.event-machine-page) .app-shell {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+}
+
