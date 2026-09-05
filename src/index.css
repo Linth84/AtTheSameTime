@@ -5364,3 +5364,79 @@ body {
   }
 }
 
+/* =========================================================
+   EVENT HEADER = HOME HEADER, EXACTLY
+   Fixes the bad Event-only coordinates introduced by the
+   previous "unified" block. No Home geometry changes.
+   ========================================================= */
+
+@media (min-width: 1401px) {
+  .event-machine-page .event-machine-topbar .nixie-clock-six {
+    top: 58px !important;
+    left: 165px !important;
+    transform: scale(.82) !important;
+    transform-origin: left top !important;
+  }
+
+  .event-machine-page .event-machine-topbar .brand-copy {
+    left: 57.05% !important;
+    top: 59px !important;
+    width: 400px !important;
+    height: 62px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .event-machine-page .event-machine-topbar .brand-name {
+    font-size: 34px !important;
+    line-height: .98 !important;
+  }
+
+  .event-machine-page .event-machine-topbar .brand-copy small {
+    margin-top: 6px !important;
+    font-size: 9px !important;
+  }
+
+  .event-machine-page .event-machine-nav {
+    top: auto !important;
+    right: auto !important;
+    left: 50.6% !important;
+    bottom: 4.55% !important;
+    width: 420px !important;
+    min-width: 420px !important;
+    height: 38px !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 981px) {
+  .event-machine-page .event-machine-topbar .nixie-clock-six {
+    top: 52px !important;
+    left: 145px !important;
+    transform: scale(.74) !important;
+    transform-origin: left top !important;
+  }
+
+  .event-machine-page .event-machine-topbar .brand-copy {
+    left: 57% !important;
+    top: 53px !important;
+    width: 360px !important;
+    height: 58px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .event-machine-page .event-machine-topbar .brand-name {
+    font-size: 31px !important;
+  }
+
+  .event-machine-page .event-machine-nav {
+    top: auto !important;
+    right: auto !important;
+    left: 50.6% !important;
+    bottom: 4.6% !important;
+    width: 390px !important;
+    min-width: 390px !important;
+    height: 38px !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
