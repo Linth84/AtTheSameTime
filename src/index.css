@@ -5227,3 +5227,26 @@ body {
   }
 }
 
+/* =========================================================
+   LOCAL / GITHUB PAGES VIEWPORT CONSISTENCY
+   Reserve the same scrollbar gutter even when the page does
+   not need to scroll. This keeps vw-based geometry identical.
+   ========================================================= */
+
+@media (min-width: 981px) {
+  html {
+    scrollbar-gutter: stable !important;
+  }
+
+  /* Firefox / browsers where gutter reservation can differ on root. */
+  body {
+    scrollbar-gutter: stable !important;
+  }
+
+  /* Keep Home width tied to the content viewport after gutter reservation. */
+  .final-machine-page:not(.event-machine-page) {
+    width: min(96vw, 1536px) !important;
+    max-height: none !important;
+  }
+}
+
