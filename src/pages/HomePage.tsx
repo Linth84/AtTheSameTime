@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 import CreateEventForm from '../components/CreateEventForm'
 import NixieClock from '../components/NixieClock'
 import ClockworkGlobe from '../components/ClockworkGlobe'
+import LanguageSwitch from '../components/LanguageSwitch'
+import { useLanguage } from '../i18n'
 
 export default function HomePage() {
+  const { t } = useLanguage()
   const [infoPanel, setInfoPanel] = useState<'how' | 'about' | null>(null)
 
   return (
-    <main className="app-shell reference-machine-page final-machine-page">
+    <main className="app-shell machine-viewport">
+      <div className="reference-machine-page final-machine-page">
       <div className="single-machine-frame" aria-hidden="true">
         <img src={`${import.meta.env.BASE_URL}machine-frame-clean.png`} alt="" />
       </div>
@@ -19,15 +23,16 @@ export default function HomePage() {
             <NixieClock />
             <span className="brand-copy">
               <span className="brand-name">AtTheSameTime</span>
-              <small>Find the perfect time. Anywhere.</small>
+              <small>{t('tagline')}</small>
             </span>
           </Link>
+        <LanguageSwitch />
         </header>
 
         <section className="machine-hero reference-hero final-hero" id="home">
           <div className="hero-copy">
-            <h1>Different time zones.<span className="headline-accent"> Same possibilities.</span></h1>
-            <p className="lead">Create a poll, show your availability and let AtTheSameTime find the best moments for everyone, no matter where they are in the world.</p>
+            <h1>{t('hero1')}<span className="headline-accent">{t('hero2')}</span></h1>
+            <p className="lead">{t('heroLead')}</p>
           </div>
           <ClockworkGlobe />
           <aside className="reference-side-plates" aria-hidden="true">
@@ -40,10 +45,10 @@ export default function HomePage() {
           <CreateEventForm />
         </section>
 
-        <nav className="machine-nav machine-nav-bottom" aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <button type="button" onClick={() => setInfoPanel('how')}>How it works</button>
-          <button type="button" onClick={() => setInfoPanel('about')}>About</button>
+        <nav className="machine-nav machine-nav-bottom" aria-label={t('mainNav')}>
+          <a href="#home">{t('home')}</a>
+          <button type="button" onClick={() => setInfoPanel('how')}>{t('how')}</button>
+          <button type="button" onClick={() => setInfoPanel('about')}>{t('about')}</button>
         </nav>
 
         {infoPanel && (
@@ -52,25 +57,25 @@ export default function HomePage() {
               className="machine-info-panel"
               role="dialog"
               aria-modal="true"
-              aria-label={infoPanel === 'how' ? 'How AtTheSameTime works' : 'About AtTheSameTime'}
+              aria-label={infoPanel === 'how' ? t('how') : t('about')}
               onClick={(event) => event.stopPropagation()}
             >
-              <button className="machine-info-close" type="button" onClick={() => setInfoPanel(null)} aria-label="Close">×</button>
+              <button className="machine-info-close" type="button" onClick={() => setInfoPanel(null)} aria-label={t('close')}>×</button>
               {infoPanel === 'how' ? (
                 <>
-                  <span className="eyebrow">How it works</span>
-                  <h2>Three steps. One shared moment.</h2>
+                  <span className="eyebrow">{t('how')}</span>
+                  <h2>{t('howTitle')}</h2>
                   <div className="machine-info-steps">
-                    <div><b>01</b><strong>Create the poll</strong><p>Choose the possible dates and a broad daily time window.</p></div>
-                    <div><b>02</b><strong>Share one link</strong><p>Everyone opens the same poll in their own local timezone.</p></div>
-                    <div><b>03</b><strong>Find the overlap</strong><p>Participants mark availability and the best shared times appear automatically.</p></div>
+                    <div><b>01</b><strong>{t('step1')}</strong><p>{t('step1p')}</p></div>
+                    <div><b>02</b><strong>{t('step2')}</strong><p>{t('step2p')}</p></div>
+                    <div><b>03</b><strong>{t('step3')}</strong><p>{t('step3p')}</p></div>
                   </div>
                 </>
               ) : (
                 <>
-                  <span className="eyebrow">About</span>
-                  <h2>Scheduling without timezone math.</h2>
-                  <p className="machine-info-copy">AtTheSameTime is a lightweight availability poll built for people in different time zones. No account is required to create or answer a poll.</p>
+                  <span className="eyebrow">{t('about')}</span>
+                  <h2>{t('aboutTitle')}</h2>
+                  <p className="machine-info-copy">{t('aboutCopy')}</p>
                 </>
               )}
             </section>
@@ -82,6 +87,7 @@ export default function HomePage() {
           <span>A MORE CONNECTED WORLD</span>
           <small>Built for humans in different time zones.</small>
         </footer>
+      </div>
       </div>
     </main>
   )

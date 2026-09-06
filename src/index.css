@@ -1209,7 +1209,7 @@ select:focus {
   to { transform: rotate(360deg); }
 }
 
-@media (max-width: 980px) {
+@media (pointer: coarse) and (max-width: 980px) {
   .home-layout {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -1242,7 +1242,7 @@ select:focus {
   .join-form { max-width: none; }
 }
 
-@media (max-width: 620px) {
+@media (pointer: coarse) and (max-width: 620px) {
   .event-layout,
   .home-layout {
     width: min(100% - 24px, 1200px);
@@ -1696,7 +1696,7 @@ body {
 .machine-footer span { letter-spacing: .22em; }
 .machine-footer small { justify-self: end; color: #685744; }
 
-@media (max-width: 900px) {
+@media (pointer: coarse) and (max-width: 900px) {
   .machine-hero {
     grid-template-columns: 1fr;
     padding: 28px;
@@ -1709,7 +1709,7 @@ body {
   .machine-plaque { right: 7%; }
 }
 
-@media (max-width: 620px) {
+@media (pointer: coarse) and (max-width: 620px) {
   .machine-hero,
   .creation-console,
   .machine-footer {
@@ -1924,7 +1924,7 @@ body {
   margin-top: 22px;
 }
 
-@media (max-width: 900px) {
+@media (pointer: coarse) and (max-width: 900px) {
   .machine-topbar {
     height: 116px;
   }
@@ -1947,7 +1947,7 @@ body {
   }
 }
 
-@media (max-width: 680px) {
+@media (pointer: coarse) and (max-width: 680px) {
   .machine-topbar {
     height: 98px;
   }
@@ -2106,7 +2106,7 @@ body {
   line-height: 1.5;
 }
 
-@media (max-width: 1120px) {
+@media (pointer: coarse) and (max-width: 1120px) {
   .brand-copy {
     min-width: 270px;
     padding-left: 22px;
@@ -2122,7 +2122,7 @@ body {
   }
 }
 
-@media (max-width: 760px) {
+@media (pointer: coarse) and (max-width: 760px) {
   .brand-copy {
     min-width: 220px;
     min-height: 62px;
@@ -2137,7 +2137,7 @@ body {
   }
 }
 
-@media (max-width: 680px) {
+@media (pointer: coarse) and (max-width: 680px) {
   .brand-copy {
     display: none;
   }
@@ -2660,7 +2660,7 @@ select {
   .machine-gear-img { animation: none !important; }
 }
 
-@media (max-width: 1180px) {
+@media (pointer: coarse) and (max-width: 1180px) {
   .machine-hero {
     padding-right: 52px;
     grid-template-columns: minmax(0, 1fr) 390px;
@@ -2670,7 +2670,7 @@ select {
   .console-indicators { margin-left: 370px; }
 }
 
-@media (max-width: 900px) {
+@media (pointer: coarse) and (max-width: 900px) {
   .machine-topbar { height: 116px; }
   .machine-hero {
     padding: 42px 38px 46px;
@@ -2685,7 +2685,7 @@ select {
   .brass-header-plate { margin-left: 8px; }
 }
 
-@media (max-width: 680px) {
+@media (pointer: coarse) and (max-width: 680px) {
   .machine-topbar { height: 98px; }
   .machine-hero,
   .creation-console,
@@ -2786,10 +2786,10 @@ select {
 .reference-footer { width:min(1380px, calc(100% - 80px)); min-height:48px; margin:7px auto 0; padding:0 28px; border:1px solid #5d3e20; background:#0b0805; }
 .reference-footer span { padding:5px 28px; color:#d8ad66; border:1px solid #74502a; background:#17100a; letter-spacing:.15em; font-size:8px; }
 
-@media (max-width:1100px){
+@media (pointer: coarse) and (max-width:1100px) {
   .reference-machine-page{padding-inline:20px}.machine-frame-shell{display:none}.reference-topbar,.reference-hero,.reference-console,.reference-footer{width:100%}.reference-topbar .brand-copy{min-width:300px}.machine-nav{display:none}.reference-hero{padding-right:30px;grid-template-columns:1fr 420px}.reference-side-plates{display:none}.globe-machine-asset{width:390px}.machine-create-grid{grid-template-columns:1fr 1fr}.matches-panel{grid-column:1/-1}.reference-footer{width:100%}
 }
-@media (max-width:760px){
+@media (pointer: coarse) and (max-width:760px) {
   .reference-machine-page{padding:8px}.reference-topbar{height:105px;padding:4px}.reference-topbar .brand-copy{display:none}.reference-hero{min-height:auto;padding:24px 15px;grid-template-columns:1fr}.reference-hero .hero-copy{padding:0}.reference-hero .hero-copy h1{font-size:38px}.globe-asset-scene{height:260px}.globe-machine-asset{width:330px}.machine-create-grid{grid-template-columns:1fr}.matches-panel{grid-column:auto}.reference-footer{padding:0 10px}.reference-footer span{display:none}
 }
 
@@ -2927,14 +2927,14 @@ select {
 .nixie-digit-real[data-digit="0"] { transform: translate(-2px, -50%); }
 .nixie-label { font-size: 8px; font-weight: 900; letter-spacing: .15em; }
 
-@media (max-width: 1180px) {
+@media (pointer: coarse) and (max-width: 1180px) {
   .reference-machine-page { padding-inline: 20px; }
   .reference-topbar { width: 100%; }
   .reference-topbar .brand-copy { min-width: 300px; }
   .reference-hero { width: calc(100% - 30px); padding-right: 40px; grid-template-columns: 1fr 420px; }
   .reference-console,.reference-footer { width: calc(100% - 30px); }
 }
-@media (max-width: 900px) {
+@media (pointer: coarse) and (max-width: 900px) {
   .reference-topbar { height: 118px; }
   .reference-topbar .brand-copy { display: none; }
   .machine-nav { display: none; }
@@ -2946,7 +2946,7 @@ select {
   .machine-create-grid { grid-template-columns: 1fr 1fr; }
   .matches-panel { grid-column: 1 / -1; min-height: 290px; }
 }
-@media (max-width: 680px) {
+@media (pointer: coarse) and (max-width: 680px) {
   .reference-machine-page { padding: 8px; }
   .reference-topbar { height: 104px; padding-inline: 4px; }
   .reference-topbar::before,.reference-topbar::after { display:none; }
@@ -3101,7 +3101,7 @@ body {
 .final-topbar .brand-name {
   white-space: nowrap !important;
   font-family: Georgia, "Times New Roman", serif !important;
-  font-size: clamp(27px, 2.55vw, 41px) !important;
+  font-size: 41px !important;
   font-weight: 800 !important;
   line-height: .98 !important;
   letter-spacing: .015em !important;
@@ -3127,7 +3127,7 @@ body {
 .final-topbar .brand-copy small {
   margin-top: 6px !important;
   color: #d8aa5d !important;
-  font-size: clamp(7px, .60vw, 10px) !important;
+  font-size: 10px !important;
   font-weight: 900 !important;
   line-height: 1 !important;
   letter-spacing: .22em !important;
@@ -3156,7 +3156,7 @@ body {
 
 .machine-nav a {
   padding: 8px 12px !important;
-  font-size: clamp(11px, .76vw, 13px) !important;
+  font-size: 13px !important;
 }
 
 /* =========================
@@ -3192,7 +3192,7 @@ body {
 .final-hero .hero-copy h1 {
   max-width: 100% !important;
   margin: 0 0 3.2% !important;
-  font-size: clamp(42px, 3.45vw, 58px) !important;
+  font-size: 58px !important;
   line-height: .99 !important;
   letter-spacing: -.025em !important;
 }
@@ -3200,7 +3200,7 @@ body {
 .final-hero .lead {
   max-width: 92% !important;
   margin: 0 !important;
-  font-size: clamp(14px, 1.00vw, 17px) !important;
+  font-size: 17px !important;
   line-height: 1.46 !important;
 }
 
@@ -3229,7 +3229,7 @@ body {
 
 .reference-side-plate,
 .reference-side-plates > div {
-  font-size: clamp(9px, .62vw, 11px) !important;
+  font-size: 11px !important;
   line-height: 1.35 !important;
 }
 
@@ -3276,7 +3276,7 @@ body {
 }
 
 .asset-section-title span {
-  font-size: clamp(12px, .82vw, 14px) !important;
+  font-size: 14px !important;
   font-weight: 800 !important;
   letter-spacing: .025em !important;
 }
@@ -3284,7 +3284,7 @@ body {
 .machine-form-panel label,
 .machine-form-panel .field-label,
 .machine-form-panel .timezone-label {
-  font-size: clamp(11px, .76vw, 13px) !important;
+  font-size: 13px !important;
   font-weight: 700 !important;
   line-height: 1.3 !important;
 }
@@ -3293,7 +3293,7 @@ body {
 .machine-form-panel textarea,
 .machine-form-panel select,
 .machine-form-panel button {
-  font-size: clamp(11px, .76vw, 13px) !important;
+  font-size: 13px !important;
 }
 
 .machine-form-panel input,
@@ -3311,7 +3311,7 @@ body {
 .machine-readout,
 .timezone-note,
 .form-hint {
-  font-size: clamp(9px, .64vw, 10.5px) !important;
+  font-size: 10.5px !important;
   line-height: 1.38 !important;
 }
 
@@ -3322,12 +3322,12 @@ body {
 
 .compact-calendar .calendar-toolbar {
   min-height: 34px !important;
-  font-size: clamp(11px, .78vw, 13px) !important;
+  font-size: 13px !important;
 }
 
 .compact-calendar .calendar-weekdays {
   margin: 4px 0 !important;
-  font-size: clamp(7px, .50vw, 8.5px) !important;
+  font-size: 8.5px !important;
 }
 
 .compact-calendar .calendar-grid {
@@ -3342,12 +3342,12 @@ body {
 
 .compact-calendar .calendar-day {
   height: 29px !important;
-  font-size: clamp(9px, .65vw, 11px) !important;
+  font-size: 11px !important;
 }
 
 .compact-calendar .calendar-footer {
   margin-top: 5px !important;
-  font-size: clamp(8px, .55vw, 9px) !important;
+  font-size: 9px !important;
 }
 
 /* Time window: larger copy and controls without overflowing. */
@@ -3367,7 +3367,7 @@ body {
 .asset-action-button {
   min-height: 42px !important;
   margin-top: 7px !important;
-  font-size: clamp(12px, .86vw, 14px) !important;
+  font-size: 14px !important;
   font-weight: 900 !important;
 }
 
@@ -3391,7 +3391,7 @@ body {
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
-  font-size: clamp(8px, .55vw, 9.5px) !important;
+  font-size: 9.5px !important;
   z-index: 8 !important;
 }
 
@@ -3412,7 +3412,7 @@ body {
    RESPONSIVE
    ========================= */
 
-@media (max-width: 1180px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1180px) and (min-width: 981px) {
   .nixie-clock-six {
     transform: scale(.68) !important;
   }
@@ -3439,7 +3439,7 @@ body {
 }
 
 /* Below tablet width, prioritize functionality over the decorative cabinet. */
-@media (max-width: 980px) {
+@media (pointer: coarse) and (max-width: 980px) {
   .final-machine-page {
     width: 100% !important;
     aspect-ratio: auto !important;
@@ -3526,7 +3526,7 @@ body {
    Single authoritative desktop adjustment.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Remove every stray rule/line around the hero. */
   .final-hero,
   .reference-hero,
@@ -3765,7 +3765,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-topbar .brand-copy {
     left: 56.7% !important;
     top: 56px !important;
@@ -3805,7 +3805,7 @@ body {
    Fix only the elements that jumped after the last clean pass.
    ========================================================= */
 
-@media (min-width: 1401px) {
+@media (pointer: fine) {
   /* Nixies were using % relative to the short header and jumped upward.
      Pin them in pixels inside the empty top-left cavity. */
   .nixie-clock-six {
@@ -3848,7 +3848,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .nixie-clock-six {
     top: 52px !important;
     left: 145px !important;
@@ -3881,7 +3881,7 @@ body {
    back into normal document flow.
    ========================================================= */
 
-@media (min-width: 1401px) {
+@media (pointer: fine) {
   /* Slight optical correction inside the real upper plaque. */
   .final-topbar .brand-copy {
     left: 55.55% !important;
@@ -3904,7 +3904,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-topbar .brand-copy {
     left: 55.6% !important;
   }
@@ -3926,13 +3926,13 @@ body {
 
 
 /* Final micro-adjustment: upper plaque title 5px higher. */
-@media (min-width: 1401px) {
+@media (pointer: fine) {
   .final-topbar .brand-copy {
     top: 69px !important;
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-topbar .brand-copy {
     top: 61px !important;
   }
@@ -4095,7 +4095,7 @@ body {
 .event-machine-layout .event-hero h1 {
   margin: 6px 0 8px;
   color: #f4ead8;
-  font-size: clamp(34px, 3vw, 50px);
+  font-size: 50px;
   line-height: 1.02;
   overflow-wrap: anywhere;
 }
@@ -4223,7 +4223,7 @@ body {
   transform: translateX(-50%) !important;
 }
 
-@media (max-width: 980px) {
+@media (pointer: coarse) and (max-width: 980px) {
   .machine-info-steps {
     grid-template-columns: 1fr;
   }
@@ -4517,7 +4517,7 @@ body {
 
 /* Keep the event cabinet inside the viewport so body scrolling does not
    visually pull the content outside the mechanical frame. */
-@media (min-width: 981px) {
+@media (pointer: fine) {
   .event-machine-page {
     width: min(96vw, 144vh, 1600px) !important;
     max-height: 96vh !important;
@@ -4559,7 +4559,7 @@ body {
    Fixes the two remaining issues without touching Home layout.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Move the event content block down so AVAILABILITY POLL
      no longer crowds the LOCAL TIME machinery. */
   .event-machine-layout,
@@ -4648,7 +4648,7 @@ body {
    The brass frame paints ABOVE scrolling content.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Prevent the browser/body itself from scrolling on EventPage. */
   html:has(.event-machine-page),
   body:has(.event-machine-page),
@@ -4734,7 +4734,7 @@ body {
    The Event scroll mask must not hide Home title/nav.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Home: restore normal layering so title + bottom nav render above the frame. */
   .final-machine-page:not(.event-machine-page) .single-machine-frame {
     z-index: 1 !important;
@@ -4779,7 +4779,7 @@ body {
    Keep the frame behind; keep the scroll clipped INSIDE the opening.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   .event-machine-page .single-machine-frame {
     z-index: 1 !important;
   }
@@ -4843,7 +4843,7 @@ body {
    The key is removing the parent stacking context.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Do NOT let this parent trap all its children in one z-index layer. */
   .event-machine-page .event-machine-content {
     z-index: auto !important;
@@ -4904,7 +4904,7 @@ body {
    so the page itself doesn't scroll past the bottom frame.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   .final-machine-page:not(.event-machine-page) {
     width: min(96vw, 144vh, 1600px) !important;
     max-height: 96vh !important;
@@ -4938,7 +4938,7 @@ body {
    Home only. No asset changes.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Raise the title inside the top plaque. */
   .final-machine-page:not(.event-machine-page) .final-topbar .brand-copy {
     top: 59px !important;
@@ -4966,7 +4966,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-machine-page:not(.event-machine-page) .final-topbar .brand-copy {
     top: 53px !important;
   }
@@ -4988,7 +4988,7 @@ body {
    Home only; no asset changes.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Move the whole form block down just enough to clear the hero copy. */
   .final-machine-page:not(.event-machine-page) .final-console {
     top: 50.1% !important;
@@ -5048,7 +5048,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-machine-page:not(.event-machine-page) .final-console {
     top: 50.3% !important;
     height: 34.4% !important;
@@ -5061,7 +5061,7 @@ body {
    the lower inner edge of the machine frame.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Undo any later hero-copy nudges if present. */
   .final-machine-page:not(.event-machine-page) .final-hero .hero-copy {
     transform: none !important;
@@ -5112,7 +5112,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-machine-page:not(.event-machine-page) .final-console {
     top: 50.3% !important;
     bottom: 15.9% !important;
@@ -5126,13 +5126,13 @@ body {
    No horizontal movement, no hero/title/globe changes.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   .final-machine-page:not(.event-machine-page) .final-console {
     bottom: 13.9% !important;
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-machine-page:not(.event-machine-page) .final-console {
     bottom: 14.0% !important;
   }
@@ -5144,7 +5144,7 @@ body {
    while header/nav remain above the frame.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Remove the parent stacking context so children can sit
      on either side of the frame layer. */
   .final-machine-page:not(.event-machine-page) .machine-content-shell {
@@ -5183,7 +5183,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .final-machine-page:not(.event-machine-page) .final-console {
     top: 51.2% !important;
     bottom: 13.3% !important;
@@ -5202,7 +5202,7 @@ body {
    This block intentionally overrides the earlier 144vh / 96vh rules.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   .final-machine-page:not(.event-machine-page) {
     width: min(96vw, 1536px) !important;
     max-height: none !important;
@@ -5233,7 +5233,7 @@ body {
    not need to scroll. This keeps vw-based geometry identical.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   html {
     scrollbar-gutter: stable !important;
   }
@@ -5254,7 +5254,7 @@ body {
    UNIFIED MACHINE GEOMETRY — HOME + EVENT
    Same cabinet, Nixies, title plaque and lower plate geometry.
    ========================================================= */
-@media (min-width: 981px) {
+@media (pointer: fine) {
   .final-machine-page,
   .final-machine-page.event-machine-page {
     width: min(96vw, 1536px) !important;
@@ -5370,7 +5370,7 @@ body {
    previous "unified" block. No Home geometry changes.
    ========================================================= */
 
-@media (min-width: 1401px) {
+@media (pointer: fine) {
   .event-machine-page .event-machine-topbar .nixie-clock-six {
     top: 58px !important;
     left: 165px !important;
@@ -5408,7 +5408,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) and (min-width: 981px) {
+@media (pointer: coarse) and (max-width: 1400px) and (min-width: 981px) {
   .event-machine-page .event-machine-topbar .nixie-clock-six {
     top: 52px !important;
     left: 145px !important;
@@ -5446,7 +5446,7 @@ body {
    decorative pipe area. Event page only.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   .event-machine-page .event-machine-layout,
   .event-machine-page .event-machine-layout-active {
     left: 12.15% !important;
@@ -5500,7 +5500,7 @@ body {
    Final stacking fix for cards overlapping the brass pipes.
    ========================================================= */
 
-@media (min-width: 981px) {
+@media (pointer: fine) {
   /* Remove the parent stacking context so children can sit on both
      sides of the frame layer independently. */
   .event-machine-page .event-machine-content {
@@ -5544,3 +5544,2130 @@ body {
   }
 }
 
+
+/* ES / EN language selector */
+.language-switch{
+  position:absolute;
+  z-index:90;
+  top:14.4%;
+  right:10.7%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-width:112px;
+  height:30px;
+  padding:0 10px;
+  box-sizing:border-box;
+  border:1px solid #8b5a22;
+  border-radius:3px;
+  background:
+    linear-gradient(180deg,rgba(91,54,21,.96),rgba(31,20,12,.98) 48%,rgba(13,10,8,.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(232,166,71,.18),
+    inset 0 1px 0 rgba(255,218,143,.18),
+    0 2px 5px rgba(0,0,0,.55);
+  font-family:Georgia,serif;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  color:#a97a3d;
+}
+.language-switch::before,
+.language-switch::after{
+  content:"";
+  width:4px;
+  height:4px;
+  flex:0 0 4px;
+  border-radius:50%;
+  background:#b77a2d;
+  box-shadow:inset 0 0 1px #fff2bd,0 0 3px rgba(230,154,48,.35);
+}
+.language-switch button{
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:4px 3px;
+  color:#9d7442;
+  cursor:pointer;
+  font:inherit;
+  line-height:1;
+  opacity:.78;
+  transition:color .15s ease,text-shadow .15s ease,opacity .15s ease;
+}
+.language-switch button:hover{
+  color:#f0bd64;
+  opacity:1;
+}
+.language-switch button.active{
+  color:#ffc45d;
+  opacity:1;
+  text-shadow:0 0 5px #e68b22,0 0 11px rgba(255,154,35,.55);
+}
+.language-switch-gear{
+  color:#d49338;
+  font-size:12px;
+  line-height:1;
+  opacity:.9;
+  text-shadow:0 0 5px rgba(230,139,34,.28);
+}
+@media (pointer: coarse) and (max-width:980px) {
+  .language-switch{
+    top:12px;
+    right:16px;
+    min-width:104px;
+    height:28px;
+  }
+}
+
+
+/* Language control — seated inside the frame's existing upper-right metal plate */
+@media (pointer: fine) {
+  .final-machine-page .language-switch {
+    top: 16.25% !important;
+    right: 16.55% !important;
+    min-width: 122px !important;
+    height: 27px !important;
+    padding: 0 5px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    gap: 9px !important;
+    z-index: 35 !important;
+  }
+
+  .final-machine-page .language-switch::before,
+  .final-machine-page .language-switch::after {
+    display: none !important;
+  }
+
+  .final-machine-page .language-switch button {
+    padding: 4px 4px !important;
+    font-size: 12px !important;
+    letter-spacing: .12em !important;
+    color: #9c7137 !important;
+    text-shadow: 0 1px 1px #090603 !important;
+  }
+
+  .final-machine-page .language-switch button:hover,
+  .final-machine-page .language-switch button.active {
+    color: #ffc45d !important;
+    opacity: 1 !important;
+    text-shadow:
+      0 0 4px rgba(255, 180, 69, .8),
+      0 0 9px rgba(214, 120, 25, .45) !important;
+  }
+
+  .final-machine-page .language-switch-gear {
+    font-size: 12px !important;
+    color: #b47a32 !important;
+    text-shadow: 0 1px 1px #090603 !important;
+  }
+}
+
+
+/* Mechanical EN/ES toggle — integrated into the existing upper-right plate */
+@media (pointer: fine) {
+  .final-machine-page .mechanical-language-switch{
+    top:14.55% !important;
+    right:15.15% !important;
+    width:174px !important;
+    min-width:174px !important;
+    height:42px !important;
+    padding:3px 9px !important;
+    display:grid !important;
+    grid-template-columns:46px 64px 46px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:0 !important;
+    border:1px solid rgba(187,126,49,.52) !important;
+    border-radius:5px !important;
+    background:linear-gradient(180deg,rgba(52,38,24,.72),rgba(20,15,11,.78)) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(17,10,5,.72),
+      inset 0 1px 0 rgba(255,210,126,.09),
+      0 1px 3px rgba(0,0,0,.42) !important;
+    z-index:35 !important;
+  }
+  .final-machine-page .mechanical-language-switch::before,
+  .final-machine-page .mechanical-language-switch::after{display:none !important}
+
+  .mechanical-language-switch .language-choice{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:3px !important;
+    height:34px !important;
+    padding:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    font-family:Georgia,serif !important;
+    font-size:13px !important;
+    font-weight:800 !important;
+    letter-spacing:.08em !important;
+    color:#866238 !important;
+    opacity:.82 !important;
+    cursor:pointer !important;
+    text-shadow:0 1px 1px #050301 !important;
+  }
+  .mechanical-language-switch .language-choice:hover,
+  .mechanical-language-switch .language-choice[aria-pressed="true"]{
+    color:#e8b663 !important;
+    opacity:1 !important;
+  }
+  .mechanical-language-switch .language-lamp{
+    display:block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#211b14;
+    border:1px solid #72522b;
+    box-shadow:inset 0 1px 2px #050403;
+  }
+  .mechanical-language-switch .language-choice[aria-pressed="true"] .language-lamp{
+    background:#ffc04c;
+    border-color:#e2a23d;
+    box-shadow:0 0 4px #ffb12d,0 0 9px rgba(255,155,28,.65),inset 0 0 2px #fff4bd;
+  }
+
+  .mechanical-language-switch .language-toggle{
+    position:relative;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:64px !important;
+    height:38px !important;
+    padding:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    cursor:pointer !important;
+  }
+  .mechanical-language-switch .toggle-socket{
+    position:relative;
+    display:block;
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 42% 35%,#b78743 0 9%,#67411e 24%,#24170d 52%,#090705 72%);
+    border:2px solid #9b692f;
+    box-shadow:
+      inset 0 0 0 2px #21150c,
+      0 0 0 2px rgba(69,42,18,.9),
+      0 2px 3px #050301;
+  }
+  .mechanical-language-switch .toggle-lever{
+    position:absolute;
+    left:50%;
+    bottom:50%;
+    width:5px;
+    height:27px;
+    border-radius:4px;
+    transform-origin:50% 100%;
+    background:linear-gradient(90deg,#5b391a,#d39a4b 46%,#7b4d20 100%);
+    box-shadow:1px 0 1px #1a0f07,-1px 0 1px rgba(255,218,145,.28);
+    transition:transform 180ms cubic-bezier(.2,.85,.25,1.15);
+  }
+  .mechanical-language-switch.is-en .toggle-lever{transform:translateX(-50%) rotate(-38deg)}
+  .mechanical-language-switch.is-es .toggle-lever{transform:translateX(-50%) rotate(38deg)}
+  .mechanical-language-switch .toggle-knob{
+    position:absolute;
+    left:50%;
+    top:-7px;
+    width:12px;
+    height:12px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 28%,#f1c778 0 10%,#a66c2c 34%,#4c2e14 76%);
+    border:1px solid #b47b35;
+    box-shadow:0 2px 3px rgba(0,0,0,.75),inset 1px 1px 2px rgba(255,230,170,.38);
+  }
+}
+@media (pointer: coarse) and (max-width:980px) {
+  .mechanical-language-switch{
+    min-width:142px !important;
+    width:142px !important;
+    height:38px !important;
+    grid-template-columns:40px 52px 40px !important;
+    padding:2px 5px !important;
+    background:linear-gradient(180deg,#49301b,#17100b) !important;
+    border:1px solid #875826 !important;
+  }
+  .mechanical-language-switch .language-choice{font-size:12px !important}
+}
+
+
+/* Place the mechanical language selector inside the EMPTY plate below the upper pipe */
+@media (pointer: fine) {
+  .final-machine-page .mechanical-language-switch{
+    top:21.15% !important;
+    right:15.25% !important;
+    width:174px !important;
+    min-width:174px !important;
+    height:40px !important;
+
+    /* let the frame's own metal plate be the visible housing */
+    border:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+}
+
+
+/* Final mechanical language switch placement:
+   visually seated inside the empty lower metal plate, as part of the machine */
+@media (pointer: fine) {
+  .final-machine-page .mechanical-language-switch {
+    top: 24.65% !important;
+    right: 18.15% !important;
+    width: 184px !important;
+    min-width: 184px !important;
+    height: 44px !important;
+    padding: 3px 8px !important;
+
+    display: grid !important;
+    grid-template-columns: 48px 72px 48px !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+
+    z-index: 35 !important;
+  }
+
+  .final-machine-page .mechanical-language-switch::before,
+  .final-machine-page .mechanical-language-switch::after {
+    display: none !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-choice {
+    height: 40px !important;
+    gap: 4px !important;
+    color: #9b713d !important;
+    font-family: Georgia, serif !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    letter-spacing: .08em !important;
+    text-shadow:
+      0 1px 0 rgba(255, 210, 130, .08),
+      0 2px 2px rgba(0, 0, 0, .9) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-choice:hover,
+  .final-machine-page .mechanical-language-switch .language-choice[aria-pressed="true"] {
+    color: #e8b663 !important;
+    text-shadow:
+      0 0 4px rgba(255, 184, 74, .55),
+      0 2px 2px rgba(0, 0, 0, .9) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-lamp {
+    width: 7px !important;
+    height: 7px !important;
+    border: 1px solid #6f4b25 !important;
+    background: #17120d !important;
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, .95),
+      0 0 0 1px rgba(155, 103, 44, .18) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-choice[aria-pressed="true"] .language-lamp {
+    background: radial-gradient(circle at 40% 35%, #fff2b0 0 16%, #ffc047 34%, #dd821b 72%, #7b3d08 100%) !important;
+    border-color: #d99a3b !important;
+    box-shadow:
+      0 0 4px rgba(255, 180, 55, .95),
+      0 0 10px rgba(255, 137, 22, .62),
+      inset 0 0 2px rgba(255, 255, 220, .9) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-toggle {
+    width: 72px !important;
+    height: 42px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-socket {
+    width: 30px !important;
+    height: 30px !important;
+    border: 2px solid #95632d !important;
+    background:
+      radial-gradient(circle at 38% 32%,
+        #c7964e 0 8%,
+        #7c5127 22%,
+        #3b2615 44%,
+        #17100a 67%,
+        #090705 100%) !important;
+    box-shadow:
+      inset 0 0 0 2px #1d130c,
+      0 0 0 2px rgba(83, 51, 22, .88),
+      0 2px 3px rgba(0, 0, 0, .78) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-lever {
+    width: 5px !important;
+    height: 30px !important;
+    background:
+      linear-gradient(90deg,
+        #4a2d15 0%,
+        #8f5d2a 25%,
+        #d7a45a 52%,
+        #7d4c21 78%,
+        #3b2411 100%) !important;
+    box-shadow:
+      1px 0 1px rgba(0, 0, 0, .9),
+      -1px 0 1px rgba(255, 221, 157, .22) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch.is-en .toggle-lever {
+    transform: translateX(-50%) rotate(-42deg) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch.is-es .toggle-lever {
+    transform: translateX(-50%) rotate(42deg) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-knob {
+    top: -8px !important;
+    width: 13px !important;
+    height: 13px !important;
+    border: 1px solid #9e682e !important;
+    background:
+      radial-gradient(circle at 34% 28%,
+        #f0c47b 0 10%,
+        #b97932 35%,
+        #70451e 62%,
+        #3c2411 100%) !important;
+    box-shadow:
+      0 2px 3px rgba(0, 0, 0, .82),
+      inset 1px 1px 2px rgba(255, 231, 176, .34) !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL LANGUAGE CONTROL
+   Four screws + recessed dark plate + pilot lamps + toggle
+   ========================================================= */
+@media (pointer: fine) {
+  .final-machine-page .mechanical-language-switch {
+    top: 27.9% !important;
+    right: 18.85% !important;
+    width: 176px !important;
+    min-width: 176px !important;
+    height: 52px !important;
+    padding: 5px 14px !important;
+    box-sizing: border-box !important;
+
+    display: grid !important;
+    grid-template-columns: 44px 60px 44px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+
+    border: 1px solid rgba(177, 115, 45, .72) !important;
+    border-radius: 4px !important;
+    background:
+      linear-gradient(180deg, rgba(43, 31, 22, .96), rgba(18, 14, 11, .98)) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(8, 5, 3, .9),
+      inset 0 0 0 2px rgba(116, 74, 31, .28),
+      inset 0 1px 0 rgba(245, 188, 94, .09),
+      0 2px 4px rgba(0, 0, 0, .72) !important;
+
+    z-index: 35 !important;
+    overflow: visible !important;
+  }
+
+  .final-machine-page .mechanical-language-switch::before,
+  .final-machine-page .mechanical-language-switch::after {
+    display: none !important;
+  }
+
+  /* Corner screws */
+  .mechanical-language-switch .panel-screw {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 34% 28%, #e1b066 0 8%, #9b642e 26%, #4b2f17 66%, #1b110a 100%);
+    border: 1px solid #6d431f;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,.8),
+      inset 1px 1px 1px rgba(255,222,157,.22);
+    z-index: 4;
+  }
+  .mechanical-language-switch .panel-screw::after {
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: 3px;
+    width: 6px;
+    height: 1px;
+    background: #2d1b0e;
+    transform: rotate(-38deg);
+    box-shadow: 0 1px 0 rgba(255,210,130,.08);
+  }
+  .mechanical-language-switch .screw-tl { left: 5px; top: 5px; }
+  .mechanical-language-switch .screw-tr { right: 5px; top: 5px; }
+  .mechanical-language-switch .screw-bl { left: 5px; bottom: 5px; }
+  .mechanical-language-switch .screw-br { right: 5px; bottom: 5px; }
+
+  /* EN / ES are deliberately tight to the lever */
+  .mechanical-language-switch .language-choice {
+    position: relative !important;
+    z-index: 5 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    width: 44px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+  }
+
+  .mechanical-language-switch .language-label {
+    font-family: Georgia, serif !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    letter-spacing: .08em !important;
+    color: #9c7440 !important;
+    text-shadow:
+      0 1px 0 rgba(255,216,145,.08),
+      0 2px 2px rgba(0,0,0,.9) !important;
+    transition: color 150ms ease, text-shadow 150ms ease !important;
+  }
+
+  .mechanical-language-switch .language-choice:hover .language-label,
+  .mechanical-language-switch .language-choice[aria-pressed="true"] .language-label {
+    color: #e9b86a !important;
+    text-shadow:
+      0 0 4px rgba(255,183,74,.42),
+      0 2px 2px rgba(0,0,0,.92) !important;
+  }
+
+  /* Pilot lamp with brass bezel */
+  .mechanical-language-switch .language-lamp {
+    position: relative !important;
+    display: grid !important;
+    place-items: center !important;
+    width: 13px !important;
+    height: 13px !important;
+    border-radius: 50% !important;
+    background:
+      radial-gradient(circle at 35% 28%, #b17d3c 0 10%, #6f4823 44%, #2f1e11 72%, #120c08 100%) !important;
+    border: 1px solid #98642e !important;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,.82),
+      inset 0 0 0 1px rgba(255,210,128,.08) !important;
+  }
+
+  .mechanical-language-switch .language-lamp > span {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 28%, #4b4438 0 14%, #28221b 45%, #0f0d0b 100%);
+    box-shadow:
+      inset 0 1px 2px rgba(255,255,255,.05),
+      inset 0 -1px 2px rgba(0,0,0,.9);
+  }
+
+  .mechanical-language-switch .language-choice[aria-pressed="true"] .language-lamp {
+    border-color: #d19438 !important;
+    box-shadow:
+      0 0 3px rgba(255,173,49,.85),
+      0 0 8px rgba(255,135,22,.48),
+      0 1px 2px rgba(0,0,0,.82),
+      inset 0 0 0 1px rgba(255,227,161,.16) !important;
+  }
+
+  .mechanical-language-switch .language-choice[aria-pressed="true"] .language-lamp > span {
+    background:
+      radial-gradient(circle at 35% 28%,
+        #fff5bf 0 14%,
+        #ffd166 28%,
+        #f5a62f 53%,
+        #b45b12 78%,
+        #6a3007 100%) !important;
+    box-shadow:
+      0 0 4px #ffbd48,
+      0 0 8px rgba(255,141,28,.66),
+      inset 0 0 2px rgba(255,255,235,.9) !important;
+  }
+
+  /* Toggle assembly */
+  .mechanical-language-switch .language-toggle {
+    position: relative !important;
+    z-index: 5 !important;
+    width: 60px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .mechanical-language-switch .toggle-bezel {
+    display: grid;
+    place-items: center;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    background:
+      conic-gradient(from 8deg,
+        #5f3b1b, #ad7435, #6a421d, #c28c46, #533218, #9b652e, #5f3b1b);
+    border: 1px solid #8f5d2a;
+    box-shadow:
+      0 1px 3px rgba(0,0,0,.85),
+      inset 0 0 0 1px rgba(247,199,111,.14);
+  }
+
+  .mechanical-language-switch .toggle-socket {
+    position: relative !important;
+    display: block !important;
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 50% !important;
+    border: 1px solid #422914 !important;
+    background:
+      radial-gradient(circle at 40% 34%, #70502d 0 8%, #2f2117 36%, #110c09 72%, #070504 100%) !important;
+    box-shadow:
+      inset 0 0 0 2px rgba(0,0,0,.52),
+      inset 0 2px 4px rgba(0,0,0,.72) !important;
+  }
+
+  .mechanical-language-switch .toggle-lever {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 50% !important;
+    width: 4px !important;
+    height: 25px !important;
+    border-radius: 4px !important;
+    transform-origin: 50% 100% !important;
+    background:
+      linear-gradient(90deg,
+        #472b14 0%,
+        #98632d 28%,
+        #d5a154 50%,
+        #8a5625 72%,
+        #3c2411 100%) !important;
+    box-shadow:
+      1px 0 1px rgba(0,0,0,.95),
+      -1px 0 1px rgba(255,224,165,.20) !important;
+    transition: transform 180ms cubic-bezier(.2,.85,.25,1.15) !important;
+  }
+
+  .mechanical-language-switch.is-en .toggle-lever {
+    transform: translateX(-50%) rotate(-39deg) !important;
+  }
+
+  .mechanical-language-switch.is-es .toggle-lever {
+    transform: translateX(-50%) rotate(39deg) !important;
+  }
+
+  .mechanical-language-switch .toggle-knob {
+    position: absolute !important;
+    left: 50% !important;
+    top: -7px !important;
+    width: 12px !important;
+    height: 12px !important;
+    transform: translateX(-50%) !important;
+    border-radius: 50% !important;
+    border: 1px solid #8e5a29 !important;
+    background:
+      radial-gradient(circle at 33% 27%,
+        #f0c779 0 10%,
+        #b97a33 34%,
+        #72461e 65%,
+        #3b2310 100%) !important;
+    box-shadow:
+      0 2px 3px rgba(0,0,0,.88),
+      inset 1px 1px 2px rgba(255,234,182,.32) !important;
+  }
+}
+
+/* Keep it usable on narrower layouts without pretending to be part of the desktop plate */
+@media (pointer: coarse) and (max-width: 980px) {
+  .mechanical-language-switch {
+    width: 150px !important;
+    min-width: 150px !important;
+    height: 44px !important;
+    padding: 4px 10px !important;
+    display: grid !important;
+    grid-template-columns: 40px 50px 40px !important;
+    background: linear-gradient(180deg,#3c291b,#17100b) !important;
+    border: 1px solid #815326 !important;
+    border-radius: 4px !important;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.65),0 2px 4px rgba(0,0,0,.5) !important;
+  }
+}
+
+
+/* Final fit v2:
+   Keep the original switch proportions; only reduce the dark housing
+   so it nests into the machine's existing empty brass plate. */
+@media (pointer: fine) {
+  .final-machine-page .mechanical-language-switch {
+    /* center the module over the empty inset plate */
+    top: 27.65% !important;
+    right: 18.45% !important;
+
+    /* smaller backing plate, original controls stay readable */
+    width: 158px !important;
+    min-width: 158px !important;
+    height: 46px !important;
+    padding: 3px 9px !important;
+
+    grid-template-columns: 42px 56px 42px !important;
+    gap: 0 !important;
+
+    border: 1px solid rgba(154, 97, 38, .62) !important;
+    border-radius: 3px !important;
+    background:
+      linear-gradient(180deg, rgba(38, 28, 20, .88), rgba(17, 13, 10, .92)) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(7, 5, 3, .82),
+      inset 0 1px 0 rgba(231, 173, 83, .06),
+      0 1px 2px rgba(0, 0, 0, .5) !important;
+  }
+
+  /* Pull the labels toward the lever instead of shrinking them */
+  .final-machine-page .mechanical-language-switch .language-choice {
+    width: 42px !important;
+    height: 38px !important;
+    gap: 3px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-label {
+    font-size: 12px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-toggle {
+    width: 56px !important;
+    height: 40px !important;
+  }
+
+  /* Keep the nicer original-size mechanical details */
+  .final-machine-page .mechanical-language-switch .toggle-bezel {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-socket {
+    width: 21px !important;
+    height: 21px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-lever {
+    width: 4px !important;
+    height: 24px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-knob {
+    top: -7px !important;
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-lamp {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-lamp > span {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  /* Smaller screws because only the backing plate is being reduced */
+  .final-machine-page .mechanical-language-switch .panel-screw {
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .panel-screw::after {
+    left: 1px !important;
+    top: 3px !important;
+    width: 5px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .screw-tl { left: 4px !important; top: 4px !important; }
+  .final-machine-page .mechanical-language-switch .screw-tr { right: 4px !important; top: 4px !important; }
+  .final-machine-page .mechanical-language-switch .screw-bl { left: 4px !important; bottom: 4px !important; }
+  .final-machine-page .mechanical-language-switch .screw-br { right: 4px !important; bottom: 4px !important; }
+}
+
+
+/* Final nesting adjustment.
+   IMPORTANT: mechanism dimensions intentionally unchanged.
+   Only the dark carrier plate is tightened and seated inside the existing brass recess. */
+@media (pointer: fine) {
+  .final-machine-page .mechanical-language-switch {
+    /* sit fully inside the empty recessed plate instead of hanging from its upper edge */
+    top: 40.00% !important;
+    right: 18.50% !important;
+    /* tighter carrier around the existing EN / lever / ES mechanism */
+    width: 132px !important;
+    min-width: 132px !important;
+    height: 42px !important;
+    padding: 1px 4px !important;
+
+    /* preserve the current control widths; remove wasted outer space */
+    grid-template-columns: 42px 56px 42px !important;
+    gap: 0 !important;
+
+    border: 1px solid rgba(130, 79, 30, .54) !important;
+    border-radius: 2px !important;
+    background:
+      linear-gradient(180deg, rgba(34, 25, 18, .78), rgba(16, 12, 9, .84)) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(5, 4, 3, .72),
+      inset 0 1px 0 rgba(229, 168, 76, .045),
+      0 1px 1px rgba(0, 0, 0, .34) !important;
+  }
+
+  /* screws belong to the small carrier, so tuck them into its corners */
+  .final-machine-page .mechanical-language-switch .screw-tl {
+    left: 3px !important;
+    top: 3px !important;
+  }
+  .final-machine-page .mechanical-language-switch .screw-tr {
+    right: 3px !important;
+    top: 3px !important;
+  }
+  .final-machine-page .mechanical-language-switch .screw-bl {
+    left: 3px !important;
+    bottom: 3px !important;
+  }
+  .final-machine-page .mechanical-language-switch .screw-br {
+    right: 3px !important;
+    bottom: 3px !important;
+  }
+}
+@media (pointer: fine) {
+  /* EN hacia la derecha, acercándolo a la palanca */
+  .mechanical-language-switch .language-choice-en {
+    transform: translateX(9px) !important;
+  }
+
+  /* ES hacia la izquierda, acercándolo a la palanca */
+  .mechanical-language-switch .language-choice-es {
+    transform: translateX(-9px) !important;
+  }
+}
+
+/* ============================================================
+   FIXED DESKTOP CANVAS
+   Keep the exact large-desktop AtTheSameTime(7) composition.
+   The browser itself zooms the complete 1536×1024 CSS canvas.
+   No child transforms, no JS scaling, no responsive desktop reflow.
+   ============================================================ */
+@media (pointer: fine) {
+  html,
+  body {
+    min-width: 0 !important;
+  }
+
+  body {
+    overflow-x: auto !important;
+  }
+
+  .final-machine-page,
+  .final-machine-page.event-machine-page {
+    width: 1536px !important;
+    min-width: 1536px !important;
+    max-width: 1536px !important;
+    height: 1024px !important;
+    min-height: 1024px !important;
+    max-height: 1024px !important;
+    aspect-ratio: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+  }
+}
+
+
+/* ============================================================
+   TIME INPUT FIX — HOME RIGHT PANEL ONLY
+   Firefox's native clock glyph was sitting on top of the last
+   minute digit. Keep the control/native picker, just give the
+   text and icon sane room inside the existing panel.
+   ============================================================ */
+@media (pointer: fine) {
+  .final-machine-page:not(.event-machine-page)
+  .compact-time-window .time-fields {
+    grid-template-columns: auto 108px auto 108px !important;
+    justify-content: space-between !important;
+    column-gap: 10px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page)
+  .compact-time-window input[type="time"] {
+    width: 108px !important;
+    min-width: 108px !important;
+    max-width: 108px !important;
+    box-sizing: border-box !important;
+    padding-left: 10px !important;
+    padding-right: 24px !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+}
+
+
+/* ============================================================
+   NATIVE TIME PICKER — keep clock UI, make AM/PM visible
+   ============================================================ */
+@media (pointer: fine) {
+  .final-machine-page:not(.event-machine-page)
+  .compact-time-window .time-fields {
+    display: grid !important;
+    grid-template-columns: auto 116px auto 116px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 7px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page)
+  .compact-time-window input[type="time"] {
+    width: 116px !important;
+    min-width: 116px !important;
+    max-width: 116px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    box-sizing: border-box !important;
+
+    /* Enough room for hour/minute + AM/PM + native clock button */
+    padding: 5px 4px 5px 9px !important;
+
+    font-size: 12px !important;
+    line-height: 1 !important;
+    font-variant-numeric: tabular-nums !important;
+
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+  }
+
+  .final-machine-page:not(.event-machine-page)
+  .compact-time-window .time-fields label {
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+}
+
+
+/* ============================================================
+   TRUE STAGE ARCHITECTURE
+   viewport != machine
+   The machine is one fixed 1536×1024 coordinate system.
+   ============================================================ */
+@media (pointer: fine) {
+  html,
+  body,
+  #root {
+    min-width: 0 !important;
+  }
+
+  body {
+    overflow-x: auto !important;
+  }
+
+  .machine-viewport {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 1024px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .machine-viewport > .final-machine-page,
+  .machine-viewport > .final-machine-page.event-machine-page {
+    position: relative !important;
+    width: 1536px !important;
+    min-width: 1536px !important;
+    max-width: 1536px !important;
+    height: 1024px !important;
+    min-height: 1024px !important;
+    max-height: 1024px !important;
+    aspect-ratio: auto !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+    flex: none !important;
+  }
+
+  .machine-viewport > .final-machine-page .single-machine-frame,
+  .machine-viewport > .final-machine-page .machine-content-shell {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 1536px !important;
+    height: 1024px !important;
+  }
+
+  .machine-viewport > .final-machine-page .single-machine-frame img {
+    width: 1536px !important;
+    height: 1024px !important;
+    object-fit: contain !important;
+  }
+
+  /* Stop old app-shell viewport rules from acting on the machine itself. */
+  .machine-viewport > .final-machine-page {
+    min-height: 1024px !important;
+  }
+
+  /* Large monitors and browser zoom-out get MORE surrounding space,
+     never a different machine geometry. */
+  @media (min-width: 1536px) {
+    .machine-viewport {
+      overflow-x: hidden !important;
+    }
+  }
+}
+
+
+/* ============================================================
+   TABLET / SMALL DESKTOP RESPONSIVE STAGE
+   901–1535px: scale the COMPLETE approved 1536×1024 machine.
+   Internal geometry never reflows.
+   ============================================================ */
+@media (pointer: fine) and (min-width: 901px) and (max-width: 1535px) {
+  .machine-viewport {
+    --machine-tablet-scale: calc((100vw - 32px) / 1536);
+
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+
+    /* Reserve the transformed machine's real visual height. */
+    height: calc(1024px * var(--machine-tablet-scale)) !important;
+    min-height: calc(1024px * var(--machine-tablet-scale)) !important;
+
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  .machine-viewport > .final-machine-page,
+  .machine-viewport > .final-machine-page.event-machine-page {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+
+    width: 1536px !important;
+    min-width: 1536px !important;
+    max-width: 1536px !important;
+    height: 1024px !important;
+    min-height: 1024px !important;
+    max-height: 1024px !important;
+
+    margin: 0 !important;
+    transform:
+      translateX(-50%)
+      scale(var(--machine-tablet-scale)) !important;
+    transform-origin: top center !important;
+  }
+}
+
+/* Coarse-pointer tablets can use the same complete-machine strategy
+   while we keep the dedicated phone layout for the next step. */
+@media (pointer: coarse) and (min-width: 901px) and (max-width: 1535px) {
+  .machine-viewport {
+    --machine-tablet-scale: calc((100vw - 32px) / 1536);
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: calc(1024px * var(--machine-tablet-scale)) !important;
+    min-height: calc(1024px * var(--machine-tablet-scale)) !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  .machine-viewport > .final-machine-page,
+  .machine-viewport > .final-machine-page.event-machine-page {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    width: 1536px !important;
+    min-width: 1536px !important;
+    max-width: 1536px !important;
+    height: 1024px !important;
+    min-height: 1024px !important;
+    max-height: 1024px !important;
+    margin: 0 !important;
+    transform:
+      translateX(-50%)
+      scale(var(--machine-tablet-scale)) !important;
+    transform-origin: top center !important;
+  }
+}
+
+
+/* ============================================================
+   TABLET BREAKPOINT SANITIZER
+   901–1535px must remain the complete cabinet, uniformly scaled.
+   Legacy mobile/stacked rules are forbidden in this range.
+   ============================================================ */
+@media (min-width: 901px) and (max-width: 1535px) {
+  .single-machine-frame {
+    display: block !important;
+  }
+
+  .machine-content-shell,
+  .final-topbar,
+  .final-hero,
+  .final-console,
+  .machine-nav-bottom,
+  .final-footer {
+    display: revert !important;
+  }
+
+  .final-topbar,
+  .final-hero,
+  .final-console,
+  .machine-nav-bottom,
+  .final-footer {
+    position: absolute !important;
+  }
+
+  .machine-create-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+
+  .reference-side-plates {
+    display: block !important;
+  }
+
+  .final-machine-page {
+    overflow: visible !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE LAYOUT V1 — dedicated vertical layout
+   <= 900px coarse pointer: do NOT scale the desktop cabinet.
+   Use the same visual language, but a real mobile composition.
+   ============================================================ */
+@media (pointer: coarse) and (max-width: 900px) {
+  html,
+  body,
+  #root {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    background: #080503 !important;
+  }
+
+  .machine-viewport {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+  }
+
+  .machine-viewport > .final-machine-page,
+  .machine-viewport > .final-machine-page.event-machine-page {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 18px 16px 28px !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  /* The ornate cabinet is a desktop/tablet composition.
+     On phone we keep the visual language, not the full frame. */
+  .final-machine-page .single-machine-frame {
+    display: none !important;
+  }
+
+  .final-machine-page .machine-content-shell,
+  .event-machine-page .event-machine-content {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* ---------------- HEADER ---------------- */
+
+  .final-machine-page .final-topbar,
+  .event-machine-page .event-machine-topbar {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 26px !important;
+    padding: 10px 0 22px !important;
+    border-bottom: 1px solid rgba(173, 108, 43, .62) !important;
+    overflow: visible !important;
+  }
+
+  .final-machine-page .final-topbar .brand,
+  .event-machine-page .event-machine-topbar .brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .final-machine-page .final-topbar .brand-copy,
+  .event-machine-page .event-machine-topbar .brand-copy {
+    position: relative !important;
+    inset: auto !important;
+    order: 0 !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+  }
+
+  .final-machine-page .final-topbar .brand-name,
+  .event-machine-page .event-machine-topbar .brand-name {
+    display: block !important;
+    max-width: 100% !important;
+    font-size: clamp(30px, 10vw, 46px) !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  .final-machine-page .final-topbar .brand-copy small,
+  .event-machine-page .event-machine-topbar .brand-copy small {
+    display: block !important;
+    margin-top: 7px !important;
+    font-size: 8px !important;
+    line-height: 1.25 !important;
+    letter-spacing: .18em !important;
+    text-align: center !important;
+  }
+
+  .final-machine-page .nixie-clock-six,
+  .event-machine-page .event-machine-topbar .nixie-clock-six {
+    position: relative !important;
+    inset: auto !important;
+    order: 1 !important;
+    margin: 0 auto !important;
+    transform: scale(.72) !important;
+    transform-origin: center top !important;
+  }
+
+  .final-machine-page .mechanical-language-switch {
+    position: absolute !important;
+    top: 6px !important;
+    right: 0 !important;
+    width: 104px !important;
+    min-width: 104px !important;
+    height: 34px !important;
+    padding: 1px 3px !important;
+    grid-template-columns: 32px 40px 32px !important;
+    transform: scale(.82) !important;
+    transform-origin: top right !important;
+    z-index: 30 !important;
+  }
+
+  /* ---------------- HERO ---------------- */
+
+  .final-machine-page:not(.event-machine-page) .final-hero {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 0 26px !important;
+    padding: 0 0 28px !important;
+    border-bottom: 1px solid rgba(173, 108, 43, .62) !important;
+    overflow: visible !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .hero-copy {
+    width: 100% !important;
+    max-width: none !important;
+    transform: none !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .hero-copy h1 {
+    margin: 0 0 16px !important;
+    max-width: 100% !important;
+    font-size: clamp(42px, 12.5vw, 66px) !important;
+    line-height: .98 !important;
+    letter-spacing: -.035em !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .lead {
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .globe-asset-scene,
+  .final-machine-page:not(.event-machine-page) .reference-side-plates {
+    display: none !important;
+  }
+
+  /* ---------------- CREATE FORM ---------------- */
+
+  .final-machine-page:not(.event-machine-page) .final-console {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-console .create-card {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-create-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-form-panel {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 42px 14px 14px !important;
+    overflow: visible !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .asset-section-title {
+    height: 34px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .asset-section-title span {
+    font-size: 13px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-form-panel label,
+  .final-machine-page:not(.event-machine-page) .machine-form-panel .field-label,
+  .final-machine-page:not(.event-machine-page) .machine-form-panel .timezone-label {
+    font-size: 13px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-form-panel input,
+  .final-machine-page:not(.event-machine-page) .machine-form-panel textarea,
+  .final-machine-page:not(.event-machine-page) .machine-form-panel select,
+  .final-machine-page:not(.event-machine-page) .machine-form-panel button {
+    font-size: 13px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-day,
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-empty {
+    min-height: 38px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-calendar .calendar-day {
+    height: 38px !important;
+    font-size: 12px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-time-window .time-fields {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto 1fr !important;
+    gap: 8px !important;
+    align-items: center !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .compact-time-window input[type="time"] {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  /* ---------------- NAV / FOOTER ---------------- */
+
+  .final-machine-page .machine-nav-bottom,
+  .event-machine-page .event-machine-nav {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 22px 0 0 !important;
+    padding: 10px 0 !important;
+    transform: none !important;
+  }
+
+  .final-machine-page .final-footer {
+    position: relative !important;
+    inset: auto !important;
+    display: none !important;
+  }
+
+  /* ---------------- EVENT PAGE ---------------- */
+
+  .event-machine-page .event-machine-layout,
+  .event-machine-page .event-machine-layout-active {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .event-machine-page .event-hero h1 {
+    font-size: clamp(34px, 10vw, 52px) !important;
+  }
+
+  .event-machine-page .availability-grid,
+  .event-machine-page .availability-shell {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+}
+
+/* Slightly tighter phones */
+@media (pointer: coarse) and (max-width: 620px) {
+  .machine-viewport > .final-machine-page,
+  .machine-viewport > .final-machine-page.event-machine-page {
+    padding: 14px 12px 24px !important;
+  }
+
+  .final-machine-page .final-topbar .brand-name,
+  .event-machine-page .event-machine-topbar .brand-name {
+    font-size: clamp(28px, 9.6vw, 40px) !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .hero-copy h1 {
+    font-size: clamp(38px, 12vw, 58px) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch {
+    transform: scale(.72) !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE POLISH — compact header, readable hero, usable switch
+   ============================================================ */
+@media (pointer: coarse) and (max-width: 900px) {
+  .final-machine-page .final-topbar,
+  .event-machine-page .event-machine-topbar {
+    margin-bottom: 18px !important;
+    padding-top: 6px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .final-machine-page .final-topbar .brand-copy,
+  .event-machine-page .event-machine-topbar .brand-copy {
+    margin-bottom: 8px !important;
+  }
+
+  .final-machine-page .nixie-clock-six,
+  .event-machine-page .event-machine-topbar .nixie-clock-six {
+    margin-top: -2px !important;
+    margin-bottom: -6px !important;
+    transform: scale(.66) !important;
+  }
+
+  .final-machine-page .mechanical-language-switch {
+    top: 4px !important;
+    right: 4px !important;
+    width: 86px !important;
+    min-width: 86px !important;
+    height: 28px !important;
+    padding: 0 2px !important;
+    grid-template-columns: 26px 34px 26px !important;
+    border-radius: 2px !important;
+    transform: none !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-choice {
+    width: 26px !important;
+    height: 26px !important;
+    gap: 1px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-label {
+    font-size: 9px !important;
+    line-height: 1 !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-toggle {
+    width: 34px !important;
+    height: 26px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-bezel {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-socket {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-lever {
+    width: 3px !important;
+    height: 15px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-knob {
+    top: -5px !important;
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-lamp {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-lamp > span {
+    width: 4px !important;
+    height: 4px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .panel-screw {
+    display: none !important;
+  }
+
+  .mechanical-language-switch .language-choice-en,
+  .mechanical-language-switch .language-choice-es {
+    transform: none !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero {
+    margin-bottom: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .hero-copy h1 {
+    margin-bottom: 12px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .lead {
+    font-size: 16px !important;
+    line-height: 1.42 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-console {
+    margin-top: 0 !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .machine-create-grid {
+    gap: 10px !important;
+  }
+}
+
+/* Portrait phones: keep the title strong but avoid eating the whole screen. */
+@media (pointer: coarse) and (max-width: 620px) and (orientation: portrait) {
+  .final-machine-page .final-topbar .brand-name,
+  .event-machine-page .event-machine-topbar .brand-name {
+    font-size: clamp(26px, 8.5vw, 36px) !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .hero-copy h1 {
+    font-size: clamp(38px, 10.8vw, 52px) !important;
+    line-height: .96 !important;
+  }
+}
+
+/* Landscape phones: deliberately compact so the form appears sooner. */
+@media (pointer: coarse) and (max-width: 900px) and (orientation: landscape) {
+  .machine-viewport > .final-machine-page,
+  .machine-viewport > .final-machine-page.event-machine-page {
+    padding-top: 10px !important;
+  }
+
+  .final-machine-page .final-topbar,
+  .event-machine-page .event-machine-topbar {
+    margin-bottom: 10px !important;
+    padding-top: 2px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .final-machine-page .final-topbar .brand-name,
+  .event-machine-page .event-machine-topbar .brand-name {
+    font-size: clamp(28px, 5vw, 38px) !important;
+  }
+
+  .final-machine-page .final-topbar .brand-copy small,
+  .event-machine-page .event-machine-topbar .brand-copy small {
+    margin-top: 4px !important;
+    font-size: 7px !important;
+  }
+
+  .final-machine-page .nixie-clock-six,
+  .event-machine-page .event-machine-topbar .nixie-clock-six {
+    transform: scale(.56) !important;
+    margin-top: -10px !important;
+    margin-bottom: -18px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero {
+    margin-bottom: 12px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .hero-copy h1 {
+    font-size: clamp(34px, 6.3vw, 48px) !important;
+    line-height: .94 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .final-machine-page:not(.event-machine-page) .final-hero .lead {
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
+  .final-machine-page .mechanical-language-switch {
+    top: 2px !important;
+    right: 2px !important;
+    transform: scale(.9) !important;
+    transform-origin: top right !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE NAV + LANGUAGE SWITCH CLEANUP
+   - "Inicio" gets the same visual treatment as the other nav items.
+   - Language switch becomes a compact horizontal steampunk control.
+   ============================================================ */
+@media (pointer: coarse) and (max-width: 900px) {
+  /* Bottom navigation */
+  .final-machine-page .machine-nav-bottom,
+  .event-machine-page .event-machine-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    width: 100% !important;
+    padding: 12px 10px !important;
+    border: 1px solid rgba(145, 88, 32, .72) !important;
+    background:
+      linear-gradient(180deg, rgba(28, 19, 12, .96), rgba(11, 8, 6, .98)) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(228, 163, 67, .08),
+      0 2px 8px rgba(0, 0, 0, .45) !important;
+    box-sizing: border-box !important;
+  }
+
+  .final-machine-page .machine-nav-bottom a,
+  .final-machine-page .machine-nav-bottom button,
+  .event-machine-page .event-machine-nav a,
+  .event-machine-page .event-machine-nav button {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+    padding: 8px 18px !important;
+    border: 0 !important;
+    border-left: 1px solid rgba(151, 91, 35, .72) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #d9b36e !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: .015em !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+  }
+
+  .final-machine-page .machine-nav-bottom > :first-child,
+  .event-machine-page .event-machine-nav > :first-child {
+    border-left: 0 !important;
+  }
+
+  .final-machine-page .machine-nav-bottom a:hover,
+  .final-machine-page .machine-nav-bottom button:hover,
+  .event-machine-page .event-machine-nav a:hover,
+  .event-machine-page .event-machine-nav button:hover {
+    color: #f0c777 !important;
+    background: rgba(157, 96, 35, .10) !important;
+  }
+
+  /* Compact language selector */
+  .final-machine-page .mechanical-language-switch,
+  .event-machine-page .mechanical-language-switch {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    width: 92px !important;
+    min-width: 92px !important;
+    height: 28px !important;
+    padding: 2px 4px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 28px 1fr !important;
+    align-items: center !important;
+    gap: 2px !important;
+    border: 1px solid rgba(145, 88, 32, .72) !important;
+    border-radius: 3px !important;
+    background:
+      linear-gradient(180deg, rgba(34, 24, 16, .96), rgba(15, 10, 7, .98)) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,.65),
+      0 1px 3px rgba(0,0,0,.55) !important;
+    transform: none !important;
+    z-index: 40 !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .panel-screw,
+  .event-machine-page .mechanical-language-switch .panel-screw {
+    display: none !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-choice,
+  .event-machine-page .mechanical-language-switch .language-choice {
+    width: auto !important;
+    height: 22px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    transform: none !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-label,
+  .event-machine-page .mechanical-language-switch .language-label {
+    font-size: 9px !important;
+    line-height: 1 !important;
+    letter-spacing: .04em !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-lamp,
+  .event-machine-page .mechanical-language-switch .language-lamp {
+    width: 7px !important;
+    height: 7px !important;
+    flex: 0 0 7px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-lamp > span,
+  .event-machine-page .mechanical-language-switch .language-lamp > span {
+    width: 3px !important;
+    height: 3px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .language-toggle,
+  .event-machine-page .mechanical-language-switch .language-toggle {
+    position: relative !important;
+    width: 28px !important;
+    height: 22px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-bezel,
+  .event-machine-page .mechanical-language-switch .toggle-bezel {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-socket,
+  .event-machine-page .mechanical-language-switch .toggle-socket {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-lever,
+  .event-machine-page .mechanical-language-switch .toggle-lever {
+    width: 3px !important;
+    height: 14px !important;
+  }
+
+  .final-machine-page .mechanical-language-switch .toggle-knob,
+  .event-machine-page .mechanical-language-switch .toggle-knob {
+    top: -4px !important;
+    width: 7px !important;
+    height: 7px !important;
+  }
+}
+
+/* Narrow phones: keep nav readable without overflowing */
+@media (pointer: coarse) and (max-width: 520px) {
+  .final-machine-page .machine-nav-bottom,
+  .event-machine-page .event-machine-nav {
+    flex-wrap: wrap !important;
+    row-gap: 2px !important;
+  }
+
+  .final-machine-page .machine-nav-bottom a,
+  .final-machine-page .machine-nav-bottom button,
+  .event-machine-page .event-machine-nav a,
+  .event-machine-page .event-machine-nav button {
+    padding-inline: 12px !important;
+    font-size: 14px !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE LANGUAGE CONTROL — independent from desktop mechanism
+   ============================================================ */
+.mobile-language-switch {
+  display: none;
+}
+
+@media (pointer: coarse) and (max-width: 900px) {
+  .desktop-language-switch {
+    display: none !important;
+  }
+
+  .final-topbar .mobile-language-switch,
+  .event-machine-topbar .mobile-language-switch {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    z-index: 60 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    width: auto !important;
+    min-width: 76px !important;
+    height: 30px !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(151, 91, 35, .82) !important;
+    border-radius: 3px !important;
+    background:
+      linear-gradient(180deg, rgba(42, 29, 18, .98), rgba(16, 11, 7, .98)) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(4, 3, 2, .8),
+      inset 0 1px 0 rgba(239, 180, 88, .08),
+      0 2px 5px rgba(0, 0, 0, .5) !important;
+    color: #8f7047 !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-language-switch button {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    border: 0 !important;
+    outline: 0 !important;
+    margin: 0 !important;
+    padding: 5px 2px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #8f7047 !important;
+    font: inherit !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-language-switch > span {
+    color: rgba(190, 126, 49, .62) !important;
+    font-size: 12px !important;
+  }
+
+  .mobile-language-switch button.active {
+    color: #f0bd58 !important;
+    text-shadow:
+      0 0 5px rgba(255, 157, 29, .55),
+      0 0 10px rgba(255, 132, 0, .2) !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE LANGUAGE — FINAL OVERRIDE
+   The desktop mechanical control must not exist visually on mobile.
+   ============================================================ */
+@media (max-width: 900px) {
+  .final-machine-page .mechanical-language-switch.desktop-language-switch,
+  .final-machine-page .final-topbar .mechanical-language-switch.desktop-language-switch,
+  .event-machine-page .mechanical-language-switch.desktop-language-switch,
+  .event-machine-page .event-machine-topbar .mechanical-language-switch.desktop-language-switch {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .final-machine-page .final-topbar .mobile-language-switch,
+  .event-machine-page .event-machine-topbar .mobile-language-switch {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE AVAILABILITY — ONE DAY AT A TIME
+   Desktop/tablet keep the full multi-day matrix.
+   ============================================================ */
+.mobile-schedule-pair {
+  display: none;
+}
+
+@media (pointer: coarse) and (max-width: 900px) {
+  .desktop-schedule-pair {
+    display: none !important;
+  }
+
+  .mobile-schedule-pair {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .mobile-schedule-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .mobile-schedule-card .schedule-title {
+    padding: 14px 16px !important;
+  }
+
+  .mobile-schedule-card .schedule-title > div {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .mobile-schedule-card .schedule-title strong {
+    font-size: 16px !important;
+  }
+
+  .mobile-schedule-card .schedule-title span {
+    max-width: 58% !important;
+    text-align: right !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+  }
+
+  .mobile-day-nav {
+    display: grid !important;
+    grid-template-columns: 42px 1fr 42px !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
+    border-top: 1px solid rgba(115, 73, 32, .45) !important;
+    border-bottom: 1px solid rgba(115, 73, 32, .58) !important;
+    background: rgba(13, 9, 6, .72) !important;
+  }
+
+  .mobile-day-nav > div {
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+
+  .mobile-day-nav strong {
+    display: block !important;
+    color: #eee3d2 !important;
+    font-size: 15px !important;
+    line-height: 1.15 !important;
+    text-transform: capitalize !important;
+  }
+
+  .mobile-day-nav span {
+    display: block !important;
+    margin-top: 3px !important;
+    color: #8f7a61 !important;
+    font-size: 10px !important;
+    letter-spacing: .08em !important;
+  }
+
+  .mobile-day-nav button {
+    width: 42px !important;
+    height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px solid rgba(139, 88, 35, .76) !important;
+    border-radius: 4px !important;
+    background: linear-gradient(180deg, rgba(38, 26, 17, .92), rgba(17, 11, 7, .96)) !important;
+    color: #d9a754 !important;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-day-nav button:disabled {
+    opacity: .28 !important;
+    cursor: default !important;
+  }
+
+  .mobile-time-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .mobile-time-row {
+    display: grid !important;
+    grid-template-columns: 76px 1fr !important;
+    min-height: 54px !important;
+    border-bottom: 1px solid rgba(92, 61, 29, .42) !important;
+  }
+
+  .mobile-time-row:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .mobile-time-label {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-right: 1px solid rgba(92, 61, 29, .42) !important;
+    color: #8e7b64 !important;
+    font-size: 12px !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+
+  .mobile-time-row > .slot {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 54px !important;
+    height: 54px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .mobile-time-row > button.slot {
+    touch-action: none !important;
+  }
+
+  .mobile-schedule-card .legend {
+    padding: 10px 14px 12px !important;
+  }
+}
+
+
+/* ============================================================
+   POSSIBLE TIME CARDS — INTERACTIVE
+   They now lead into the actual response flow.
+   ============================================================ */
+.window-chip {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  text-align: left !important;
+  color: inherit !important;
+  font: inherit !important;
+  cursor: pointer !important;
+}
+
+.window-chip:hover,
+.window-chip:focus-visible {
+  border-color: rgba(218, 160, 73, .58) !important;
+  background: linear-gradient(180deg, #21170f, #120d09) !important;
+}
+
+.window-chip:focus-visible {
+  outline: 1px solid rgba(237, 184, 88, .72) !important;
+  outline-offset: 2px !important;
+}
+
+.window-chip:active {
+  transform: translateY(1px);
+}
+
+
+/* ============================================================
+   DESKTOP SELECTED DAY FOCUS
+   Clicking a "Horarios posibles" card highlights that date in
+   both desktop matrices and centers it if horizontal scroll exists.
+   ============================================================ */
+@media (pointer: fine) {
+  .desktop-schedule-pair .day-head.focused-day-head {
+    background:
+      linear-gradient(180deg, rgba(126, 79, 29, .28), rgba(61, 38, 17, .18)) !important;
+    box-shadow:
+      inset 0 -2px 0 rgba(232, 166, 68, .78),
+      inset 0 0 0 1px rgba(190, 119, 42, .24) !important;
+  }
+
+  .desktop-schedule-pair .day-head.focused-day-head strong {
+    color: #f0bd58 !important;
+    text-shadow: 0 0 7px rgba(255, 151, 24, .24) !important;
+  }
+
+  .desktop-schedule-pair .focused-day-slot {
+    box-shadow:
+      inset 2px 0 0 rgba(204, 133, 45, .34),
+      inset -2px 0 0 rgba(204, 133, 45, .34) !important;
+  }
+}

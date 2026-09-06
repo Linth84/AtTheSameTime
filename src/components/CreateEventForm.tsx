@@ -5,6 +5,7 @@ import { DateTime } from 'luxon'
 
 import { supabase } from '../lib/supabase'
 import { sha256 } from '../lib/hash'
+import { useLanguage } from '../i18n'
 
 function generateSlug() {
   return Math.random().toString(36).slice(2, 8)
@@ -16,6 +17,7 @@ function generateToken() {
 
 export default function CreateEventForm() {
   const navigate = useNavigate()
+  const { t, locale } = useLanguage()
 
   const timezone = useMemo(
     () => Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -75,17 +77,17 @@ export default function CreateEventForm() {
     event.preventDefault()
 
     if (!title.trim()) {
-      setMessage('Please enter an event name.')
+      setMessage(t('eventNameError'))
       return
     }
 
     if (selectedDates.length === 0) {
-      setMessage('Please select at least one possible date.')
+      setMessage(t('dateError'))
       return
     }
 
     if (startTime >= endTime) {
-      setMessage('End time must be later than start time.')
+      setMessage(t('timeError'))
       return
     }
 
@@ -110,7 +112,7 @@ export default function CreateEventForm() {
 
     if (error) {
       console.error('Event insert error:', error)
-      setMessage('Could not create the event.')
+      setMessage(t('createError'))
       setLoading(false)
       return
     }
@@ -132,7 +134,7 @@ export default function CreateEventForm() {
 
     if (windowsError) {
       console.error('Event windows insert error:', windowsError)
-      setMessage('Event created, but the available dates could not be saved.')
+      setMessage(t('windowsError'))
       setLoading(false)
       return
     }
@@ -144,31 +146,31 @@ export default function CreateEventForm() {
   return (
     <form className="create-card machine-create-grid" onSubmit={handleSubmit}>
       <section className="machine-form-panel details-panel">
-        <div className="asset-section-title"><span>1. CREATE A POLL</span></div>
+        <div className="asset-section-title"><span>1. {t('createPoll')}</span></div>
         <div className="field">
-          <label htmlFor="title">Title</label>
-          <input id="title" value={title} onChange={(event) => setTitle(event.target.value)} placeholder="e.g. Project sync, Team meeting..." maxLength={100} />
+          <label htmlFor="title">{t('title')}</label>
+          <input id="title" value={title} onChange={(event) => setTitle(event.target.value)} placeholder={t('titlePlaceholder')} maxLength={100} />
         </div>
         <div className="field">
-          <label htmlFor="description">Description <small>(optional)</small></label>
-          <textarea id="description" value={description} onChange={(event) => setDescription(event.target.value)} placeholder="Add some details..." maxLength={500} />
+          <label htmlFor="description">{t('description')} <small>({t('optional')})</small></label>
+          <textarea id="description" value={description} onChange={(event) => setDescription(event.target.value)} placeholder={t('descriptionPlaceholder')} maxLength={500} />
         </div>
         <div className="timezone-machine-field">
-          <span className="field-label">Your time zone</span>
+          <span className="field-label">{t('yourTimezone')}</span>
           <div className="timezone-display"><i>◷</i><span>{displayTimezone}</span></div>
         </div>
       </section>
 
       <section className="machine-form-panel dates-panel">
-        <div className="asset-section-title"><span>2. SELECT DATES</span></div>
+        <div className="asset-section-title"><span>2. {t('selectDates')}</span></div>
         <div className="calendar-card compact-calendar">
           <div className="calendar-toolbar">
-            <button type="button" className="calendar-nav" aria-label="Previous month" onClick={() => setCalendarMonth((current) => current.minus({ months: 1 }))}>‹</button>
-            <strong>{calendarMonth.toFormat('LLLL yyyy')}</strong>
-            <button type="button" className="calendar-nav" aria-label="Next month" onClick={() => setCalendarMonth((current) => current.plus({ months: 1 }))}>›</button>
+            <button type="button" className="calendar-nav" aria-label={t('previousMonth')} onClick={() => setCalendarMonth((current) => current.minus({ months: 1 }))}>‹</button>
+            <strong>{calendarMonth.setLocale(locale).toFormat('LLLL yyyy')}</strong>
+            <button type="button" className="calendar-nav" aria-label={t('nextMonth')} onClick={() => setCalendarMonth((current) => current.plus({ months: 1 }))}>›</button>
           </div>
           <div className="calendar-weekdays" aria-hidden="true">
-            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => <span key={day}>{day}</span>)}
+            {(locale === 'es' ? ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'] : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']).map((day) => <span key={day}>{day}</span>)}
           </div>
           <div className="calendar-grid">
             {monthCells.map((date, index) => {
@@ -185,15 +187,15 @@ export default function CreateEventForm() {
             })}
           </div>
           <div className="calendar-footer">
-            <button type="button" className="text-button calendar-today" onClick={() => setCalendarMonth(today.startOf('month'))}>Today</button>
-            <span>{selectedDates.length} selected</span>
+            <button type="button" className="text-button calendar-today" onClick={() => setCalendarMonth(today.startOf('month'))}>{t('today')}</button>
+            <span>{selectedDates.length} {t('selected')}</span>
           </div>
         </div>
         {selectedDates.length > 0 && (
           <div className="selected-date-list" aria-label="Selected dates">
             {selectedDates.map((date) => (
               <button type="button" className="selected-date-chip" key={date} onClick={() => toggleDate(DateTime.fromISO(date, { zone: timezone }))}>
-                {DateTime.fromISO(date, { zone: timezone }).toFormat('ccc, LLL d')}<span aria-hidden="true">×</span>
+                {DateTime.fromISO(date, { zone: timezone }).setLocale(locale).toFormat('ccc, LLL d')}<span aria-hidden="true">×</span>
               </button>
             ))}
           </div>
@@ -201,26 +203,26 @@ export default function CreateEventForm() {
       </section>
 
       <section className="machine-form-panel matches-panel">
-        <div className="asset-section-title"><span>3. TIME WINDOW</span></div>
+        <div className="asset-section-title"><span>3. {t('timeWindow')}</span></div>
         <div className="time-window-card compact-time-window">
-          <span className="field-label">Select time range</span>
-          <p>Choose a broad daily window. Everyone marks their exact availability after joining.</p>
+          <span className="field-label">{t('selectRange')}</span>
+          <p>{t('rangeHelp')}</p>
           <div className="time-fields">
-            <label htmlFor="startTime">From</label>
+            <label htmlFor="startTime">{t('from')}</label>
             <input id="startTime" type="time" value={startTime} onChange={(event) => setStartTime(event.target.value)} />
-            <label htmlFor="endTime">To</label>
+            <label htmlFor="endTime">{t('to')}</label>
             <input id="endTime" type="time" value={endTime} onChange={(event) => setEndTime(event.target.value)} />
           </div>
         </div>
         <div className="machine-readout">
-          <span><i /> UTC CORE ACTIVE</span>
-          <span><i /> LOCAL TIME LINKED</span>
-          <strong>{selectedDates.length || '0'} POSSIBLE {selectedDates.length === 1 ? 'DATE' : 'DATES'}</strong>
+          <span><i /> {t('utcCore')}</span>
+          <span><i /> {t('localLinked')}</span>
+          <strong>{selectedDates.length || '0'} POSSIBLE {selectedDates.length === 1 ? t('possibleDate').replace('POSSIBLE ', '') : t('possibleDates').replace('POSSIBLE ', '')}</strong>
         </div>
         <button className="button primary create-submit asset-action-button" type="submit" disabled={loading}>
-          <span>{loading ? 'CREATING...' : '⚙  CREATE POLL'}</span>
+          <span>{loading ? t('creating') : t('create')}</span>
         </button>
-        <p className="form-hint">Times shown in <strong>{displayTimezone}</strong></p>
+        <p className="form-hint">{t('timesShown')} <strong>{displayTimezone}</strong></p>
         {message && <p className="field-error">{message}</p>}
       </section>
     </form>
